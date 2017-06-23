@@ -91,7 +91,7 @@ class Config {
 	}
 	
 	private static function assignMigrationPath($params) {
-		require_once(VENDOR_DIR . '/wooppay/yii2-extension-migration/src/helpers/MigrationHelper.php');
+		require_once(VENDOR_DIR . '/yii2lab/yii2-migration/src/helpers/MigrationHelper.php');
 		$params['dee.migration.path'] = ArrayHelper::merge(
 			$params['dee.migration.path'], 
 			MigrationHelper::getAliases()
