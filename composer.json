@@ -1,17 +1,22 @@
 {
-    "name": "yii2lab/yii2-app",
-    "type": "yii2-extension",
-    "authors": [
-        {
-            "name": "Vitaliy",
-            "email": "theyamshikov@yandex.ru"
-        }
-    ],
+	"name": "yii2lab/yii2-app",
+	"type": "yii2-extension",
+	"keywords": ["yii2","app"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Vitaliy",
+			"email": "theyamshikov@yandex.ru"
+		}
+	],
 	"minimum-stability": "dev",
 	"autoload": {
-        "psr-4": {
-             "yii2lab\\app\\": "src"
-         }
-    },
-    "require": {}
+		"psr-4": {
+			"yii2lab\\app\\": "src"
+		}
+	},
+	"require": {
+		"yiisoft/yii2": "*",
+		"php": ">=5.3.0"
+	}
 }
