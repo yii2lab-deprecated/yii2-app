@@ -3,7 +3,7 @@
 namespace yii2lab\app\helpers;
 
 use yii\helpers\ArrayHelper;
-use woop\extension\Migration\helpers\MigrationHelper;
+use yii2lab\migration\helpers\MigrationHelper;
 
 class Config {
 	
