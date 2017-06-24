@@ -25,7 +25,7 @@ class Load
 	{
 		require(VENDOR_DIR . DS . 'autoload.php');
 		require(VENDOR_DIR . DS . 'yiisoft' . DS . 'yii2' . DS . 'Yii.php');
-		require(VENDOR_DIR . DS . 'wooppay/yii2-foundation/src/helpers' . DS . 'Func.php');
+		require(VENDOR_DIR . DS . 'yii2lab/yii2-helpers/src' . DS . 'Func.php');
 	}
 
 }
