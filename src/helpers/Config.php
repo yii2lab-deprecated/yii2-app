@@ -3,7 +3,6 @@
 namespace yii2lab\app\helpers;
 
 use yii\helpers\ArrayHelper;
-use yii2lab\migration\helpers\MigrationHelper;
 
 class Config {
 	
@@ -19,6 +18,33 @@ class Config {
 			'merge' => false,
 			'withLocal' => true,
 		],
+	];
+	private static $mutation = [
+		[
+			'yii2lab\app\helpers\Mutation',
+			'isOffline',
+		],
+		[
+			'yii2lab\app\helpers\Mutation',
+			'setControllerNamespace',
+		],
+		[
+			'yii2lab\app\helpers\Mutation',
+			'fixValidationKeyInTest',
+		],
+		[
+			'yii2lab\app\helpers\Mutation',
+			'setAppId',
+		],
+		[
+			'yii2lab\app\helpers\Mutation',
+			'setBasePath',
+		],
+		[
+			'yii2lab\app\helpers\Mutation',
+			'setMigrationPath',
+		],
+		
 	];
 	
 	static function get($key = null) {
@@ -37,8 +63,15 @@ class Config {
 			self::requireConfig(APP)
 		);
 		$config = self::loadMap($config);
-		$config = Mutation::mutation($config);
+		$config = self::loadMutation($config);
 		self::$config = $config;
+	}
+	
+	private static function loadMutation($config) {
+		foreach(self::$mutation as $item) {
+			$config = call_user_func($item, $config);
+		}
+		return $config;
 	}
 	
 	private static function loadMap($config) {
@@ -70,10 +103,8 @@ class Config {
 	private static function requireConfig($from) {
 		$config = self::requireConfigWithLocal($from, 'main');
 		if(YII_ENV == 'test') {
-			$config = ArrayHelper::merge(
-				$config,
-				self::requireConfigWithLocal($from, 'test')
-			);
+			$configTest = self::requireConfigWithLocal($from, 'test');
+			$config = ArrayHelper::merge($config, $configTest);
 		}
 		return $config;
 	}
