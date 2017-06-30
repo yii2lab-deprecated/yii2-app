@@ -13,6 +13,7 @@ class Load
 		require('Db.php');
 		require('Api.php');
 		require('Config.php');
+		require('Mutation.php');
 	}
 
 	public static function bootstrap()
