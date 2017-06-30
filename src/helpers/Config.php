@@ -38,11 +38,11 @@ class Config {
 		],
 		[
 			'yii2lab\app\helpers\Mutation',
-			'setBasePath',
+			'setPath',
 		],
 		[
-			'yii2lab\app\helpers\Mutation',
-			'setMigrationPath',
+			'yii2lab\migration\helpers\MigrationHelper',
+			'setPath',
 		],
 		
 	];
@@ -69,7 +69,9 @@ class Config {
 	
 	private static function loadMutation($config) {
 		foreach(self::$mutation as $item) {
-			$config = call_user_func($item, $config);
+			if(class_exists($item[0])) {
+				$config = call_user_func($item, $config);
+			}
 		}
 		return $config;
 	}

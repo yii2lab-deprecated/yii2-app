@@ -2,9 +2,6 @@
 
 namespace yii2lab\app\helpers;
 
-use yii\helpers\ArrayHelper;
-use yii2lab\migration\helpers\MigrationHelper;
-
 class Mutation
 {
 
@@ -27,22 +24,9 @@ class Mutation
 		return $config;
 	}
 	
-	public static function setBasePath($config) {
+	public static function setPath($config) {
 		$config['basePath'] = ROOT_DIR . DS . APP;
 		$config['vendorPath'] = VENDOR_DIR . DS;
-		return $config;
-	}
-	
-	public static function setMigrationPath($config) {
-		if(APP != CONSOLE) {
-			return $config;
-		}
-		require_once(VENDOR_DIR . '/yii2lab/yii2-migration/src/helpers/MigrationHelper.php');
-		$config['params']['dee.migration.path'] = ArrayHelper::merge(
-			$config['params']['dee.migration.path'], 
-			MigrationHelper::getAliases()
-		);
-		
 		return $config;
 	}
 	
