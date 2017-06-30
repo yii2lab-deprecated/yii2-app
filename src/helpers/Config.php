@@ -8,6 +8,18 @@ use yii2lab\migration\helpers\MigrationHelper;
 class Config {
 	
 	private static $config = [];
+	private static $map = [
+		[
+			'name' => 'modules',
+			'merge' => true,
+			'withLocal' => true,
+		],
+		[
+			'name' => 'params',
+			'merge' => false,
+			'withLocal' => true,
+		],
+	];
 	
 	static function get($key = null) {
 		if(empty(self::$config)) {
@@ -24,19 +36,30 @@ class Config {
 			self::requireConfig(COMMON),
 			self::requireConfig(APP)
 		);
-		$config = self::loadModule($config);
-		$config['params'] = self::loadParams();
+		$config = self::loadMap($config);
 		$config = self::mutation($config);
 		self::$config = $config;
 	}
-
-	private static function loadModule($config) {
-		$modules = ArrayHelper::merge(
-			self::requireConfigWithLocal(COMMON, 'modules'),
-			self::requireConfigWithLocal(APP, 'modules')
-		);
-		$config = ArrayHelper::merge($config, $modules);
+	
+	private static function loadMap($config) {
+		foreach(self::$map as $mapItem) {
+			$name = $mapItem['name'];
+			$value = self::loadPart($name, !empty($mapItem['withLocal']));
+			if(!empty($mapItem['merge'])) {
+				$config = ArrayHelper::merge($config, $value);
+			} else {
+				$config[$name] = $value;
+			}
+		}
 		return $config;
+	}
+
+	private static function loadPart($name, $withLocal) {
+		$params = ArrayHelper::merge(
+			self::requireConfigWithLocal(COMMON, $name, $withLocal),
+			self::requireConfigWithLocal(APP, $name, $withLocal)
+		);
+		return $params;
 	}
 	
 	private static function requireConfigItem($from, $name) {
@@ -55,20 +78,13 @@ class Config {
 		return $config;
 	}
 	
-	private static function requireConfigWithLocal($from, $name) {
-		$config = ArrayHelper::merge(
-			self::requireConfigItem($from, $name),
-			self::requireConfigItem($from, $name . '-local')
-		);
+	private static function requireConfigWithLocal($from, $name, $withLocal = true) {
+		$config = self::requireConfigItem($from, $name);
+		if($withLocal) {
+			$configLocal = self::requireConfigItem($from, $name . '-local');
+			$config = ArrayHelper::merge($config, $configLocal);
+		}
 		return $config;
-	}
-	
-	private static function loadParams() {
-		$params = ArrayHelper::merge(
-			self::requireConfigWithLocal(COMMON, 'params'),
-			self::requireConfigWithLocal(APP, 'params')
-		);
-		return $params;
 	}
 	
 	private static function mutation($config) {
