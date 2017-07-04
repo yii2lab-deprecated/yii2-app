@@ -49,7 +49,7 @@ class Config {
 	
 	static function get($key = null) {
 		if(empty(self::$config)) {
-			self::load();
+			self::$config = self::load();
 		}
 		if(empty($key)) {
 			return self::$config;
@@ -64,7 +64,7 @@ class Config {
 		);
 		$config = self::loadMap($config);
 		$config = self::loadMutation($config);
-		self::$config = $config;
+		return $config;
 	}
 	
 	private static function loadMutation($config) {

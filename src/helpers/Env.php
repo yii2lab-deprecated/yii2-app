@@ -11,7 +11,7 @@ class Env
 
 	static function get($key = null) {
 		if (empty(self::$config)) {
-			self::load();
+			self::$config = self::load();
 		}
 		if (empty($key)) {
 			return self::$config;
@@ -25,7 +25,7 @@ class Env
 		$config = self::initYiiConfig($config);
 		$config['db'] = Db::initConfig($config['connection']);
 		$config['allowedIPs'] = self::initAllowedIPsConfig(isset($config['allowedIPs']) ? $config['allowedIPs'] : []);
-		self::$config = $config;
+		return $config;
 	}
 
 	private static function initYiiConfig($config)
