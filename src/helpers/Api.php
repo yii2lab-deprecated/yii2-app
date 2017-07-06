@@ -8,7 +8,7 @@ class Api
 	public static function getApiVersion()
 	{
 		$version = null;
-		if(APP == API) {
+		if(APP == API && !empty($_SERVER['REQUEST_URI'])) {
 			$url = $_SERVER['REQUEST_URI'];
 			if (preg_match('#/v([0-9]+)(/|$)#i', $url, $matches)) {
 				$version = $matches[1];
