@@ -56,6 +56,9 @@ class Db
 			$db['host'] = isset($db['host']) ? $db['host'] : 'localhost';
 			$db['dsn'] = $db['driver'] . ':host=' . $db['host'] . ';dbname=' . $db['dbname'];
 		}
+		if($db['driver'] != 'pgsql' && isset($db['defaultSchema'])) {
+			unset($db['defaultSchema']);
+		}
 		return $db;
 	}
 
