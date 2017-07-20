@@ -67,8 +67,27 @@ class Config {
 		return $config;
 	}
 	
+	private static function getMutationSettings() {
+		$mutationFromEnv = Env::get('config.mutation');
+		if(empty($mutationFromEnv)) {
+			return self::$mutation;
+		}
+		$mutation = ArrayHelper::merge(self::$mutation, $mutationFromEnv);
+		return $mutation;
+	}
+	
+	private static function getMapSettings() {
+		$mapFromEnv = Env::get('config.map');
+		if(empty($mapFromEnv)) {
+			return self::$map;
+		}
+		$map = ArrayHelper::merge(self::$map, $mapFromEnv);
+		return $map;
+	}
+	
 	private static function loadMutation($config) {
-		foreach(self::$mutation as $item) {
+		$mutation = self::getMutationSettings();
+		foreach($mutation as $item) {
 			if(class_exists($item[0])) {
 				$config = call_user_func($item, $config);
 			}
@@ -77,9 +96,11 @@ class Config {
 	}
 	
 	private static function loadMap($config) {
-		foreach(self::$map as $mapItem) {
+		$map = self::getMapSettings();
+		foreach($map as $mapItem) {
 			$name = $mapItem['name'];
-			$value = self::loadPart($name, !empty($mapItem['withLocal']));
+			$onlyApps = ArrayHelper::getValue($mapItem, 'onlyApps');
+			$value = self::loadPart($name, !empty($mapItem['withLocal']), $onlyApps);
 			if(!empty($mapItem['merge'])) {
 				$config = ArrayHelper::merge($config, $value);
 			} else {
@@ -89,11 +110,16 @@ class Config {
 		return $config;
 	}
 
-	private static function loadPart($name, $withLocal) {
-		$params = ArrayHelper::merge(
-			self::requireConfigWithLocal(COMMON, $name, $withLocal),
-			self::requireConfigWithLocal(APP, $name, $withLocal)
-		);
+	private static function loadPart($name, $withLocal, $onlyApps = null) {
+		$commonConfig = [];
+		$appConfig = [];
+		if(empty($onlyApps) || in_array(COMMON, $onlyApps)) {
+			$commonConfig = self::requireConfigWithLocal(COMMON, $name, $withLocal);
+		}
+		if(empty($onlyApps) || in_array(APP, $onlyApps)) {
+			$appConfig = self::requireConfigWithLocal(APP, $name, $withLocal);
+		}
+		$params = ArrayHelper::merge($commonConfig, $appConfig);
 		return $params;
 	}
 	
