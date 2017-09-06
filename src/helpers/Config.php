@@ -141,7 +141,9 @@ class Config {
 		$config = self::requireConfigItem($from, $name);
 		if($withLocal) {
 			$configLocal = self::requireConfigItem($from, $name . '-local');
-			$config = ArrayHelper::merge($config, $configLocal);
+			if(is_array($configLocal)) {
+				$config = ArrayHelper::merge($config, $configLocal);
+			}
 		}
 		return $config;
 	}
