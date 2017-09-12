@@ -34,6 +34,7 @@ class Constant
 		Yii::setAlias('@api', API_DIR);
 		Yii::setAlias('@console', CONSOLE_DIR);
 		Yii::setAlias('@vendor', VENDOR_DIR);
+		Yii::setAlias('@domain', DOMAIN_DIR);
 		/* $aliasList = Env::get('alias');
 		if(!empty($aliasList)) {
 			foreach($aliasList as $aliasName => $aliasDir) {
@@ -51,6 +52,7 @@ class Constant
 		define('API', 'api');
 		define('CONSOLE', 'console');
 		define('VENDOR', 'vendor');
+		define('DOMAIN', 'domain');
 	}
 
 	private static function setBase($rootDir)
@@ -93,6 +95,7 @@ class Constant
 		define('API_DIR', $env['API_DIR']);
 		define('CONSOLE_DIR', $env['CONSOLE_DIR']);
 		define('VENDOR_DIR', $env['VENDOR_DIR']);
+		define('DOMAIN_DIR', $env['DOMAIN_DIR']);
 	}
 	
 }

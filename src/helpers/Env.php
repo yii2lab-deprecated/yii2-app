@@ -40,7 +40,8 @@ class Env
 		$config['API_DIR'] = !empty($config['API_DIR']) ? $config['API_DIR'] : ROOT_DIR . DS . API;
 		$config['CONSOLE_DIR'] = !empty($config['CONSOLE_DIR']) ? $config['CONSOLE_DIR'] : ROOT_DIR . DS . CONSOLE;
 		$config['VENDOR_DIR'] = !empty($config['VENDOR_DIR']) ? $config['VENDOR_DIR'] : ROOT_DIR . DS . VENDOR;
-
+		$config['DOMAIN_DIR'] = !empty($config['DOMAIN_DIR']) ? $config['DOMAIN_DIR'] : ROOT_DIR . DS . DOMAIN;
+		
 		return $config;
 	}
 
