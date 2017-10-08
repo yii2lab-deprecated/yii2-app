@@ -2,6 +2,7 @@
 
 namespace yii2lab\app\helpers;
 
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 
 class Config {
@@ -56,7 +57,20 @@ class Config {
 		}
 		return ArrayHelper::getValue(self::$config, $key);
 	}
-	
+
+	static function genAccess($roles) {
+		$roles = is_array($roles) ? $roles : [$roles];
+		return [
+			'class' => AccessControl::className(),
+			'rules' => [
+				[
+					'allow' => true,
+					'roles' => $roles,
+				],
+			],
+		];
+	}
+
 	private static function load() {
 		$config = ArrayHelper::merge(
 			self::requireConfig(COMMON),
