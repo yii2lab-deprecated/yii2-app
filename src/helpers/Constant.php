@@ -90,6 +90,7 @@ class Constant
 	{
 		define('APP_DIR', $env[strtoupper(APP) . '_DIR']);
 		define('COMMON_DIR', $env['COMMON_DIR']);
+		define('COMMON_DATA_DIR', $env['COMMON_DIR'] . DS . 'data');
 		define('FRONTEND_DIR', $env['FRONTEND_DIR']);
 		define('BACKEND_DIR', $env['BACKEND_DIR']);
 		define('API_DIR', $env['API_DIR']);
