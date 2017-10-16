@@ -23,11 +23,4 @@ class UrlController extends ActiveController
 		];
 	}
 
-	public function actionIndex()
-	{
-		$jobList = Yii::$app->app->url->load();
-		prr($jobList, 1,1);
-		return $this->render('index', compact('jobList'));
-	}
-
 }

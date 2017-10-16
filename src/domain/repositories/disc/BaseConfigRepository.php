@@ -9,7 +9,7 @@ use yii2lab\store\Store;
 
 class BaseConfigRepository extends YiiBaseRepository {
 
-	public $file;
+	public $file = '@common/config/env.php';
 	public $key;
 
 	public function load() {
