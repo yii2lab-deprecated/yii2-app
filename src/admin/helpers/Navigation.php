@@ -16,6 +16,10 @@ class Navigation {
 			'encode' => false,
 			'items' => [
 				[
+					'label' => ['app/mode', 'title'],
+					'url' => 'app/mode',
+				],
+				[
 					'label' => ['app/url', 'title'],
 					'url' => 'app/url',
 				],
