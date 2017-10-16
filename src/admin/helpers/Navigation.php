@@ -31,6 +31,10 @@ class Navigation {
 					'label' => ['app/server', 'title'],
 					'url' => 'app/server',
 				],
+				[
+					'label' => ['app/remote', 'title'],
+					'url' => 'app/remote',
+				],
 			],
 		];
 	}
