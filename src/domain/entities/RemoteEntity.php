@@ -21,7 +21,7 @@ class RemoteEntity extends BaseEntity {
 		$drivers = $this->getConstantEnum('driver');
 		return [
 			['driver', 'required'],
-			['env', 'in', 'range' => $drivers],
+			['driver', 'in', 'range' => $drivers],
 		];
 	}
 }

@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 
 <?= $form->field($model, 'backend')->textInput(); ?>
 
-<?= $form->field($model, 'api')->textarea(); ?>
+<?= $form->field($model, 'api')->textInput(); ?>
 
 <div class="form-group">
 	<?= Html::submitButton(t('action', 'SAVE'), ['class' => 'btn btn-primary']) ?>
