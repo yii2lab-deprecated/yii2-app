@@ -12,8 +12,6 @@ class Navigation {
 		return [
 			'label' => t('app/main', 'title'),
 			'icon' => 'cogs',
-			//'access' => 'app.config',
-			'encode' => false,
 			'items' => [
 				[
 					'label' => ['app/mode', 'title'],
