@@ -22,8 +22,8 @@ class Navigation {
 					'url' => 'app/url',
 				],
 				[
-					'label' => ['app/db', 'title'],
-					'url' => 'app/db',
+					'label' => ['app/connection', 'title'],
+					'url' => 'app/connection',
 				],
 				[
 					'label' => ['app/server', 'title'],
