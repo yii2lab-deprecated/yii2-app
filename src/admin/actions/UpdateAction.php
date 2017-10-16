@@ -11,6 +11,7 @@ class UpdateAction extends Action {
 	
 	public $serviceMethod = 'save';
 	public $serviceMethodOne = 'load';
+	public $redirectAction;
 	
 	public function run() {
 		$this->view->title = t('main', 'update_title');
@@ -22,7 +23,8 @@ class UpdateAction extends Action {
 				$method = $this->serviceMethod;
 				$this->service->$method($model->toArray());
 				Yii::$app->notify->flash->send(['main', 'update_success'], Alert::TYPE_SUCCESS);
-				return $this->redirect(['/' . $this->baseUrl . 'update']);
+				$redirectAction = isset($this->redirectAction) ? $this->redirectAction : $this->id;
+				return $this->redirect(['/' . $this->baseUrl . $redirectAction]);
 			} catch (UnprocessableEntityHttpException $e){
 				$model->addErrorsFromException($e);
 			}
