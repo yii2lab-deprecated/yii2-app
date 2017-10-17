@@ -26,6 +26,10 @@ class Navigation {
 					'url' => 'app/connection',
 				],
 				[
+					'label' => ['app/cookie', 'title'],
+					'url' => 'app/cookie',
+				],
+				[
 					'label' => ['app/server', 'title'],
 					'url' => 'app/server',
 				],
