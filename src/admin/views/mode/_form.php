@@ -4,28 +4,16 @@
  * @var $model yii\base\Model
  */
 
-use kartik\widgets\SwitchInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii2lab\app\domain\entities\ModeEntity;
+use yii2lab\widgets\SwitchInput;
 
 ?>
 
 <?php $form = ActiveForm::begin(); ?>
 
-<?php
-$pluginOptions = [
-	'pluginOptions' => [
-		'handleWidth' => 80,
-		'onText' => t('main', 'STATUS_ON'),
-		'offText' => t('main', 'STATUS_OFF'),
-		'onColor' => 'success',
-		'offColor' => 'danger',
-	]
-];
-?>
-
-<?= $form->field($model, 'debug')->widget(SwitchInput::classname(), $pluginOptions);?>
+<?= $form->field($model, 'debug')->widget(SwitchInput::classname(), SwitchInput::yesNoConfig());?>
 
 <?= $form->field($model, 'env')->dropDownList([
 	ModeEntity::ENV_DEV => t('app/mode', 'env_dev'),
