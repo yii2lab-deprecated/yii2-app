@@ -58,13 +58,13 @@ class Config {
 		return ArrayHelper::getValue(self::$config, $key);
 	}
 
-	static function genAccess($roles, $only = null) {
+	static function genAccess($roles, $only = null, $allow = true) {
 		$roles = is_array($roles) ? $roles : [$roles];
 		$access = [
 			'class' => AccessControl::className(),
 			'rules' => [
 				[
-					'allow' => true,
+					'allow' => $allow,
 					'roles' => $roles,
 				],
 			],
