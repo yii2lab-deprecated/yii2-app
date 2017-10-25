@@ -37,7 +37,7 @@ $action = $this->context->action->id;
 
 <?= $form->field($model, 'username')->textInput(); ?>
 
-<?= $form->field($model, 'password')->textInput(); ?>
+<?= $form->field($model, 'password')->passwordInput(); ?>
 
 <?= $form->field($model, 'dbname')->textInput(); ?>
 
