@@ -14,4 +14,9 @@ return [
 	'defaultSchema' => 'Схема',
 	'driver_mysql'=>'MySql',
 	'driver_pgsql'=>'Postgres',
+
+	'bad_host'=>'Сервер не доступен',
+	'bad_dbname'=>'База данных не существует',
+	'bad_username'=>'Неверный логин',
+	'bad_password'=>'Неверный пароль',
 ];

@@ -2,6 +2,8 @@
 
 namespace yii2lab\app\domain\entities;
 
+use Yii;
+use yii2lab\app\domain\validators\ConnectionValidator;
 use yii2lab\domain\BaseEntity;
 
 class ConnectionEntity extends BaseEntity {
@@ -26,5 +28,12 @@ class ConnectionEntity extends BaseEntity {
 			[['driver', 'host', 'username', 'dbname'], 'required'],
 			['driver', 'in', 'range' => $drivers],
 		];
+	}
+
+	public function validate()
+	{
+		parent::validate();
+		$validator = Yii::createObject(ConnectionValidator::className());
+		$validator->validateAttribute($this, null);
 	}
 }

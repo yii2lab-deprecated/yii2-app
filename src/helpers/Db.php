@@ -2,6 +2,9 @@
 
 namespace yii2lab\app\helpers;
 
+use yii\helpers\ArrayHelper;
+use yii2lab\app\domain\entities\ConnectionEntity;
+
 class Db
 {
 
@@ -16,21 +19,29 @@ class Db
 	}
 
 	public static function getConfig($config, $name = 'main') {
-		$pre = 'db.' . $name . '.';
-		$config['dsn'] = Env::get($pre . 'dsn');
-		$config['username'] = Env::get($pre . 'username');
-		$config['password'] = Env::get($pre . 'password');
-		$config['tablePrefix'] = Env::get($pre . 'tablePrefix');
-		$schemaMap = Env::get($pre . 'schemaMap');
-		if(!empty($schemaMap)) {
-			$config = self::postgresFix($config, $schemaMap);
+		$pre = 'db.' . $name;
+		$config = ArrayHelper::merge($config, Env::get($pre));
+		$config = self::schemaMap($config);
+		unset($config['driver']);
+		unset($config['host']);
+		unset($config['dbname']);
+		return $config;
+	}
+
+	public static function schemaMap($config) {
+		if($config['driver'] != ConnectionEntity::DRIVER_PGSQL) {
+			unset($config['defaultSchema']);
+			unset($config['schemaMap']);
+			return $config;
 		}
-		$defaultSchema = Env::get($pre . 'defaultSchema');
-		if(!empty($defaultSchema)) {
+		if(!empty($config['schemaMap'])) {
+			$config = self::postgresFix($config, $config['schemaMap']);
+		}
+		if(!empty($config['defaultSchema'])) {
 			$schemaMap =  [
 				'pgsql' => [
 					'class' => 'yii\db\pgsql\Schema',
-					'defaultSchema' => $defaultSchema,
+					'defaultSchema' => $config['defaultSchema'],
 				]
 			];
 			$config = self::postgresFix($config, $schemaMap);
@@ -47,7 +58,7 @@ class Db
 		return $config;
 	}
 	
-	private static function normalizeConfig($db)
+	public static function normalizeConfig($db)
 	{
 		$db['password'] = isset($db['password']) ? $db['password'] : '';
 		$db['tablePrefix'] = isset($db['tablePrefix']) ? $db['tablePrefix'] : '';
