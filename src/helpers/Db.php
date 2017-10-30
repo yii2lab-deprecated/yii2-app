@@ -22,6 +22,7 @@ class Db
 		$pre = 'db.' . $name;
 		$config = ArrayHelper::merge($config, Env::get($pre));
 		$config = self::schemaMap($config);
+		unset($config['defaultSchema']);
 		unset($config['driver']);
 		unset($config['host']);
 		unset($config['dbname']);
@@ -30,7 +31,6 @@ class Db
 
 	public static function schemaMap($config) {
 		if($config['driver'] != ConnectionEntity::DRIVER_PGSQL) {
-			unset($config['defaultSchema']);
 			unset($config['schemaMap']);
 			return $config;
 		}
