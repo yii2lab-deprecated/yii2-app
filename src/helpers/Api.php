@@ -15,7 +15,14 @@ class Api
 			}
 			if(empty($version)) {
 				header('HTTP/1.1 400 Bad Request', true, 400);
-				exit('No API version specified');
+				header('Content-Type: application/json');
+				exit(json_encode([
+					"name" => "Bad Request",
+					"message" => "No API version specified",
+					"code" => 0,
+					"status" => 400,
+					"type" => "Exception",
+				]));
 			}
 		}
 		return $version;
