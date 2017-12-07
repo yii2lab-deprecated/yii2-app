@@ -2,7 +2,7 @@
 
 namespace yii2lab\app\domain\entities;
 
-use common\helpers\Driver;
+use yii2lab\domain\enums\Driver;
 use yii2lab\domain\BaseEntity;
 
 class RemoteEntity extends BaseEntity {
