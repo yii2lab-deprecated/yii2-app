@@ -44,7 +44,7 @@ $action = $this->context->action->id;
 <?= $form->field($model, 'defaultSchema')->textInput(); ?>
 
 <div class="form-group">
-	<?= Html::submitButton(t('action', 'SAVE'), ['class' => 'btn btn-primary']) ?>
+	<?= Html::submitButton(t('action', 'save'), ['class' => 'btn btn-primary']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

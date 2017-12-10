@@ -22,7 +22,7 @@ use yii2lab\widgets\SwitchInput;
 ]); ?>
 
 <div class="form-group">
-	<?= Html::submitButton(t('action', 'SAVE'), ['class' => 'btn btn-primary']) ?>
+	<?= Html::submitButton(t('action', 'save'), ['class' => 'btn btn-primary']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

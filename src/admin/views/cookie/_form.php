@@ -35,7 +35,7 @@ if(!$model->hasErrors()) {
 <?= $form->field($model, 'backend_gen')->widget(SwitchInput::classname(), $pluginOptions) ?>
 
 <div class="form-group">
-	<?= Html::submitButton(t('action', 'SAVE'), ['class' => 'btn btn-primary']) ?>
+	<?= Html::submitButton(t('action', 'save'), ['class' => 'btn btn-primary']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>
