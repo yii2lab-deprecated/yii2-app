@@ -3,6 +3,8 @@
 
 ## Окружение
 
+Пример конфига:
+
 ```php
 return [
 	'YII_DEBUG' => true,
@@ -20,9 +22,9 @@ return [
 	'connection' => [
 		'main' => [
 			'driver' => 'pgsql',
-			'host' => 'dbweb',
-			'username' => 'logging',
-			'password' => 'moneylogger',
+			'host' => 'localhost',
+			'username' => 'root',
+			'password' => '',
 			'dbname' => 'qrpay',
 			'defaultSchema' => 'qrpay',
 		],
@@ -41,17 +43,6 @@ return [
 		],
 		'wsdl' => [
 			'domain' => 'http://www.test.wooppay.com/api/wsdl',
-			'payment_hash' => 'Q8nFbQeU236zYQmHDq5vHVqeQBgjNmu9sTCVtEP7hL7p6kKC2vJc66pUGbrAhD3G',
-			'user' => [
-				[
-					'login' => 'QRPayMerchant',
-					'password' => 'A12345678a',
-				],
-				[
-					'login' => 'QRPaySub',
-					'password' => 'A12345678a',
-				],
-			],
 		],
 		'mail' => [
 			'host' => 'mail.ru',
@@ -74,4 +65,3 @@ return [
 	],
 ];
 ```
-
