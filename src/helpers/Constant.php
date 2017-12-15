@@ -28,6 +28,7 @@ class Constant
 	
 	public static function setAliases()
 	{
+		Yii::setAlias('@root', ROOT_DIR);
 		Yii::setAlias('@common', COMMON_DIR);
 		Yii::setAlias('@frontend', FRONTEND_DIR);
 		Yii::setAlias('@backend', BACKEND_DIR);
