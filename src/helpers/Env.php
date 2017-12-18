@@ -21,9 +21,34 @@ class Env
 	
 	private static function load()
 	{
-		$config = require(ROOT_DIR . DS . COMMON . DS . 'config' . DS . 'env.php');
+		if(defined('GUEST_ENV') && GUEST_ENV) {
+			$config = [
+				'YII_DEBUG' => true,
+				'YII_ENV' => 'dev',
+				'project' => 'guest',
+				'config' => [
+					'map' => [
+						[
+							'name' => 'services',
+							'merge' => true,
+							'withLocal' => true,
+							'onlyApps' => [
+								'common',
+							],
+						],
+					],
+				],
+				'remote' => [
+					'driver' => 'disc',
+				],
+			];
+		} else {
+			$config = require(ROOT_DIR . DS . COMMON . DS . 'config' . DS . 'env.php');
+		}
 		$config = self::initYiiConfig($config);
-		$config['db'] = Db::initConfig($config['connection']);
+		if(!empty($config['connection'])) {
+			$config['db'] = Db::initConfig($config['connection']);
+		}
 		$config['allowedIPs'] = self::initAllowedIPsConfig(isset($config['allowedIPs']) ? $config['allowedIPs'] : []);
 		return $config;
 	}
