@@ -2,7 +2,7 @@
 
 namespace yii2lab\app\admin\helpers;
 
-use Yii;
+use common\enums\rbac\PermissionEnum;
 
 // todo: отрефакторить - сделать нормальный интерфейс и родителя
 
@@ -10,7 +10,9 @@ class Navigation {
 	
 	static function getMenu() {
 		return [
-			'label' => t('app/main', 'title'),
+			'label' => ['app/main', 'title'],
+			'module' => 'app',
+			'access' => PermissionEnum::APP_CONFIG,
 			'icon' => 'cogs',
 			'items' => [
 				[
