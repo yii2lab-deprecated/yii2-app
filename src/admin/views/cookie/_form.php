@@ -7,7 +7,7 @@
 use kartik\widgets\SwitchInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii2lab\helpers\String;
+use yii2lab\helpers\StringHelper;
 
 ?>
 
@@ -25,8 +25,8 @@ $pluginOptions = [
 ];
 
 if(!$model->hasErrors()) {
-	echo $form->field($model, 'frontend')->render(t('app/cookie', 'frontend') . ': ' . String::mask($model->frontend));
-	echo $form->field($model, 'backend')->render(t('app/cookie', 'backend') . ': ' . String::mask($model->backend));
+	echo $form->field($model, 'frontend')->render(t('app/cookie', 'frontend') . ': ' . StringHelper::mask($model->frontend));
+	echo $form->field($model, 'backend')->render(t('app/cookie', 'backend') . ': ' . StringHelper::mask($model->backend));
 }
 ?>
 
