@@ -9,6 +9,7 @@ use yii2lab\app\domain\helpers\Constant;
 use yii2lab\app\domain\helpers\Api;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Load;
+use yii2lab\misc\helpers\CommandHelper;
 
 class App
 {
@@ -48,23 +49,25 @@ class App
 
 	private static function runWebApplication($config)
 	{
-		$env = Env::get();
-		if(APP == API && !empty($env['cors'])) {
-			Api::initCors($env['cors']);
-		}
-		self::checkIp($env['allowedIPs']);
+		self::runWebCommands();
 		$application = new WebApplication($config);
 		$application->run();
 	}
-
-	private static function checkIp($allowedIPs)
+	
+	private static function runWebCommands()
 	{
-		if (YII_ENV != 'test' || empty($allowedIPs)) {
-			return;
-		}
-		if ( ! in_array(@$_SERVER['REMOTE_ADDR'], $allowedIPs)) {
-			die('You are not allowed to access this file.');
-		}
+		$env = Env::get();
+		$commands = [
+			[
+				'class' => 'yii2lab\app\domain\commands\Cors',
+				'env' => $env,
+			],
+			[
+				'class' => 'yii2lab\app\domain\commands\CheckIp',
+				'env' => $env,
+			],
+		];
+		CommandHelper::runAll($commands);
 	}
 
 }
