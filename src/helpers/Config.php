@@ -4,6 +4,7 @@ namespace yii2lab\app\helpers;
 
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use yii2lab\misc\helpers\FilterHelper;
 
 class Config {
 	
@@ -21,31 +22,12 @@ class Config {
 		],
 	];
 	private static $mutation = [
-		[
-			'yii2lab\app\helpers\Mutation',
-			'isOffline',
-		],
-		[
-			'yii2lab\app\helpers\Mutation',
-			'setControllerNamespace',
-		],
-		[
-			'yii2lab\app\helpers\Mutation',
-			'fixValidationKeyInTest',
-		],
-		[
-			'yii2lab\app\helpers\Mutation',
-			'setAppId',
-		],
-		[
-			'yii2lab\app\helpers\Mutation',
-			'setPath',
-		],
-		[
-			'yii2lab\migration\helpers\MigrationHelper',
-			'setPath',
-		],
-		
+		'yii2lab\app\domain\filters\isOffline',
+		'yii2lab\app\domain\filters\setControllerNamespace',
+		'yii2lab\app\domain\filters\fixValidationKeyInTest',
+		'yii2lab\app\domain\filters\setAppId',
+		'yii2lab\app\domain\filters\setPath',
+		'yii2lab\migration\domain\filters\setPath',
 	];
 	
 	static function get($key = null) {
@@ -105,11 +87,7 @@ class Config {
 	
 	private static function loadMutation($config) {
 		$mutation = self::getMutationSettings();
-		foreach($mutation as $item) {
-			if(class_exists($item[0])) {
-				$config = call_user_func($item, $config);
-			}
-		}
+		$config = FilterHelper::runAll($mutation, $config);
 		return $config;
 	}
 	
