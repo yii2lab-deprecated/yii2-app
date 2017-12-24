@@ -1,8 +1,8 @@
 <?php
 
 use yii\helpers\ArrayHelper;
-use yii2lab\app\helpers\Config;
-use yii2lab\app\helpers\Env;
+use yii2lab\app\domain\helpers\Config;
+use yii2lab\app\domain\helpers\Env;
 
 function config($name, $default = null) {
 	$value = Config::get($name);

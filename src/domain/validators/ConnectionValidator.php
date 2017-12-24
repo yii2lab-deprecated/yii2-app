@@ -5,7 +5,7 @@ namespace yii2lab\app\domain\validators;
 use Yii;
 use yii\db\Connection;
 use yii\validators\Validator;
-use yii2lab\app\helpers\Db;
+use yii2lab\app\domain\helpers\Db;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\domain\helpers\ErrorCollection;
 

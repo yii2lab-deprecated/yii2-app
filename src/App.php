@@ -4,11 +4,11 @@ namespace yii2lab\app;
 
 use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
-use yii2lab\app\helpers\Env;
-use yii2lab\app\helpers\Constant;
-use yii2lab\app\helpers\Api;
-use yii2lab\app\helpers\Config;
-use yii2lab\app\helpers\Load;
+use yii2lab\app\domain\helpers\Env;
+use yii2lab\app\domain\helpers\Constant;
+use yii2lab\app\domain\helpers\Api;
+use yii2lab\app\domain\helpers\Config;
+use yii2lab\app\domain\helpers\Load;
 
 class App
 {
@@ -27,7 +27,7 @@ class App
 
 	public static function init($appName)
 	{
-		require_once(__DIR__ . '/helpers/Load.php');
+		require_once(__DIR__ . '/domain/helpers/Load.php');
 		Load::helpers();
 		$rootDir = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 4));
 		Constant::setConst($appName, $rootDir);

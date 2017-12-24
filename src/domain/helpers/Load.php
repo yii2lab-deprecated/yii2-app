@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\app\helpers;
+namespace yii2lab\app\domain\helpers;
 
 class Load
 {
