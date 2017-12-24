@@ -2,6 +2,7 @@
 
 namespace yii2lab\app\admin\forms;
 
+use Yii;
 use yii2lab\domain\base\Model;
 
 class CookieForm extends Model {
@@ -17,10 +18,10 @@ class CookieForm extends Model {
 	public function attributeLabels()
 	{
 		return [
-			'frontend' => t('app/cookie', 'frontend'),
-			'backend' => t('app/cookie', 'backend'),
-			'frontend_gen' => t('app/cookie', 'frontend_gen'),
-			'backend_gen' => t('app/cookie', 'backend_gen'),
+			'frontend' => Yii::t('app/cookie', 'frontend'),
+			'backend' => Yii::t('app/cookie', 'backend'),
+			'frontend_gen' => Yii::t('app/cookie', 'frontend_gen'),
+			'backend_gen' => Yii::t('app/cookie', 'backend_gen'),
 		];
 	}
 }

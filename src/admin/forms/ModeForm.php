@@ -2,6 +2,7 @@
 
 namespace yii2lab\app\admin\forms;
 
+use Yii;
 use yii2lab\domain\base\Model;
 
 class ModeForm extends Model {
@@ -15,8 +16,8 @@ class ModeForm extends Model {
 	public function attributeLabels()
 	{
 		return [
-			'debug' => t('app/mode', 'debug'),
-			'env' => t('app/mode', 'env'),
+			'debug' => Yii::t('app/mode', 'debug'),
+			'env' => Yii::t('app/mode', 'env'),
 		];
 	}
 }

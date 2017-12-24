@@ -29,8 +29,8 @@ $action = $this->context->action->id;
 <?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($model, 'driver')->dropDownList([
-	ConnectionEntity::DRIVER_MYSQL => t('app/connection', 'driver_mysql'),
-	ConnectionEntity::DRIVER_PGSQL => t('app/connection', 'driver_pgsql'),
+	ConnectionEntity::DRIVER_MYSQL => Yii::t('app/connection', 'driver_mysql'),
+	ConnectionEntity::DRIVER_PGSQL => Yii::t('app/connection', 'driver_pgsql'),
 ]); ?>
 
 <?= $form->field($model, 'host')->textInput(); ?>

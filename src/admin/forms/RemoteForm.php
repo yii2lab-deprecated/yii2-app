@@ -2,6 +2,7 @@
 
 namespace yii2lab\app\admin\forms;
 
+use Yii;
 use yii2lab\domain\base\Model;
 
 class RemoteForm extends Model {
@@ -14,7 +15,7 @@ class RemoteForm extends Model {
 	public function attributeLabels()
 	{
 		return [
-			'driver' => t('app/remote', 'driver'),
+			'driver' => Yii::t('app/remote', 'driver'),
 		];
 	}
 }

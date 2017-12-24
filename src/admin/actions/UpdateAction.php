@@ -14,7 +14,7 @@ class UpdateAction extends Action {
 	public $redirectAction;
 	
 	public function run() {
-		$this->view->title = t('main', 'update_title');
+		$this->view->title = Yii::t('main', 'update_title');
 		$methodOne = $this->serviceMethodOne;
 		$entity = $this->service->$methodOne();
 		$model = $this->createForm($entity->toArray());

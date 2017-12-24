@@ -27,14 +27,14 @@ class ConnectionValidator extends Validator {
 			$error = new ErrorCollection();
 			$previous2 = $e->getPrevious()->getPrevious();
 			if($previous2 != null && preg_match('~getaddrinfo failed~', $previous2->getMessage())) {
-				$error->add('host', t('app/connection', 'bad_host'));
+				$error->add('host', Yii::t('app/connection', 'bad_host'));
 			}
 			if(preg_match('~Unknown database~', $message)) {
-				$error->add('dbname', t('app/connection', 'bad_dbname'));
+				$error->add('dbname', Yii::t('app/connection', 'bad_dbname'));
 			}
 			if(preg_match('~Access denied for user~', $message)) {
-				$error->add('username', t('app/connection', 'bad_username'));
-				$error->add('password', t('app/connection', 'bad_password'));
+				$error->add('username', Yii::t('app/connection', 'bad_username'));
+				$error->add('password', Yii::t('app/connection', 'bad_password'));
 			}
 			throw new UnprocessableEntityHttpException($error);
 		}

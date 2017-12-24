@@ -2,6 +2,7 @@
 
 namespace yii2lab\app\admin\forms;
 
+use Yii;
 use yii2lab\domain\base\Model;
 
 class ConnectionForm extends Model {
@@ -19,12 +20,12 @@ class ConnectionForm extends Model {
 	public function attributeLabels()
 	{
 		return [
-			'driver' => t('app/connection', 'driver'),
-			'host' => t('app/connection', 'host'),
-			'username' => t('app/connection', 'username'),
-			'password' => t('app/connection', 'password'),
-			'dbname' => t('app/connection', 'dbname'),
-			'defaultSchema' => t('app/connection', 'defaultSchema'),
+			'driver' => Yii::t('app/connection', 'driver'),
+			'host' => Yii::t('app/connection', 'host'),
+			'username' => Yii::t('app/connection', 'username'),
+			'password' => Yii::t('app/connection', 'password'),
+			'dbname' => Yii::t('app/connection', 'dbname'),
+			'defaultSchema' => Yii::t('app/connection', 'defaultSchema'),
 		];
 	}
 }

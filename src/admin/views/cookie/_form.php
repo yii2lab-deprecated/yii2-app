@@ -17,8 +17,8 @@ use yii2lab\helpers\StringHelper;
 $pluginOptions = [
 	'pluginOptions' => [
 		'handleWidth' => 50,
-		'onText' => t('yii', 'Yes'),
-		'offText' => t('yii', 'No'),
+		'onText' => Yii::t('yii', 'Yes'),
+		'offText' => Yii::t('yii', 'No'),
 		'onColor' => 'success',
 		'offColor' => 'danger',
 	]
