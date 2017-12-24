@@ -4,9 +4,8 @@ namespace yii2lab\app\domain\commands;
 
 use yii\helpers\ArrayHelper;
 use yii2lab\misc\interfaces\CommandInterface;
-use yii2module\vendor\domain\commands\Base;
 
-class Cors extends Base implements CommandInterface {
+class Cors implements CommandInterface {
 
 	public $env = [];
 	

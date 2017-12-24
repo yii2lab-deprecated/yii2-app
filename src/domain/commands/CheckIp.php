@@ -4,9 +4,8 @@ namespace yii2lab\app\domain\commands;
 
 use yii\helpers\ArrayHelper;
 use yii2lab\misc\interfaces\CommandInterface;
-use yii2module\vendor\domain\commands\Base;
 
-class CheckIp extends Base implements CommandInterface {
+class CheckIp implements CommandInterface {
 
 	public $env = [];
 	
