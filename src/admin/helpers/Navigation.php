@@ -13,7 +13,7 @@ class Navigation {
 			'label' => ['app/main', 'title'],
 			'module' => 'app',
 			'access' => PermissionEnum::APP_CONFIG,
-			'icon' => 'cogs',
+			'icon' => 'sliders',
 			'items' => [
 				[
 					'label' => ['app/mode', 'title'],
