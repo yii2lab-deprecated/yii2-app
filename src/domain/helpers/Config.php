@@ -22,12 +22,12 @@ class Config {
 		],
 	];
 	private static $mutation = [
-		'yii2lab\app\domain\filters\isOffline',
-		'yii2lab\app\domain\filters\setControllerNamespace',
-		'yii2lab\app\domain\filters\fixValidationKeyInTest',
-		'yii2lab\app\domain\filters\setAppId',
-		'yii2lab\app\domain\filters\setPath',
-		'yii2lab\migration\domain\filters\setPath',
+		'yii2lab\app\domain\filters\IsOffline',
+		'yii2lab\app\domain\filters\SetControllerNamespace',
+		'yii2lab\app\domain\filters\FixValidationKeyInTest',
+		'yii2lab\app\domain\filters\SetAppId',
+		'yii2lab\app\domain\filters\SetPath',
+		'yii2lab\migration\domain\filters\SetPath',
 		'yii2lab\domain\filters\NormalizeServices',
 	];
 	
