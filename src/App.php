@@ -58,14 +58,14 @@ class App
 	{
 		$env = Env::get();
 		$commands = [
-			[
+			/*[
 				'class' => 'yii2lab\app\domain\commands\Cors',
 				'env' => $env,
 			],
 			[
 				'class' => 'yii2lab\app\domain\commands\CheckIp',
 				'env' => $env,
-			],
+			],*/
 		];
 		CommandHelper::runAll($commands);
 	}
