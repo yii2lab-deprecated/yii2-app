@@ -7,22 +7,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii2lab\app\domain\entities\ConnectionEntity;
-use yii2lab\widgets\Tabs;
-
-$action = $this->context->action->id;
 
 ?>
-
-<?= Tabs::widget([
-	'id' => 'connection_navigation',
-	'current' => $action,
-	'actions' => [
-		'main',
-		'test',
-	],
-	'baseLang' => 'app/connection',
-	//'isCompact' => true,
-]) ?>
 
 <br/>
 
