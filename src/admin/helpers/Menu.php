@@ -6,7 +6,7 @@ use common\enums\rbac\PermissionEnum;
 
 // todo: отрефакторить - сделать нормальный интерфейс и родителя
 
-class Navigation {
+class Menu {
 	
 	static function getMenu() {
 		return [
