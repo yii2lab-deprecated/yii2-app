@@ -41,7 +41,12 @@ class Config {
 		}
 		return ArrayHelper::getValue(self::$config, $key);
 	}
-
+	
+	/**
+	 * @return array
+	 *
+	 * @deprecated move to yii2lab\app\domain\helpers\Behavior::access
+	 */
 	static function genAccess($roles, $only = null, $allow = true) {
 		$roles = is_array($roles) ? $roles : [$roles];
 		$access = [
@@ -59,6 +64,11 @@ class Config {
 		return $access;
 	}
 	
+	/**
+	 * @return array
+	 *
+	 * @deprecated move to yii2lab\app\domain\helpers\Behavior::cors
+	 */
 	static function genCors() {
 		$origin = [];
 		$urls = env('url');
