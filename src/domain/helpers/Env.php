@@ -3,6 +3,7 @@
 namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
+use yii2lab\misc\enums\YiiEnvEnum;
 
 class Env
 {
@@ -24,7 +25,7 @@ class Env
 		if(defined('GUEST_ENV') && GUEST_ENV) {
 			$config = [
 				'YII_DEBUG' => true,
-				'YII_ENV' => 'dev',
+				'YII_ENV' => YiiEnvEnum::DEV,
 				'project' => 'guest',
 				'config' => [
 					'map' => [
@@ -55,18 +56,8 @@ class Env
 
 	private static function initYiiConfig($config)
 	{
-		$envList = ['prod', 'dev', 'test'];
 		$config['YII_DEBUG'] = defined('YII_DEBUG') ? YII_DEBUG : !empty($config['YII_DEBUG']);
-		$config['YII_ENV'] = defined('YII_ENV') ? YII_ENV : (in_array($config['YII_ENV'], $envList) ? $config['YII_ENV'] : 'prod');
-		
-		$config['COMMON_DIR'] = !empty($config['COMMON_DIR']) ? $config['COMMON_DIR'] : ROOT_DIR . DS . COMMON;
-		$config['FRONTEND_DIR'] = !empty($config['FRONTEND_DIR']) ? $config['FRONTEND_DIR'] : ROOT_DIR . DS . FRONTEND;
-		$config['BACKEND_DIR'] = !empty($config['BACKEND_DIR']) ? $config['BACKEND_DIR'] : ROOT_DIR . DS . BACKEND;
-		$config['API_DIR'] = !empty($config['API_DIR']) ? $config['API_DIR'] : ROOT_DIR . DS . API;
-		$config['CONSOLE_DIR'] = !empty($config['CONSOLE_DIR']) ? $config['CONSOLE_DIR'] : ROOT_DIR . DS . CONSOLE;
-		$config['VENDOR_DIR'] = !empty($config['VENDOR_DIR']) ? $config['VENDOR_DIR'] : ROOT_DIR . DS . VENDOR;
-		$config['DOMAIN_DIR'] = !empty($config['DOMAIN_DIR']) ? $config['DOMAIN_DIR'] : ROOT_DIR . DS . DOMAIN;
-		
+		$config['YII_ENV'] = defined('YII_ENV') ? YII_ENV : YiiEnvEnum::value($config['YII_ENV'], YiiEnvEnum::PROD);
 		return $config;
 	}
 

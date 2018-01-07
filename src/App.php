@@ -14,44 +14,39 @@ use yii2lab\misc\helpers\CommandHelper;
 class App
 {
 
-	public static function run($name)
+	public static function run($appName)
 	{
-		self::init($name);
+		self::init($appName);
 		Load::bootstrap();
 		$config = Config::get();
-		if (APP == CONSOLE) {
-			self::runConsoleApplication($config);
-		} else {
-			self::runWebApplication($config);
-		}
+		self::runApplication($config);
 	}
 
 	public static function init($appName)
 	{
 		require_once(__DIR__ . '/domain/helpers/Load.php');
 		Load::helpers();
-		$rootDir = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 4));
-		Constant::setConst($appName, $rootDir);
+		Constant::init();
+		Load::autoload();
 		$env = Env::get();
-		Constant::setEnv($env);
-		$apiVersion = Api::getApiVersion();
-		Constant::setApiVersion($apiVersion);
+		Constant::setYiiEnv($env);
 		Load::required();
-		Constant::setAliases();
+		Constant::setApp($appName);
+		$version = Api::getApiVersion($appName);
+		Constant::setApiVersion($version);
 	}
-
-	private static function runConsoleApplication($config)
+	
+	private static function runApplication($config)
 	{
-		$application = new ConsoleApplication($config);
-		$exitCode = $application->run();
-		exit($exitCode);
-	}
-
-	private static function runWebApplication($config)
-	{
-		self::runWebCommands();
-		$application = new WebApplication($config);
-		$application->run();
+		if (APP == CONSOLE) {
+			$application = new ConsoleApplication($config);
+			$exitCode = $application->run();
+			exit($exitCode);
+		} else {
+			self::runWebCommands();
+			$application = new WebApplication($config);
+			$application->run();
+		}
 	}
 	
 	private static function runWebCommands()
