@@ -22,12 +22,12 @@ class Config {
 			'withLocal' => true,
 		],
 	];
-	private static $mutation = [
-		'yii2lab\app\domain\filters\IsOffline',
-		'yii2lab\app\domain\filters\SetControllerNamespace',
-		'yii2lab\app\domain\filters\FixValidationKeyInTest',
-		'yii2lab\app\domain\filters\SetAppId',
-		'yii2lab\app\domain\filters\SetPath',
+	private static $filters = [
+		'yii2lab\app\domain\filters\config\IsOffline',
+		'yii2lab\app\domain\filters\config\SetControllerNamespace',
+		'yii2lab\app\domain\filters\config\FixValidationKeyInTest',
+		'yii2lab\app\domain\filters\config\SetAppId',
+		'yii2lab\app\domain\filters\config\SetPath',
 		'yii2lab\migration\domain\filters\SetPath',
 		'yii2lab\domain\filters\NormalizeServices',
 	];
@@ -117,9 +117,9 @@ class Config {
 	private static function getMutationSettings() {
 		$mutationFromEnv = Env::get('config.mutation');
 		if(empty($mutationFromEnv)) {
-			return self::$mutation;
+			return self::$filters;
 		}
-		$mutation = ArrayHelper::merge(self::$mutation, $mutationFromEnv);
+		$mutation = ArrayHelper::merge(self::$filters, $mutationFromEnv);
 		return $mutation;
 	}
 	

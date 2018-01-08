@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\app\domain\filters;
+namespace yii2lab\app\domain\filters\config;
 
 use yii\base\BaseObject;
 use yii2lab\misc\interfaces\FilterInterface;
