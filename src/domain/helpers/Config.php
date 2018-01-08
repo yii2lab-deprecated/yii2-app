@@ -5,6 +5,7 @@ namespace yii2lab\app\domain\helpers;
 use yii\filters\AccessControl;
 use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
+use yii2lab\app\domain\filters\config\LoadConfig;
 use yii2lab\misc\helpers\FilterHelper;
 
 class Config {
@@ -12,27 +13,27 @@ class Config {
 	private static $config = [];
 	private static $filters = [
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => COMMON,
 			'name' => 'main',
 			'withLocal' => true,
 		],
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => APP,
 			'name' => 'main',
 			'withLocal' => true,
 		],
 		
 		/*[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => COMMON,
 			'name' => 'test',
 			'withLocal' => true,
 			'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
 		],
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => APP,
 			'name' => 'test',
 			'withLocal' => true,
@@ -40,27 +41,27 @@ class Config {
 		],*/
 		
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => COMMON,
 			'name' => 'modules',
 			'withLocal' => true,
 		],
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => APP,
 			'name' => 'modules',
 			'withLocal' => true,
 		],
 		
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => COMMON,
 			'name' => 'params',
 			'withLocal' => true,
 			'assignTo' => 'params',
 		],
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => APP,
 			'name' => 'params',
 			'withLocal' => true,
@@ -68,7 +69,7 @@ class Config {
 		],
 		
 		[
-			'class' => 'yii2lab\app\domain\filters\config\LoadConfig',
+			'class' => LoadConfig::class,
 			'from' => COMMON,
 			'name' => 'services',
 			'withLocal' => true,
