@@ -5,7 +5,7 @@ namespace yii2lab\app\domain\filters\env;
 use yii\base\BaseObject;
 use yii2lab\misc\interfaces\FilterInterface;
 
-class Db extends BaseObject implements FilterInterface {
+class NormalizeDbConfig extends BaseObject implements FilterInterface {
 
 	public function run($config) {
 		if(!empty($config['connection'])) {
