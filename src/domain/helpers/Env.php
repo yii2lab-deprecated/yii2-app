@@ -27,12 +27,10 @@ class Env
 	
 	private static function load()
 	{
-		if(defined('GUEST_ENV') && GUEST_ENV) {
-			$config = require(VENDOR_DIR . DS . 'yii2lab' . DS .  'yii2-app' . DS .  'src' . DS . 'domain' . DS . 'config' . DS . 'env.php');
-		} else {
-			$config = require(ROOT_DIR . DS . COMMON . DS . 'config' . DS . 'env.php');
+		$config = @include(COMMON_DIR . DS . 'config' . DS . 'env.php');
+		if(empty($config)) {
+			$config = include(VENDOR_DIR . DS . 'yii2lab' . DS .  'yii2-app' . DS .  'src' . DS . 'domain' . DS . 'config' . DS . 'env.php');
 		}
-		$config = require(ROOT_DIR . DS . COMMON . DS . 'config' . DS . 'env.php');
 		$config = FilterHelper::runAll(self::$filters, $config);
 		return $config;
 	}

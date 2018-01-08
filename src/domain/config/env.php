@@ -1,9 +1,11 @@
 <?php
 
+use yii2lab\misc\enums\YiiEnvEnum;
+
 return [
-	/*'YII_DEBUG' => true,
-	'YII_ENV' => 'env',
-	'project' => 'guest',*/
+	'YII_DEBUG' => true,
+	'YII_ENV' => YiiEnvEnum::DEV,
+	'project' => 'guest',
 	'config' => [
 		'map' => [
 			[

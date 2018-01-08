@@ -10,6 +10,7 @@ class YiiEnv extends BaseObject implements FilterInterface {
 
 	public function run($config) {
 		$config['YII_DEBUG'] = defined('YII_DEBUG') ? YII_DEBUG : !empty($config['YII_DEBUG']);
+		$config['YII_ENV'] = !empty($config['YII_ENV']) ? $config['YII_ENV'] : YiiEnvEnum::PROD;
 		$config['YII_ENV'] = defined('YII_ENV') ? YII_ENV : YiiEnvEnum::value($config['YII_ENV'], YiiEnvEnum::PROD);
 		return $config;
 	}
