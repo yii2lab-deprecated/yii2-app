@@ -11,8 +11,6 @@ class Env
 	private static $config = [];
 	private static $filters = [
 		'yii2lab\app\domain\filters\env\YiiEnv',
-		'yii2lab\app\domain\filters\env\AllowedIp',
-		'yii2lab\app\domain\filters\env\Db',
 	];
 
 	static function get($key = null) {
