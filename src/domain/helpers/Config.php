@@ -6,11 +6,14 @@ use yii\filters\AccessControl;
 use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
 use yii2lab\app\domain\filters\config\LoadConfig;
+use yii2lab\helpers\Helper;
+use yii2lab\misc\helpers\CommandHelper;
 use yii2lab\misc\helpers\FilterHelper;
 
 class Config {
 	
 	private static $config = [];
+	private static $commands = [];
 	private static $filters = [
 		[
 			'class' => LoadConfig::class,
@@ -157,7 +160,20 @@ class Config {
 
 	private static function load() {
 		$config = FilterHelper::runAll(self::$filters, []);
+		self::runCommands(self::$commands, $config);
 		return $config;
+	}
+	
+	private static function runCommands($commands, $config) {
+		if(empty($commands)) {
+			return null;
+		}
+		$env = env(null);
+		Helper::assignAttributesForList($commands, [
+			'env' => $env,
+			'config' => $config,
+		]);
+		CommandHelper::runAll($commands);
 	}
 	
 }
