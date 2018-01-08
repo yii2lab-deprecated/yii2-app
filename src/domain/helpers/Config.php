@@ -23,11 +23,11 @@ class Config {
 		],
 	];
 	private static $filters = [
-		'yii2lab\app\domain\filters\config\IsOffline',
 		'yii2lab\app\domain\filters\config\SetControllerNamespace',
 		'yii2lab\app\domain\filters\config\FixValidationKeyInTest',
 		'yii2lab\app\domain\filters\config\SetAppId',
 		'yii2lab\app\domain\filters\config\SetPath',
+		'yii2module\offline\domain\filters\IsOffline',
 		'yii2lab\migration\domain\filters\SetPath',
 		'yii2lab\domain\filters\NormalizeServices',
 	];
