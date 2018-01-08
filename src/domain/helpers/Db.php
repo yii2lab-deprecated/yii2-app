@@ -8,16 +8,6 @@ use yii2lab\app\domain\entities\ConnectionEntity;
 class Db
 {
 
-	public static function initConfig($connection)
-	{
-		if (isset($connection['test'])) {
-			$connection['test'] = array_merge($connection['main'], $connection['test']);
-			$connection['test'] = self::normalizeConfig($connection['test']);
-		}
-		$connection['main'] = self::normalizeConfig($connection['main']);
-		return $connection;
-	}
-
 	public static function getConfig($config, $name = 'main') {
 		$pre = 'db.' . $name;
 		$config = ArrayHelper::merge($config, Env::get($pre));
@@ -49,15 +39,6 @@ class Db
 		return $config;
 	}
 	
-	private static function postgresFix($config, $schemaMap) {
-		$config['schemaMap'] = $schemaMap;
-		$config['on afterOpen'] = function ($event) use ($config) {
-			$command = 'SET search_path TO ' . $config['schemaMap']['pgsql']['defaultSchema'];
-			$event->sender->createCommand($command)->execute();
-		};
-		return $config;
-	}
-	
 	public static function normalizeConfig($db)
 	{
 		$db['password'] = isset($db['password']) ? $db['password'] : '';
@@ -72,5 +53,14 @@ class Db
 		}
 		return $db;
 	}
-
+	
+	private static function postgresFix($config, $schemaMap) {
+		$config['schemaMap'] = $schemaMap;
+		$config['on afterOpen'] = function ($event) use ($config) {
+			$command = 'SET search_path TO ' . $config['schemaMap']['pgsql']['defaultSchema'];
+			$event->sender->createCommand($command)->execute();
+		};
+		return $config;
+	}
+	
 }
