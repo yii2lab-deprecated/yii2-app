@@ -19,7 +19,6 @@ class Constant {
 	
 	public static function setApp($appName) {
 		self::setApplication($appName);
-		//self::setApiVersion($conf['apiVersion']);
 		self::setAliases();
 	}
 	
@@ -37,12 +36,6 @@ class Constant {
 		Yii::setAlias('@console', CONSOLE_DIR);
 		Yii::setAlias('@vendor', VENDOR_DIR);
 		Yii::setAlias('@domain', DOMAIN_DIR);
-		/* $aliasList = Env::get('alias');
-		if(!empty($aliasList)) {
-			foreach($aliasList as $aliasName => $aliasDir) {
-				Yii::setAlias('@' . $aliasName, ROOT_DIR . DS . $aliasDir);
-			}
-		} */
 	}
 	
 	private static function setApplication($appName) {
