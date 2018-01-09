@@ -8,15 +8,17 @@ use yii2lab\misc\interfaces\FilterInterface;
 class SetAppId extends BaseObject implements FilterInterface {
 
 	public function run($config) {
-		if(!empty($config['id'])) {
-			return $config;
+		if(empty($config['id'])) {
+			$config['id'] = $this->generateId(APP);
 		}
-		$id = 'app-' . APP;
-		if(YII_ENV == 'test') {
-			$id .= '-test';
-		}
-		$config['id'] = $id;
 		return $config;
 	}
 	
+	private function generateId($app) {
+		$id = 'app-' . $app;
+		/*if(YII_ENV == 'test') {
+			$id .= '-test';
+		}*/
+		return $id;
+	}
 }

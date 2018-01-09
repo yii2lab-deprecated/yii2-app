@@ -8,8 +8,12 @@ use yii2lab\misc\interfaces\FilterInterface;
 class SetPath extends BaseObject implements FilterInterface {
 
 	public function run($config) {
-		$config['basePath'] = ROOT_DIR . DS . APP;
-		$config['vendorPath'] = VENDOR_DIR . DS;
+		if(empty($config['basePath'])) {
+			$config['basePath'] = ROOT_DIR . DS . APP;
+		}
+		if(empty($config['vendorPath'])) {
+			$config['vendorPath'] = VENDOR_DIR . DS;
+		}
 		return $config;
 	}
 	

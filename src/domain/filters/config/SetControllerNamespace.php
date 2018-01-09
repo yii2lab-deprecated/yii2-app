@@ -8,7 +8,9 @@ use yii2lab\misc\interfaces\FilterInterface;
 class SetControllerNamespace extends BaseObject implements FilterInterface {
 
 	public function run($config) {
-		$config['controllerNamespace'] = APP . '\controllers';
+		if(empty($config['controllerNamespace'])) {
+			$config['controllerNamespace'] = APP . '\controllers';
+		}
 		return $config;
 	}
 	

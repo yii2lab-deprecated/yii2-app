@@ -8,7 +8,7 @@ use yii2lab\misc\interfaces\FilterInterface;
 class FixValidationKeyInTest extends BaseObject implements FilterInterface {
 
 	public function run($config) {
-		if(APP == COMMON && YII_ENV_TEST) {
+		if(YII_ENV_TEST && empty($config['components']['request']['cookieValidationKey'])) {
 			$config['components']['request']['cookieValidationKey'] = 'testValidationKey'; // костыль, чтоб не выдавало ошибку при тестах в common
 		}
 		return $config;
