@@ -11,13 +11,9 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	public $withLocal = true;
 	public $name;
 	public $from;
-	public $isEnabled = true;
 	public $assignTo;
 	
 	public function run($config) {
-		if(!$this->isEnabled) {
-			return $config;
-		}
 		$loadedConfig = self::requireConfigWithLocal($this->from, $this->name, $this->withLocal);
 		if(!empty($this->assignTo)) {
 			$baseConfig = ArrayHelper::getValue($config, $this->assignTo, []);
