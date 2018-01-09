@@ -27,24 +27,26 @@ common/config/env.php
 
 ```php
 return [
-	'YII_DEBUG' => true,
-	'YII_ENV' => 'dev',
 	'project' => 'qrpay',
+	'mode' => [
+		'debug' => true,
+		'env' => 'dev',
+	],
 	'url' => [
 		'frontend' => 'http://qr.yii/',
 		'backend' => 'http://admin.qr.yii/',
 		'api' => 'http://api.qr.yii/',
 	],
 	'cookieValidationKey' => [
-		'frontend' => 'reBQhxV_4_8RZCWLCSxwsTx3qzW87b0j',
-		'backend' => '7X4DFREquxxsIvxnOjArUB4Qmswu-O8-',
+		'frontend' => '8TeBn54VTvHGpl3pRE9CJbQD4Iiq38CF',
+		'backend' => 'vrXQQAK2iJmeiVN0a5yg1SdMbnFRNku5',
 	],
 	'connection' => [
 		'main' => [
 			'driver' => 'pgsql',
-			'host' => 'localhost',
-			'username' => 'root',
-			'password' => '',
+			'host' => 'dbweb',
+			'username' => 'logging',
+			'password' => 'moneylogger',
 			'dbname' => 'qrpay',
 			'defaultSchema' => 'qrpay',
 		],
@@ -61,27 +63,15 @@ return [
 			'domain' => 'http://qr.yii/',
 			'publicPath' => '@frontend/web/',
 		],
-		'wsdl' => [
-			'domain' => 'http://www.test.wooppay.com/api/wsdl',
-		],
 		'mail' => [
-			'host' => 'mail.ru',
-			'username' => 'info@example.com',
-			'password' => 'user_password',
+			'host' => 'mail',
+			'username' => 'info@exmple.com',
+			'password' => 'qwerty123',
 			'port' => '25',
 		],
 	],
-	'config' => [
-		'map' => [
-			[
-				'name' => 'services',
-				'merge' => true,
-				'withLocal' => true,
-				'onlyApps' => [
-					'common',
-				],
-			],
-		],
+	'remote' => [
+		'driver' => 'ar',
 	],
 ];
 ```
