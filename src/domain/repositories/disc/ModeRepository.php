@@ -12,15 +12,15 @@ class ModeRepository extends BaseConfigRepository {
 		$store = $this->storeInstance();
 		$config = $store->load($this->file, $this->key);
 		return $this->forgeEntity([
-			'debug' => $config['YII_DEBUG'],
-			'env' => $config['YII_ENV'],
+			'debug' => $config['mode']['debug'],
+			'env' => $config['mode']['env'],
 		]);
 	}
 
 	public function save(BaseEntity $entity) {
 		$entity->validate();
 		$store = $this->storeInstance();
-		$store->update($this->file, 'YII_DEBUG', $entity->debug);
-		$store->update($this->file, 'YII_ENV', $entity->env);
+		$store->update($this->file, 'mode.debug', $entity->debug);
+		$store->update($this->file, 'mode.env', $entity->env);
 	}
 }

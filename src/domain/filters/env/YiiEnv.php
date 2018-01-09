@@ -11,18 +11,18 @@ class YiiEnv extends BaseObject implements FilterInterface {
 
 	public function run($config) {
 		$config = $this->toOldFormat($config);
-		$config['YII_DEBUG'] = defined('YII_DEBUG') ? YII_DEBUG : !empty($config['YII_DEBUG']);
-		$config['YII_ENV'] = !empty($config['YII_ENV']) ? $config['YII_ENV'] : YiiEnvEnum::PROD;
-		$config['YII_ENV'] = defined('YII_ENV') ? YII_ENV : YiiEnvEnum::value($config['YII_ENV'], YiiEnvEnum::PROD);
+		$config['mode']['debug'] = defined('YII_DEBUG') ? YII_DEBUG : !empty($config['mode']['debug']);
+		$config['mode']['env'] = ArrayHelper::getValue($config, 'mode.env', YiiEnvEnum::PROD);
+		$config['mode']['env'] = defined('YII_ENV') ? YII_ENV : YiiEnvEnum::value($config['mode']['env'], YiiEnvEnum::PROD);
 		return $config;
 	}
 	
 	private function toOldFormat($config) {
-		if(!isset($config['YII_DEBUG'])) {
-			$config['YII_DEBUG'] = ArrayHelper::getValue($config, 'mode.debug', false);
+		if(!isset($config['mode']['debug'])) {
+			$config['mode']['debug'] = ArrayHelper::getValue($config, 'YII_DEBUG', false);
 		}
-		if(!isset($config['YII_ENV'])) {
-			$config['YII_ENV'] = ArrayHelper::getValue($config, 'mode.env', false);
+		if(!isset($config['mode']['env'])) {
+			$config['mode']['env'] = ArrayHelper::getValue($config, 'YII_ENV', false);
 		}
 		return $config;
 	}

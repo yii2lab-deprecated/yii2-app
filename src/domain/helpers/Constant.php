@@ -13,8 +13,8 @@ class Constant {
 	}
 	
 	public static function setYiiEnv($env) {
-		defined('YII_DEBUG') OR define('YII_DEBUG', $env['YII_DEBUG']);
-		defined('YII_ENV') OR define('YII_ENV', $env['YII_ENV']);
+		defined('YII_DEBUG') OR define('YII_DEBUG', $env['mode']['debug']);
+		defined('YII_ENV') OR define('YII_ENV', $env['mode']['env']);
 	}
 	
 	public static function setApp($appName) {
