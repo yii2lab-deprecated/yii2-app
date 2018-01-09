@@ -1,22 +1,41 @@
 <?php
 
-namespace yii2lab\app\domain\helpers;
+namespace yii2lab\app\domain\commands;
 
-class Api
-{
+use yii\base\BaseObject;
+use yii2lab\helpers\Helper;
+use yii2lab\misc\interfaces\CommandInterface;
+
+class ApiVersion extends BaseObject implements CommandInterface {
+
+	public $appName;
+	public $env;
 	
-	public static function getApiVersion($appName)
-	{
-		if($appName != API) {
+	public function run() {
+		if($this->appName != API) {
 			return null;
 		}
+		$version = self::getApiVersion();
+		if(empty($version)) {
+			self::showError();
+		}
+		self::setApiVersionConst($version);
+	}
+	
+	private static function setApiVersionConst($version) {
+		define('API_VERSION', $version);
+		define('API_VERSION_STRING', $version ? 'v' . $version : '');
+	}
+	
+	private static function getApiVersion()
+	{
 		$version = self::getApiVersionFromUrl();
 		if(empty($version)) {
 			$version = self::getApiVersionFromHeader();
+			if(empty($version)) {
+				return null;
+			}
 			self::forgeRequestUri($version);
-		}
-		if(empty($version)) {
-			self::showError();
 		}
 		return $version;
 	}
@@ -31,6 +50,7 @@ class Api
 			"code" => 0,
 			"status" => 400,
 			"type" => "Exception",
+			"versions" => Helper::getApiVersionNumberList(),
 		];
 		exit(json_encode($body));
 	}
@@ -54,7 +74,7 @@ class Api
 		}
 		return $headers['Version'];
 	}
-
+	
 	private static function forgeRequestUri($version) {
 		$_SERVER['REQUEST_URI'] = '/v' . $version . $_SERVER['REQUEST_URI'];
 	}

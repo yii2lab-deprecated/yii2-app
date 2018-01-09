@@ -6,18 +6,22 @@ use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
 use yii2lab\app\domain\helpers\Env;
 use yii2lab\app\domain\helpers\Constant;
-use yii2lab\app\domain\helpers\Api;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Load;
+use yii2lab\helpers\Helper;
 use yii2lab\misc\helpers\CommandHelper;
 
 class App
 {
-
+	
+	private static $commands = [
+		'yii2lab\app\domain\commands\ApiVersion',
+	];
+	
 	public static function run($appName)
 	{
 		self::init($appName);
-		Load::bootstrap();
+		
 		$config = Config::get();
 		self::runApplication($config);
 	}
@@ -32,8 +36,8 @@ class App
 		Constant::setYiiEnv($env);
 		Load::required();
 		Constant::setApp($appName);
-		$version = Api::getApiVersion($appName);
-		Constant::setApiVersion($version);
+		Load::bootstrap();
+		self::runCommands(self::$commands, $appName, $env);
 	}
 	
 	private static function runApplication($config)
@@ -64,5 +68,15 @@ class App
 		];
 		CommandHelper::runAll($commands);
 	}
-
+	
+	private static function runCommands($commands, $appName, $config) {
+		if(empty($commands)) {
+			return null;
+		}
+		$commands = Helper::assignAttributesForList($commands, [
+			'appName' => $appName,
+			'env' => $config,
+		]);
+		CommandHelper::runAll($commands);
+	}
 }

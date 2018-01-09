@@ -22,11 +22,6 @@ class Constant {
 		self::setAliases();
 	}
 	
-	public static function setApiVersion($version) {
-		define('API_VERSION', $version);
-		define('API_VERSION_STRING', $version ? 'v' . $version : '');
-	}
-	
 	private static function setAliases() {
 		Yii::setAlias('@root', ROOT_DIR);
 		Yii::setAlias('@common', COMMON_DIR);

@@ -11,7 +11,6 @@ class Load
 		require('Constant.php');
 		require('Func.php');
 		require('Db.php');
-		require('Api.php');
 		require('Config.php');
 	}
 
