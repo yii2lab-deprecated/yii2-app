@@ -10,11 +10,11 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	
 	public $withLocal = true;
 	public $name;
-	public $from;
+	public $app;
 	public $assignTo;
 	
 	public function run($config) {
-		$loadedConfig = self::requireConfigWithLocal($this->from, $this->name, $this->withLocal);
+		$loadedConfig = self::requireConfigWithLocal($this->app, $this->name, $this->withLocal);
 		if(!empty($this->assignTo)) {
 			$baseConfig = ArrayHelper::getValue($config, $this->assignTo, []);
 			$mergedConfig = ArrayHelper::merge($baseConfig, $loadedConfig);

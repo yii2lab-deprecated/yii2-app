@@ -17,27 +17,27 @@ class Config {
 	private static $filters = [
 		[
 			'class' => LoadConfig::class,
-			'from' => COMMON,
+			'app' => COMMON,
 			'name' => 'main',
 			'withLocal' => true,
 		],
 		[
 			'class' => LoadConfig::class,
-			'from' => APP,
+			'app' => APP,
 			'name' => 'main',
 			'withLocal' => true,
 		],
 		
 		/*[
 			'class' => LoadConfig::class,
-			'from' => COMMON,
+			'app' => COMMON,
 			'name' => 'test',
 			'withLocal' => true,
 			'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
 		],
 		[
 			'class' => LoadConfig::class,
-			'from' => APP,
+			'app' => APP,
 			'name' => 'test',
 			'withLocal' => true,
 			'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
@@ -45,27 +45,27 @@ class Config {
 		
 		[
 			'class' => LoadConfig::class,
-			'from' => COMMON,
+			'app' => COMMON,
 			'name' => 'modules',
 			'withLocal' => true,
 		],
 		[
 			'class' => LoadConfig::class,
-			'from' => APP,
+			'app' => APP,
 			'name' => 'modules',
 			'withLocal' => true,
 		],
 		
 		[
 			'class' => LoadConfig::class,
-			'from' => COMMON,
+			'app' => COMMON,
 			'name' => 'params',
 			'withLocal' => true,
 			'assignTo' => 'params',
 		],
 		[
 			'class' => LoadConfig::class,
-			'from' => APP,
+			'app' => APP,
 			'name' => 'params',
 			'withLocal' => true,
 			'assignTo' => 'params',
@@ -73,7 +73,7 @@ class Config {
 		
 		[
 			'class' => LoadConfig::class,
-			'from' => COMMON,
+			'app' => COMMON,
 			'name' => 'services',
 			'withLocal' => true,
 		],
