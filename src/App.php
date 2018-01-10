@@ -21,7 +21,7 @@ class App
 	public static function run($appName)
 	{
 		self::init($appName);
-		
+		Load::bootstrap();
 		$config = Config::get();
 		self::runApplication($config);
 	}
@@ -36,7 +36,6 @@ class App
 		Constant::setYiiEnv($env);
 		Load::required();
 		Constant::setApp($appName);
-		Load::bootstrap();
 		self::runCommands(self::$commands, $appName, $env);
 	}
 	
