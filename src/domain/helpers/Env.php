@@ -39,7 +39,7 @@ class Env
 		if(empty($commands)) {
 			return null;
 		}
-		Helper::assignAttributesForList($commands, [
+		$commands = Helper::assignAttributesForList($commands, [
 			'env' => $config,
 		]);
 		CommandHelper::runAll($commands);

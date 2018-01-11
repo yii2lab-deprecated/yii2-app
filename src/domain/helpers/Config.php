@@ -169,7 +169,7 @@ class Config {
 			return null;
 		}
 		$env = env(null);
-		Helper::assignAttributesForList($commands, [
+		$commands = Helper::assignAttributesForList($commands, [
 			'env' => $env,
 			'config' => $config,
 		]);
