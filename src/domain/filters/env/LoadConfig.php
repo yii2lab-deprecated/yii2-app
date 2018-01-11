@@ -3,24 +3,35 @@
 namespace yii2lab\app\domain\filters\env;
 
 use yii\base\BaseObject;
+use yii\helpers\ArrayHelper;
 use yii2lab\misc\interfaces\FilterInterface;
 
 class LoadConfig extends BaseObject implements FilterInterface {
 
-	const FILE_NAME = 'env.php';
-	const DIR_NAME = 'config';
+	public $list = [
+		['common/config/env.php', 'common/config/env-local.php'],
+		'vendor/yii2lab/yii2-app/src/domain/config/env.php',
+	];
 	
 	public function run($config) {
-		$config = $this->load(COMMON_DIR);
-		if(empty($config)) {
-			$config = $this->load(VENDOR_DIR . DS . 'yii2lab' . DS .  'yii2-app' . DS .  'src' . DS . 'domain');
+		foreach($this->list as $files) {
+			$config = $this->load($files);
+			if(!empty($config)) {
+				return $config;
+			}
 		}
-		return $config;
+		return [];
 	}
 	
-	private function load($dir) {
-		$fileName = $dir . DS . self::DIR_NAME . DS . self::FILE_NAME;
-		$config = @include($fileName);
+	private function load($fileNames) {
+		$config = [];
+		$fileNames = ArrayHelper::toArray($fileNames);
+		foreach($fileNames as $arg) {
+			$itemConfig = @include(ROOT_DIR . DS . $arg);
+			if(!empty($itemConfig)) {
+				$config = ArrayHelper::merge($config, $itemConfig);
+			}
+		}
 		return $config;
 	}
 	
