@@ -35,7 +35,7 @@ class Constant {
 	
 	private static function setApplication($appName) {
 		define('APP', $appName);
-		define('APP_DIR', ROOT_DIR . DS . strtoupper($appName));
+		define('APP_DIR', ROOT_DIR . DS . strtolower($appName));
 		//Yii::setAlias('@app', APP_DIR);
 	}
 	
