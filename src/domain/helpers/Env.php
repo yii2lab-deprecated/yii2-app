@@ -13,6 +13,7 @@ class Env
 	private static $config = [];
 	private static $commands = [];
 	private static $filters = [
+		'yii2lab\app\domain\filters\env\LoadConfig',
 		'yii2lab\app\domain\filters\env\YiiEnv',
 		'yii2lab\app\domain\filters\env\NormalizeDbConfig',
 	];
@@ -29,11 +30,7 @@ class Env
 	
 	private static function load()
 	{
-		$config = @include(COMMON_DIR . DS . 'config' . DS . 'env.php');
-		if(empty($config)) {
-			$config = include(VENDOR_DIR . DS . 'yii2lab' . DS .  'yii2-app' . DS .  'src' . DS . 'domain' . DS . 'config' . DS . 'env.php');
-		}
-		$config = FilterHelper::runAll(self::$filters, $config);
+		$config = FilterHelper::runAll(self::$filters, []);
 		self::runCommands(self::$commands, $config);
 		return $config;
 	}
