@@ -46,26 +46,9 @@ class App
 			$exitCode = $application->run();
 			exit($exitCode);
 		} else {
-			self::runWebCommands();
 			$application = new WebApplication($config);
 			$application->run();
 		}
-	}
-	
-	private static function runWebCommands()
-	{
-		$env = Env::get();
-		$commands = [
-			/*[
-				'class' => 'yii2lab\app\domain\commands\Cors',
-				'env' => $env,
-			],
-			[
-				'class' => 'yii2lab\app\domain\commands\CheckIp',
-				'env' => $env,
-			],*/
-		];
-		CommandHelper::runAll($commands);
 	}
 	
 	private static function runCommands($commands, $appName, $config) {
