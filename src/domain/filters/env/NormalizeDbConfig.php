@@ -3,6 +3,7 @@
 namespace yii2lab\app\domain\filters\env;
 
 use yii\base\BaseObject;
+use yii2lab\app\domain\helpers\Db;
 use yii2lab\misc\interfaces\FilterInterface;
 
 class NormalizeDbConfig extends BaseObject implements FilterInterface {
@@ -18,9 +19,9 @@ class NormalizeDbConfig extends BaseObject implements FilterInterface {
 	{
 		if (isset($connection['test'])) {
 			$connection['test'] = array_merge($connection['main'], $connection['test']);
-			$connection['test'] = \yii2lab\app\domain\helpers\Db::normalizeConfig($connection['test']);
+			$connection['test'] = Db::normalizeConfig($connection['test']);
 		}
-		$connection['main'] = \yii2lab\app\domain\helpers\Db::normalizeConfig($connection['main']);
+		$connection['main'] = Db::normalizeConfig($connection['main']);
 		return $connection;
 	}
 }
