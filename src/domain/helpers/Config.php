@@ -23,7 +23,6 @@ class Config {
 		],
 		[
 			'class' => LoadConfig::class,
-			'app' => APP,
 			'name' => 'main',
 			'withLocal' => true,
 		],
@@ -37,7 +36,6 @@ class Config {
 		],
 		[
 			'class' => LoadConfig::class,
-			'app' => APP,
 			'name' => 'test',
 			'withLocal' => true,
 			'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
@@ -51,7 +49,6 @@ class Config {
 		],
 		[
 			'class' => LoadConfig::class,
-			'app' => APP,
 			'name' => 'modules',
 			'withLocal' => true,
 		],
@@ -65,7 +62,6 @@ class Config {
 		],
 		[
 			'class' => LoadConfig::class,
-			'app' => APP,
 			'name' => 'params',
 			'withLocal' => true,
 			'assignTo' => 'params',
@@ -159,12 +155,26 @@ class Config {
 	}
 
 	private static function load() {
-		$config = FilterHelper::runAll(self::$filters, []);
-		self::runCommands(self::$commands, $config);
+		$config = [];
+		$config = self::runFilters($config);
+		self::runCommands($config);
 		return $config;
 	}
 	
-	private static function runCommands($commands, $config) {
+	private static function runFilters($config) {
+		$filters = Env::get('config.filters');
+		if(empty($filters)) {
+			$filters = self::$filters;
+		}
+		$config = FilterHelper::runAll($filters, $config);
+		return $config;
+	}
+	
+	private static function runCommands($config) {
+		$commands = Env::get('config.commands');
+		if(empty($commands)) {
+			$commands = self::$commands;
+		}
 		if(empty($commands)) {
 			return null;
 		}

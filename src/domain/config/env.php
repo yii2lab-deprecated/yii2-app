@@ -29,27 +29,25 @@ return [
 		'filters' => [
 			[
 				'class' => LoadConfig::class,
-				'app' => COMMON,
+				'app' => 'common',
 				'name' => 'main',
 				'withLocal' => true,
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
 				'name' => 'main',
 				'withLocal' => true,
 			],
 			
 			/*[
 				'class' => LoadConfig::class,
-				'app' => COMMON,
+				'app' => 'common',
 				'name' => 'test',
 				'withLocal' => true,
 				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
 				'name' => 'test',
 				'withLocal' => true,
 				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
@@ -57,27 +55,25 @@ return [
 			
 			[
 				'class' => LoadConfig::class,
-				'app' => COMMON,
+				'app' => 'common',
 				'name' => 'modules',
 				'withLocal' => true,
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
 				'name' => 'modules',
 				'withLocal' => true,
 			],
 			
 			[
 				'class' => LoadConfig::class,
-				'app' => COMMON,
+				'app' => 'common',
 				'name' => 'params',
 				'withLocal' => true,
 				'assignTo' => 'params',
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
 				'name' => 'params',
 				'withLocal' => true,
 				'assignTo' => 'params',
@@ -85,7 +81,7 @@ return [
 			
 			[
 				'class' => LoadConfig::class,
-				'app' => COMMON,
+				'app' => 'common',
 				'name' => 'services',
 				'withLocal' => true,
 			],

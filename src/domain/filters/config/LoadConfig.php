@@ -10,7 +10,7 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	
 	public $withLocal = true;
 	public $name;
-	public $app;
+	public $app = APP;
 	public $assignTo;
 	
 	public function run($config) {

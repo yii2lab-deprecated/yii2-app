@@ -30,7 +30,8 @@ class Env
 	
 	private static function load()
 	{
-		$config = FilterHelper::runAll(self::$filters, []);
+		$config = [];
+		$config = FilterHelper::runAll(self::$filters, $config);
 		self::runCommands(self::$commands, $config);
 		return $config;
 	}
