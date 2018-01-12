@@ -17,10 +17,15 @@ class App
 	private static $commands = [
 		'yii2lab\app\domain\commands\ApiVersion',
 	];
+	private static $initedAs = null;
 	
-	public static function run($appName)
+	public static function run($appName = null)
 	{
-		self::init($appName);
+		if(!empty($appName)) {
+			self::init($appName);
+		}
+		$env = Env::get();
+		self::runCommands(self::$commands, $appName, $env);
 		Load::bootstrap();
 		$config = Config::get();
 		self::runApplication($config);
@@ -28,6 +33,9 @@ class App
 
 	public static function init($appName)
 	{
+		if(self::$initedAs) {
+			return;
+		}
 		require_once(__DIR__ . '/domain/helpers/Load.php');
 		Load::helpers();
 		Constant::init();
@@ -36,7 +44,7 @@ class App
 		Constant::setYiiEnv($env);
 		Load::required();
 		Constant::setApp($appName);
-		self::runCommands(self::$commands, $appName, $env);
+		self::$initedAs = $appName;
 	}
 	
 	private static function runApplication($config)
