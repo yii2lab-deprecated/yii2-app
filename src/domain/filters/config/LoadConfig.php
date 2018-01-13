@@ -15,7 +15,6 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	
 	public function run($config) {
 		$loadedConfig = self::requireConfigWithLocal($this->app, $this->name, $this->withLocal);
-		$loadedConfig = self::normalizeItems($loadedConfig);
 		$config = $this->merge($config, $loadedConfig, $this->assignTo);
 		return $config;
 	}
@@ -45,10 +44,10 @@ class LoadConfig extends BaseObject implements FilterInterface {
 		return $newData;
 	}
 	
-	protected static function requireConfigWithLocal($from, $name, $withLocal = true) {
-		$config = self::requireConfigItem($from, $name);
+	protected function requireConfigWithLocal($from, $name, $withLocal = true) {
+		$config = $this->requireConfigItem($from, $name);
 		if($withLocal) {
-			$configLocal = self::requireConfigItem($from, $name . '-local');
+			$configLocal = $this->requireConfigItem($from, $name . '-local');
 			if(is_array($configLocal)) {
 				$config = ArrayHelper::merge($config, $configLocal);
 			}
@@ -56,9 +55,11 @@ class LoadConfig extends BaseObject implements FilterInterface {
 		return $config;
 	}
 	
-	protected static function requireConfigItem($from, $name) {
+	protected function requireConfigItem($from, $name) {
 		$config = @include(ROOT_DIR . DS . $from . DS  . 'config' . DS . $name.'.php');
-		return !empty($config) ? $config : [];
+		$config = !empty($config) ? $config : [];
+		$config = $this->normalizeItems($config);
+		return $config;
 	}
 	
 }
