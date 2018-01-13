@@ -2,11 +2,6 @@
 
 namespace yii2lab\app;
 
-require 'C:\OpenServer\domains\qr.yii\vendor\yii2lab\yii2-design-pattern\src\command\helpers\CommandHelper.php';
-require 'C:\OpenServer\domains\qr.yii\vendor\yii2lab\yii2-design-pattern\src\filter\helpers\FilterHelper.php';
-require 'C:\OpenServer\domains\qr.yii\vendor\yii2lab\yii2-design-pattern\src\command\interfaces\CommandInterface.php';
-require 'C:\OpenServer\domains\qr.yii\vendor\yii2lab\yii2-design-pattern\src\filter\interfaces\FilterInterface.php';
-
 use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
 use yii2lab\app\domain\helpers\Env;
