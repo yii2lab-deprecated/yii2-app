@@ -3,7 +3,7 @@
 namespace yii2lab\app\domain\filters\config;
 
 use yii\base\BaseObject;
-use yii2lab\misc\interfaces\FilterInterface;
+use yii2lab\designPattern\filter\interfaces\FilterInterface;
 
 class SetAppId extends BaseObject implements FilterInterface {
 

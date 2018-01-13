@@ -4,7 +4,7 @@ namespace yii2lab\app\domain\commands;
 
 use yii\base\BaseObject;
 use yii2lab\helpers\Helper;
-use yii2lab\misc\interfaces\CommandInterface;
+use yii2lab\designPattern\command\interfaces\CommandInterface;
 
 class ApiVersion extends BaseObject implements CommandInterface {
 

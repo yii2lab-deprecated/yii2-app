@@ -4,7 +4,7 @@ namespace yii2lab\app\domain\filters\env;
 
 use yii\base\BaseObject;
 use yii\helpers\ArrayHelper;
-use yii2lab\misc\interfaces\FilterInterface;
+use yii2lab\designPattern\filter\interfaces\FilterInterface;
 
 class LoadConfig extends BaseObject implements FilterInterface {
 

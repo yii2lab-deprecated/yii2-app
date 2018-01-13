@@ -7,8 +7,8 @@ use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
 use yii2lab\app\domain\filters\config\LoadConfig;
 use yii2lab\helpers\Helper;
-use yii2lab\misc\helpers\CommandHelper;
-use yii2lab\misc\helpers\FilterHelper;
+use yii2lab\designPattern\command\helpers\CommandHelper;
+use yii2lab\designPattern\filter\helpers\FilterHelper;
 
 class Config {
 	

@@ -4,8 +4,8 @@ namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
 use yii2lab\helpers\Helper;
-use yii2lab\misc\helpers\CommandHelper;
-use yii2lab\misc\helpers\FilterHelper;
+use yii2lab\designPattern\command\helpers\CommandHelper;
+use yii2lab\designPattern\filter\helpers\FilterHelper;
 
 class Env
 {
