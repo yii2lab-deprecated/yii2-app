@@ -15,15 +15,34 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	
 	public function run($config) {
 		$loadedConfig = self::requireConfigWithLocal($this->app, $this->name, $this->withLocal);
-		if(!empty($this->assignTo)) {
-			$baseConfig = ArrayHelper::getValue($config, $this->assignTo, []);
-			$mergedConfig = ArrayHelper::merge($baseConfig, $loadedConfig);
-			ArrayHelper::setValue($config, $this->assignTo, $mergedConfig);
-			
+		$loadedConfig = self::normalizeItems($loadedConfig);
+		$config = $this->merge($config, $loadedConfig, $this->assignTo);
+		return $config;
+	}
+	
+	protected function merge($config, $loadedConfig, $name = null) {
+		if(!empty($name)) {
+			$configItem = ArrayHelper::getValue($config, $name, []);
+			$configItem = ArrayHelper::merge($configItem, $loadedConfig);
+			ArrayHelper::setValue($config, $name, $configItem);
 		} else {
 			$config = ArrayHelper::merge($config, $loadedConfig);
 		}
 		return $config;
+	}
+	
+	protected function normalizeItems($items) {
+		if(!method_exists($this, 'normalizeItem')) {
+			return $items;
+		}
+		$newData = [];
+		foreach($items as $name => $data) {
+			$data = $this->normalizeItem($name, $data);
+			if($data) {
+				$newData[$name] = $data;
+			}
+		}
+		return $newData;
 	}
 	
 	protected static function requireConfigWithLocal($from, $name, $withLocal = true) {
