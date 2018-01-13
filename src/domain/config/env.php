@@ -22,8 +22,11 @@ return [
 		'frontend' => '8TeBn54VTvHGpl3pRE9CJbQD4Iiq38CF',
 		'backend' => 'vrXQQAK2iJmeiVN0a5yg1SdMbnFRNku5',
 	],
-	'remote' => [
-		'driver' => 'disc',
+	'domain' => [
+		'driver' => [
+			'primary' => 'ar',
+			'slave' => 'ar',
+		],
 	],
 	'config' => [
 		'filters' => [
