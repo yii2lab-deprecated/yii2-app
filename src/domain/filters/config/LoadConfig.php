@@ -26,7 +26,7 @@ class LoadConfig extends BaseObject implements FilterInterface {
 		return $config;
 	}
 	
-	private static function requireConfigWithLocal($from, $name, $withLocal = true) {
+	protected static function requireConfigWithLocal($from, $name, $withLocal = true) {
 		$config = self::requireConfigItem($from, $name);
 		if($withLocal) {
 			$configLocal = self::requireConfigItem($from, $name . '-local');
@@ -37,7 +37,7 @@ class LoadConfig extends BaseObject implements FilterInterface {
 		return $config;
 	}
 	
-	private static function requireConfigItem($from, $name) {
+	protected static function requireConfigItem($from, $name) {
 		$config = @include(ROOT_DIR . DS . $from . DS  . 'config' . DS . $name.'.php');
 		return !empty($config) ? $config : [];
 	}
