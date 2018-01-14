@@ -6,10 +6,11 @@ use Yii;
 
 class Constant {
 	
-	public static function init() {
+	public static function init($appName) {
 		self::setBase(); # legacy from CI3
 		self::setNames(); # define name
 		self::setDirs();
+		self::setApplication($appName);
 	}
 	
 	public static function setYiiEnv($env) {
@@ -17,12 +18,7 @@ class Constant {
 		defined('YII_ENV') OR define('YII_ENV', $env['mode']['env']);
 	}
 	
-	public static function setApp($appName) {
-		self::setApplication($appName);
-		self::setAliases();
-	}
-	
-	private static function setAliases() {
+	public static function setAliases() {
 		Yii::setAlias('@root', ROOT_DIR);
 		Yii::setAlias('@common', COMMON_DIR);
 		Yii::setAlias('@frontend', FRONTEND_DIR);
@@ -33,7 +29,7 @@ class Constant {
 		Yii::setAlias('@domain', DOMAIN_DIR);
 	}
 	
-	private static function setApplication($appName) {
+	public static function setApplication($appName) {
 		define('APP', $appName);
 		define('APP_DIR', ROOT_DIR . DS . strtolower($appName));
 		//Yii::setAlias('@app', APP_DIR);
