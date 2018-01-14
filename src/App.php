@@ -38,12 +38,12 @@ class App
 		}
 		require_once(__DIR__ . '/domain/helpers/Load.php');
 		Load::helpers();
-		Constant::init();
+		Constant::init($appName);
 		Load::autoload();
 		$env = Env::get();
 		Constant::setYiiEnv($env);
 		Load::required();
-		Constant::setApp($appName);
+		Constant::setAliases();
 		self::$initedAs = $appName;
 	}
 	
