@@ -3,8 +3,8 @@
 
 ## API
 
-* API_VERSION - версия в формате числа
-* API_VERSION_STRING - версия в формате строки
+* API_VERSION - версия в формате числа (`1`)
+* API_VERSION_STRING - версия в формате строки (`v1`)
 
 ## Имена
 
@@ -35,14 +35,14 @@
 * DS - DIRECTORY_SEPARATOR
 * SL - слэш
 * BSL - обратный слэш
-* NBSP - &nbsp;
-* NBSP2X - &nbsp;&nbsp;
+* NBSP - `&nbsp;`
+* NBSP2X - `&nbsp;&nbsp;`
 * NS - новыя строка
 * BL - знак подчеркивания
 * DL - тире
 * DOT - точка
 * SPC - пробел
 * EMP - пустая строка
-* TAB', "\t");
-* BR - <br/>
-* TIMESTAMP - текушие время
+* TAB - табуляция
+* BR - `<br/>`
+* TIMESTAMP - текущее время
