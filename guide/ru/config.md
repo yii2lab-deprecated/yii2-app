@@ -7,23 +7,152 @@
 
 Что можно настроить:
 
-* Пути
-* Домены
-* Конфиг базы данных
-* Допустимые IP для дебагера и генератора кода
-* Режим отладки
-* Окружение (prod, dev)
+* Режим
+	* Окружение (prod, dev)
+	* Дебаг
+* Ссылки
+	* frontend
+	* backend
+	* api
+* Драйвер репозиториев
+	* Главный
+	* Вторичный
 * Сервера
-* Удаленный драйвер
-* Карта конфигов
+	* База данных
+	* Место хранения статических данных
+	* Почта
+	* TPS
+	* Ядро
+* Фильтры конфигов
 
-Конфиг находится в файле:
+Конфиг находится в файлах:
 
+* `common/config/env.php`
+* `common/config/env-local.php`
+
+##  Примеры
+
+### env.php
+
+Пример конфига `common/config/env.php`:
+
+```php
+use yii2lab\app\domain\filters\config\LoadConfig;
+use yii2lab\app\domain\filters\config\LoadModuleConfig;
+use yii2lab\domain\filters\LoadDomainConfig;
+
+return [
+	'config' => [
+		'filters' => [
+			[
+				'class' => LoadConfig::class,
+				'app' => COMMON,
+				'name' => 'main',
+				'withLocal' => true,
+			],
+			[
+				'class' => LoadConfig::class,
+				'app' => APP,
+				'name' => 'main',
+				'withLocal' => true,
+			],
+			
+			/*[
+				'class' => LoadConfig::class,
+				'app' => COMMON,
+				'name' => 'test',
+				'withLocal' => true,
+				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
+			],
+			[
+				'class' => LoadConfig::class,
+				'app' => APP,
+				'name' => 'test',
+				'withLocal' => true,
+				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
+			],*/
+			
+			[
+				'class' => LoadModuleConfig::class,
+				'app' => COMMON,
+				'name' => 'modules',
+				'withLocal' => true,
+			],
+			[
+				'class' => LoadModuleConfig::class,
+				'app' => APP,
+				'name' => 'modules',
+				'withLocal' => true,
+			],
+			
+			[
+				'class' => LoadConfig::class,
+				'app' => COMMON,
+				'name' => 'routes',
+				'withLocal' => true,
+				'assignTo' => 'components.urlManager.rules',
+			],
+			[
+				'class' => LoadConfig::class,
+				'app' => APP,
+				'name' => 'routes',
+				'withLocal' => true,
+				'assignTo' => 'components.urlManager.rules',
+			],
+			
+			[
+				'class' => LoadConfig::class,
+				'app' => COMMON,
+				'name' => 'params',
+				'withLocal' => true,
+				'assignTo' => 'params',
+			],
+			[
+				'class' => LoadConfig::class,
+				'app' => APP,
+				'name' => 'params',
+				'withLocal' => true,
+				'assignTo' => 'params',
+			],
+			
+			[
+				'class' => LoadDomainConfig::class,
+				'app' => COMMON,
+				'name' => 'domains',
+				'withLocal' => true,
+			],
+			
+			[
+				'class' => LoadDomainConfig::class,
+				'app' => COMMON,
+				'name' => 'install',
+				'withLocal' => false,
+			],
+			'yii2lab\app\domain\filters\config\SetControllerNamespace',
+			'yii2lab\app\domain\filters\config\FixValidationKeyInTest',
+			'yii2lab\app\domain\filters\config\SetAppId',
+			'yii2lab\app\domain\filters\config\SetPath',
+			'yii2module\offline\domain\filters\IsOffline',
+			
+			[
+				'class' => 'yii2lab\migration\domain\filters\SetPath',
+				'path' => [
+					'@vendor/yii2module/yii2-article/src/domain/migrations',
+					'@vendor/yii2woop/yii2-account/src/domain/migrations',
+				],
+				'scan' => [
+					'@domain',
+				],
+			],
+			
+		],
+	],
+];
 ```
-common/config/env.php
-```
 
-Пример конфига:
+### env-local.php
+
+Пример конфига `common/config/env-local.php`:
 
 ```php
 return [
@@ -41,24 +170,30 @@ return [
 		'frontend' => '8TeBn54VTvHGpl3pRE9CJbQD4Iiq38CF',
 		'backend' => 'vrXQQAK2iJmeiVN0a5yg1SdMbnFRNku5',
 	],
-	'connection' => [
-		'main' => [
-			'driver' => 'pgsql',
-			'host' => 'dbweb',
-			'username' => 'logging',
-			'password' => 'moneylogger',
-			'dbname' => 'qrpay',
-			'defaultSchema' => 'qrpay',
-		],
-		'test' => [
-			'driver' => 'mysql',
-			'host' => 'localhost',
-			'username' => 'root',
-			'password' => '',
-			'dbname' => 'qrpay_test',
+	'domain' => [
+		'driver' => [
+			'primary' => 'ar',
+			'slave' => 'ar',
 		],
 	],
 	'servers' => [
+		'db' => [
+			'main' => [
+				'driver' => 'pgsql',
+				'host' => 'dbweb',
+				'username' => 'logging',
+				'password' => 'moneylogger',
+				'dbname' => 'qrpay',
+				'defaultSchema' => 'qrpay',
+			],
+			'test' => [
+				'driver' => 'mysql',
+				'host' => 'localhost',
+				'username' => 'root',
+				'password' => '',
+				'dbname' => 'qrpay_test',
+			],
+		],
 		'static' => [
 			'domain' => 'http://qr.yii/',
 			'publicPath' => '@frontend/web/',
@@ -70,8 +205,54 @@ return [
 			'port' => '25',
 		],
 	],
-	'remote' => [
-		'driver' => 'ar',
+];
+```
+
+##  Фильтры
+
+Фильтрами можно:
+
+* грузить конфиги
+* исправлять недочеты
+* делать автодополнения конфигов
+
+Редактируются фильтры в файле `env.php` в разделе `config.filters`.
+
+## Настройка структуры
+
+Структуру конфигов можно настроить под проект индивидуально.
+Делается это изменением состава фильтров.
+
+Рассмотрим фильтр загрузки конфига:
+
+```php
+use yii2lab\app\domain\filters\config\LoadConfig;
+
+return [
+	
+	...
+
+	'config' => [
+		'filters' => [
+			
+			...
+
+			[
+				'class' => LoadConfig::class,
+				'app' => COMMON,
+				'name' => 'main',
+				'withLocal' => true,
+			],
+			[
+				'class' => LoadConfig::class,
+				'name' => 'main',
+				'withLocal' => true,
+			],
+			...
+		],
 	],
+	
+	...
+
 ];
 ```
