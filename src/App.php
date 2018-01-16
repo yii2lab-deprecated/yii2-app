@@ -24,9 +24,6 @@ class App
 		if(!empty($appName)) {
 			self::init($appName);
 		}
-		$env = Env::get();
-		self::runCommands(self::$commands, $appName, $env);
-		Load::bootstrap();
 		$config = Config::get();
 		self::runApplication($config);
 	}
@@ -44,6 +41,8 @@ class App
 		Constant::setYiiEnv($env);
 		Load::required();
 		Constant::setAliases();
+		Load::bootstrap();
+		self::runCommands(self::$commands, $appName, $env);
 		self::$initedAs = $appName;
 	}
 	
