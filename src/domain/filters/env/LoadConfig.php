@@ -8,31 +8,28 @@ use yii2lab\designPattern\filter\interfaces\FilterInterface;
 
 class LoadConfig extends BaseObject implements FilterInterface {
 
-	public $list = [
-		['common/config/env.php', 'common/config/env-local.php'],
-		'vendor/yii2lab/yii2-app/src/domain/config/env.php',
-	];
+	const FROM_APP = 'common/config';
+	const FROM_RESERVE = 'vendor/yii2lab/yii2-app/src/domain/config';
+	
+	const FILE_ENV = 'env';
+	const FILE_ENV_LOCAL = 'env-local';
 	
 	public function run($config) {
-		foreach($this->list as $files) {
-			$config = $this->load($files);
-			if(!empty($config)) {
-				return $config;
-			}
+		$mainConfig = $this->load(self::FROM_APP, self::FILE_ENV);
+		if(empty($mainConfig)) {
+			$mainConfig = $this->load(self::FROM_RESERVE, self::FILE_ENV);
 		}
-		return [];
+		$localConfig = $this->load(self::FROM_APP, self::FILE_ENV_LOCAL);
+		if(empty($localConfig)) {
+			$localConfig = $this->load(self::FROM_RESERVE, self::FILE_ENV_LOCAL);
+		}
+		$config = ArrayHelper::merge($mainConfig, $localConfig);
+		return $config;
 	}
 	
-	private function load($fileNames) {
-		$config = [];
-		$fileNames = ArrayHelper::toArray($fileNames);
-		foreach($fileNames as $arg) {
-			$itemConfig = @include(ROOT_DIR . DS . $arg);
-			if(!empty($itemConfig)) {
-				$config = ArrayHelper::merge($config, $itemConfig);
-			}
-		}
-		return $config;
+	private function load($path, $fileName) {
+		$config = @include(ROOT_DIR . DS . $path . DS . $fileName . '.php');
+		return !empty($config) ? $config : [];
 	}
 	
 }
