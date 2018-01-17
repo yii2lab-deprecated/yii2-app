@@ -8,4 +8,5 @@
 * [Константы](const.md)
 * [Алиасы](alias.md)
 * [Фильтры](filter.md)
+* [Гостевой режим](guest-mode.md)
 * [Руководство](guide.md)
