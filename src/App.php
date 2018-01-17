@@ -15,6 +15,7 @@ class App
 {
 	
 	private static $commands = [
+		'yii2lab\app\domain\commands\RunBootstrap',
 		'yii2lab\app\domain\commands\ApiVersion',
 	];
 	private static $initedAs = null;
@@ -41,7 +42,6 @@ class App
 		Constant::setYiiEnv($env);
 		Load::required();
 		Constant::setAliases();
-		Load::bootstrap();
 		self::runCommands(self::$commands, $appName, $env);
 		self::$initedAs = $appName;
 	}

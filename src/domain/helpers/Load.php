@@ -13,12 +13,6 @@ class Load
 		require('Db.php');
 		require('Config.php');
 	}
-
-	public static function bootstrap()
-	{
-		require(COMMON_DIR . DS . 'config' . DS . 'bootstrap.php');
-		require(APP_DIR . DS . 'config' . DS . 'bootstrap.php');
-	}
 	
 	public static function autoload()
 	{
