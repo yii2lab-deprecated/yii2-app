@@ -3,6 +3,7 @@ namespace api\tests\unit\helpers;
 
 use Codeception\Test\Unit;
 use yii2lab\app\domain\helpers\Config;
+use yii2lab\app\domain\helpers\Env;
 use yii2lab\store\Store;
 
 class ConfigTest extends Unit
@@ -10,7 +11,7 @@ class ConfigTest extends Unit
 	
 	const DATA_PATH_ALIAS = '@vendor/yii2lab/yii2-app/tests/store/';
 	
-	public function testLoad()
+	public function testLoadConfig()
 	{
 		$env = $this->loadData('app/common/config/env.php');
 		$config = Config::load($env['config']);
@@ -18,9 +19,21 @@ class ConfigTest extends Unit
 		expect($configExpect)->equals($config);
 	}
 	
-	private function loadData($filename) {
+	public function testLoadEnv()
+	{
+		$definition = $this->loadData('definitionEnv.php');
+		$config = Env::load($definition);
+		$configExpect = $this->loadData('resultEnv.php', $config);
+		expect($configExpect)->equals($config);
+	}
+	
+	private function loadData($filename, $defaultData = null) {
 		$store = new Store('php');
 		$configExpect = $store->load(self::DATA_PATH_ALIAS . $filename);
+		if(empty($configExpect)) {
+			$this->saveData($filename, $defaultData);
+			return $defaultData;
+		}
 		return $configExpect;
 	}
 	

@@ -5,8 +5,8 @@ use yii2lab\app\domain\filters\config\LoadModuleConfig;
 use yii2lab\domain\filters\LoadDomainConfig;
 use yii2lab\misc\enums\YiiEnvEnum;
 
-$common = 'vendor/yii2lab/yii2-app/tests/_data/app/common';
-$app = 'vendor/yii2lab/yii2-app/tests/_data/app/app';
+$common = 'vendor/yii2lab/yii2-app/tests/store/app/common';
+$app = 'vendor/yii2lab/yii2-app/tests/store/app/app';
 
 return [
 	'config' => [

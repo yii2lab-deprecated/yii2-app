@@ -12,6 +12,9 @@ class Config {
 	private static $config = [];
 	
 	static function get($key = null) {
+		if (empty(self::$config)) {
+			return null;
+		}
 		if(empty($key)) {
 			return self::$config;
 		}
