@@ -5,19 +5,19 @@ return [
 		'filters' => [
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/common',
 				'name' => 'main',
 				'withLocal' => true,
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/app',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/app',
 				'name' => 'main',
 				'withLocal' => true,
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadModuleConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/common',
 				'name' => 'modules',
 				'withLocal' => true,
 			],
@@ -29,7 +29,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/common',
 				'name' => 'routes',
 				'withLocal' => true,
 				'assignTo' => 'components.urlManager.rules',
@@ -43,7 +43,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/common',
 				'name' => 'params',
 				'withLocal' => true,
 				'assignTo' => 'params',
@@ -57,13 +57,13 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\domain\\filters\\LoadDomainConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/common',
 				'name' => 'domains',
 				'withLocal' => true,
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/common',
 				'name' => 'install',
 			],
 			[
@@ -73,7 +73,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/_data/app/common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/common',
 				'name' => 'test',
 				'withLocal' => true,
 				'isEnabled' => true,
