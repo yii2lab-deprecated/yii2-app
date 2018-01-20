@@ -6,18 +6,12 @@ use yii\filters\AccessControl;
 use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
 use yii2lab\helpers\Helper;
-use yii2lab\designPattern\command\helpers\CommandHelper;
-use yii2lab\designPattern\filter\helpers\FilterHelper;
 
 class Config {
 	
 	private static $config = [];
-	private static $commands = [];
 	
 	static function get($key = null) {
-		if(empty(self::$config)) {
-			self::$config = self::load();
-		}
 		if(empty($key)) {
 			return self::$config;
 		}
@@ -85,34 +79,16 @@ class Config {
 			],
 		];
 	}
-
-	private static function load() {
-		$config = [];
-		$config = self::runFilters($config);
-		self::runCommands($config);
-		return $config;
+	
+	public static function init($definition) {
+		self::$config = self::load($definition);
 	}
 	
-	private static function runFilters($config) {
-		$filters = Env::get('config.filters');
-		$config = FilterHelper::runAll($filters, $config);
-		return $config;
-	}
-	
-	private static function runCommands($config) {
-		$commands = Env::get('config.commands');
-		if(empty($commands)) {
-			$commands = self::$commands;
-		}
-		if(empty($commands)) {
-			return null;
-		}
-		$env = env(null);
-		$commands = Helper::assignAttributesForList($commands, [
-			'env' => $env,
-			'config' => $config,
-		]);
-		CommandHelper::runAll($commands);
+	public static function load($definition = []) {
+		$definition['class'] = Handler::class;
+		/** @var Handler $loader */
+		$loader = Helper::createObject($definition);
+		return $loader->run();
 	}
 	
 }

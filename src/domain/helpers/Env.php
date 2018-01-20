@@ -11,16 +11,10 @@ class Env
 {
 
 	private static $config = [];
-	private static $commands = [];
-	private static $filters = [
-		'yii2lab\app\domain\filters\env\LoadConfig',
-		'yii2lab\app\domain\filters\env\YiiEnv',
-		'yii2lab\app\domain\filters\env\NormalizeDbConfig',
-	];
-
+	
 	static function get($key = null) {
 		if (empty(self::$config)) {
-			self::$config = self::load();
+			self::init();
 		}
 		if (empty($key)) {
 			return self::$config;
@@ -28,21 +22,25 @@ class Env
 		return ArrayHelper::getValue(self::$config, $key);
 	}
 	
-	private static function load()
-	{
-		$config = [];
-		$config = FilterHelper::runAll(self::$filters, $config);
-		self::runCommands(self::$commands, $config);
-		return $config;
+	public static function init() {
+		$definition = [
+			'commands' => [],
+			'filters' => [
+				'yii2lab\app\domain\filters\env\LoadConfig',
+				'yii2lab\app\domain\filters\env\YiiEnv',
+				'yii2lab\app\domain\filters\env\NormalizeDbConfig',
+			],
+		];
+		self::$config = self::load($definition);
 	}
-
-	private static function runCommands($commands, $config) {
-		if(empty($commands)) {
-			return null;
-		}
-		$commands = Helper::assignAttributesForList($commands, [
+	
+	private static function load($definition = []) {
+		$config = FilterHelper::runAll($definition['filters'], []);
+		$definition['commands'] = Helper::assignAttributesForList($definition['commands'], [
 			'env' => $config,
 		]);
-		CommandHelper::runAll($commands);
+		CommandHelper::runAll($definition['commands']);
+		return $config;
 	}
+	
 }

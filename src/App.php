@@ -25,6 +25,8 @@ class App
 		if(!empty($appName)) {
 			self::init($appName);
 		}
+		$definition = Env::get('config');
+		Config::init($definition);
 		$config = Config::get();
 		self::runApplication($config);
 	}
