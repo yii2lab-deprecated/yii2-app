@@ -15,7 +15,7 @@ class ConfigTest extends Unit
 	{
 		$env = $this->loadData('app/common/config/env.php');
 		$config = Config::load($env['config']);
-		$configExpect = $this->loadData('resultConfig.php');
+		$configExpect = $this->loadData('resultConfig.php', $config);
 		expect($configExpect)->equals($config);
 	}
 	

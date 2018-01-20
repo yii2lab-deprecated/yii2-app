@@ -2,9 +2,9 @@
 
 use yii2lab\app\App;
 
-$name = 'common';
+$name = 'console';
 define('YII_ENV', 'test');
 
 require_once(realpath(__DIR__ . '/../../../yii2lab/yii2-app/src/App.php'));
 
-App::init($name);
+App::init($name, 'vendor/yii2lab/yii2-app/tests/store/app/common/config');

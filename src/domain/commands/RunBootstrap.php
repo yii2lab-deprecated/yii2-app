@@ -16,8 +16,8 @@ class RunBootstrap extends BaseObject implements CommandInterface {
 	
 	private function bootstrap()
 	{
-		require(COMMON_DIR . DS . 'config' . DS . 'bootstrap.php');
-		require(ROOT_DIR . DS . $this->appName . DS . 'config' . DS . 'bootstrap.php');
+		@include(COMMON_DIR . DS . 'config' . DS . 'bootstrap.php');
+		@include(ROOT_DIR . DS . $this->appName . DS . 'config' . DS . 'bootstrap.php');
 	}
 	
 }

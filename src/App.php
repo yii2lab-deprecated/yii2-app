@@ -14,30 +14,16 @@ use yii2lab\designPattern\command\helpers\CommandHelper;
 class App
 {
 	
-	private static $envDefinition = [
-		'commands' => [],
-		'filters' => [
-			[
-				'class' => 'yii2lab\app\domain\filters\env\LoadConfig',
-				'paths' => [
-					'common/config',
-					'vendor/yii2lab/yii2-app/src/domain/config',
-				],
-			],
-			'yii2lab\app\domain\filters\env\YiiEnv',
-			'yii2lab\app\domain\filters\env\NormalizeDbConfig',
-		],
-	];
 	private static $commands = [
 		'yii2lab\app\domain\commands\RunBootstrap',
 		'yii2lab\app\domain\commands\ApiVersion',
 	];
 	private static $initedAs = null;
 	
-	public static function run($appName = null)
+	public static function run($appName = null, $appDir = 'common/config')
 	{
 		if(!empty($appName)) {
-			self::init($appName);
+			self::init($appName, $appDir);
 		}
 		$definition = Env::get('config');
 		Config::init($definition);
@@ -45,7 +31,7 @@ class App
 		self::runApplication($config);
 	}
 
-	public static function init($appName)
+	public static function init($appName, $appDir = 'common/config')
 	{
 		if(self::$initedAs) {
 			return;
@@ -54,7 +40,7 @@ class App
 		Load::helpers();
 		Constant::init($appName);
 		Load::autoload();
-		Env::init(self::$envDefinition);
+		Env::init(self::envDefinition($appDir));
 		$env = Env::get();
 		Constant::setYiiEnv($env);
 		Load::required();
@@ -84,5 +70,22 @@ class App
 			'env' => $config,
 		]);
 		CommandHelper::runAll($commands);
+	}
+	
+	public static function envDefinition($evnConfigDir) {
+		return [
+			'commands' => [],
+			'filters' => [
+				[
+					'class' => 'yii2lab\app\domain\filters\env\LoadConfig',
+					'paths' => [
+						$evnConfigDir,
+						'vendor/yii2lab/yii2-app/src/domain/config',
+					],
+				],
+				'yii2lab\app\domain\filters\env\YiiEnv',
+				'yii2lab\app\domain\filters\env\NormalizeDbConfig',
+			],
+		];
 	}
 }

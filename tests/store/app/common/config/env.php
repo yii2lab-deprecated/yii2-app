@@ -5,48 +5,47 @@ use yii2lab\app\domain\filters\config\LoadModuleConfig;
 use yii2lab\domain\filters\LoadDomainConfig;
 use yii2lab\misc\enums\YiiEnvEnum;
 
-$common = 'vendor/yii2lab/yii2-app/tests/store/app/common';
-$app = 'vendor/yii2lab/yii2-app/tests/store/app/app';
+$basePath = 'vendor/yii2lab/yii2-app/tests/store/app/';
 
 return [
 	'config' => [
 		'filters' => [
 			[
 				'class' => LoadConfig::class,
-				'app' => $common,
+				'app' => $basePath . COMMON,
 				'name' => 'main',
 				'withLocal' => true,
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => $app,
+				'app' => $basePath . APP,
 				'name' => 'main',
 				'withLocal' => true,
 			],
 			
 			[
 				'class' => LoadModuleConfig::class,
-				'app' => $common,
+				'app' => $basePath . COMMON,
 				'name' => 'modules',
 				'withLocal' => true,
 			],
 			[
 				'class' => LoadModuleConfig::class,
-				'app' => APP,
+				'app' => $basePath . APP,
 				'name' => 'modules',
 				'withLocal' => true,
 			],
 			
 			[
 				'class' => LoadConfig::class,
-				'app' => $common,
+				'app' => $basePath . COMMON,
 				'name' => 'routes',
 				'withLocal' => true,
 				'assignTo' => 'components.urlManager.rules',
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
+				'app' => $basePath . APP,
 				'name' => 'routes',
 				'withLocal' => true,
 				'assignTo' => 'components.urlManager.rules',
@@ -54,14 +53,14 @@ return [
 			
 			[
 				'class' => LoadConfig::class,
-				'app' => $common,
+				'app' => $basePath . COMMON,
 				'name' => 'params',
 				'withLocal' => true,
 				'assignTo' => 'params',
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
+				'app' => $basePath . APP,
 				'name' => 'params',
 				'withLocal' => true,
 				'assignTo' => 'params',
@@ -69,32 +68,32 @@ return [
 			
 			[
 				'class' => LoadDomainConfig::class,
-				'app' => $common,
+				'app' => $basePath . COMMON,
 				'name' => 'domains',
 				'withLocal' => true,
 			],
 			
 			[
 				'class' => LoadConfig::class,
-				'app' => $common,
+				'app' => $basePath . COMMON,
 				'name' => 'install',
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
+				'app' => $basePath . APP,
 				'name' => 'install',
 			],
 			
 			[
 				'class' => LoadConfig::class,
-				'app' => $common,
+				'app' => $basePath . COMMON,
 				'name' => 'test',
 				'withLocal' => true,
 				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
 			],
 			[
 				'class' => LoadConfig::class,
-				'app' => APP,
+				'app' => $basePath . APP,
 				'name' => 'test',
 				'withLocal' => true,
 				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,

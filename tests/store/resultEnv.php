@@ -11,7 +11,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/app',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/console',
 				'name' => 'main',
 				'withLocal' => true,
 			],
@@ -23,7 +23,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadModuleConfig',
-				'app' => 'common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/console',
 				'name' => 'modules',
 				'withLocal' => true,
 			],
@@ -36,7 +36,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/console',
 				'name' => 'routes',
 				'withLocal' => true,
 				'assignTo' => 'components.urlManager.rules',
@@ -50,7 +50,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/console',
 				'name' => 'params',
 				'withLocal' => true,
 				'assignTo' => 'params',
@@ -68,7 +68,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/console',
 				'name' => 'install',
 			],
 			[
@@ -80,7 +80,7 @@ return [
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\filters\\config\\LoadConfig',
-				'app' => 'common',
+				'app' => 'vendor/yii2lab/yii2-app/tests/store/app/console',
 				'name' => 'test',
 				'withLocal' => true,
 				'isEnabled' => true,

@@ -18,6 +18,7 @@ return [
 		'language' => 'yii2module\\lang\\domain\\components\\Language',
 		'user' => [
 			'class' => 'yii2woop\\account\\domain\\web\\User',
+			'enableSession' => false,
 		],
 		'httpClient' => [
 			'class' => 'yii\\httpclient\\Client',
@@ -68,10 +69,6 @@ return [
 			'class' => 'yii\\db\\Connection',
 			'charset' => 'utf8',
 			'enableSchemaCache' => false,
-			'username' => 'root',
-			'password' => '',
-			'tablePrefix' => '',
-			'dsn' => 'mysql:host=localhost;dbname=qrpay_test',
 		],
 		'mailer' => [
 			'class' => 'yii\\swiftmailer\\Mailer',
@@ -82,10 +79,10 @@ return [
 			'fileTransportPath' => '@common/runtime/mail',
 			'transport' => [
 				'class' => 'Swift_SmtpTransport',
-				'host' => 'mail',
-				'username' => 'info@qrp.kz',
-				'password' => 'SEqwBmUlnykbj2p5',
-				'port' => '25',
+				'host' => null,
+				'username' => null,
+				'password' => null,
+				'port' => 25,
 			],
 		],
 		'queue' => [
@@ -177,20 +174,20 @@ return [
 				],
 			],
 			'repositories' => [
-				'auth' => 'ar',
-				'login' => 'ar',
+				'auth' => 'disc',
+				'login' => 'disc',
 				'authClient' => 'domain\\v4\\account\\repositories\\ar\\AuthClientRepository',
 				'authCashier' => 'domain\\v4\\account\\repositories\\ar\\AuthCashierRepository',
 				'point' => 'domain\\v4\\account\\repositories\\ar\\PointRepository',
-				'registration' => 'ar',
+				'registration' => 'disc',
 				'temp' => 'ar',
-				'restorePassword' => 'ar',
-				'security' => 'ar',
+				'restorePassword' => 'disc',
+				'security' => 'disc',
 				'test' => 'disc',
-				'balance' => 'ar',
+				'balance' => 'disc',
 				'rbac' => 'memory',
 				'confirm' => 'ar',
-				'assignment' => 'ar',
+				'assignment' => 'disc',
 				'merchant' => 'domain\\v4\\account\\repositories\\ar\\MerchantRepository',
 				'cashier' => 'domain\\v4\\account\\repositories\\ar\\CashierRepository',
 				'manager' => 'domain\\v4\\account\\repositories\\ar\\ManagerRepository',
@@ -290,7 +287,7 @@ return [
 					'size' => 256,
 				],
 				'qr' => 'file',
-				'iin' => 'ar',
+				'iin' => 'disc',
 				'active' => 'ar',
 			],
 			'services' => [
@@ -442,9 +439,9 @@ return [
 			'class' => 'yii2module\\article\\domain\\Domain',
 			'id' => 'article',
 			'repositories' => [
-				'article' => 'ar',
-				'category' => 'ar',
-				'categories' => 'ar',
+				'article' => 'disc',
+				'category' => 'disc',
+				'categories' => 'disc',
 			],
 			'services' => [
 				'article' => [],
@@ -538,16 +535,69 @@ return [
 				],
 			],
 		],
-		'request' => [
-			'cookieValidationKey' => 'testValidationKey',
+	],
+	'controllerMap' => [
+		'migrate' => [
+			'class' => 'dee\\console\\MigrateController',
+			'migrationPath' => '@console/migrations',
+			'generatorTemplateFiles' => [
+				'create_table' => '@yii2lab/migration/yii/views/createTableMigration.php',
+			],
 		],
 	],
 	'modules' => [
 		'offline' => [
-			'class' => 'yii2module\\offline\\web\\Module',
+			'class' => 'yii2module\\offline\\console\\Module',
 		],
 		'lang' => [
 			'class' => 'yii2module\\lang\\module\\Module',
+		],
+		'vendor' => [
+			'class' => 'yii2module\\vendor\\console\\Module',
+		],
+		'tool' => [
+			'class' => 'yii2module\\tool\\console\\Module',
+		],
+		'encrypt' => [
+			'class' => 'yii2module\\encrypt\\console\\Module',
+		],
+		'rbac' => [
+			'class' => 'yii2lab\\rbac\\console\\Module',
+		],
+		'cleaner' => [
+			'class' => 'yii2module\\cleaner\\console\\Module',
+		],
+		'environments' => [
+			'class' => 'yii2lab\\init\\console\\Module',
+		],
+		'fixtures' => [
+			'class' => 'yii2module\\fixture\\Module',
+		],
+		'test' => [
+			'class' => 'yii2module\\test\\console\\Module',
+		],
+		'db' => [
+			'class' => 'yii2lab\\db\\console\\Module',
+			'actions' => [
+				'ImportFixture' => [
+					'tableList' => [
+						'user',
+						'user_assignment',
+						'rest',
+					],
+				],
+				0 => 'common\\init\\db\\Subject2user',
+				1 => 'common\\init\\db\\AuthAssignment2userAssignment',
+				2 => 'common\\init\\db\\AuthAssignment2userPoint',
+				'SetGrant' => [
+					'grantUser' => 'logging',
+				],
+				'SetSequence' => [
+					'tableList' => [
+						'user' => 'user_id_seq',
+					],
+				],
+			],
 		],
 	],
 	'params' => [
@@ -558,15 +608,14 @@ return [
 		'user.auth.rememberExpire' => 2592000,
 		'user.login.mask' => '+9 (999) 999-99-99',
 		'url' => [
-			'frontend' => 'http://qr.yii/',
-			'backend' => 'http://admin.qr.yii/',
-			'api' => 'http://api.qr.yii/',
+			'frontend' => 'http:///',
+			'backend' => 'http://admin./',
+			'api' => 'http://api./',
 		],
 		'adminEmail' => 'admin@example.com',
 		'fixture' => [
 			'dir' => '@common/fixtures',
 			'exclude' => [
-				'migration',
 				'migration',
 			],
 		],
@@ -574,19 +623,10 @@ return [
 			'exclude' => [
 				'console',
 				'backend',
-				'console',
-				'backend',
 			],
 		],
 		'navbar' => [
 			'exclude' => [
-				'error',
-				'offline',
-				'user',
-				'debug',
-				'gii',
-				'welcome',
-				'lang',
 				'error',
 				'offline',
 				'user',
@@ -603,62 +643,12 @@ return [
 				'qr' => 'images/qr',
 			],
 		],
-		'servers' => [
-			'db' => [
-				'main' => [
-					'driver' => 'pgsql',
-					'host' => 'dbweb',
-					'username' => 'logging',
-					'password' => 'moneylogger',
-					'dbname' => 'qrpay',
-					'defaultSchema' => 'qrpay',
-				],
-				'test' => [
-					'driver' => 'mysql',
-					'host' => 'localhost',
-					'username' => 'root',
-					'password' => '',
-					'dbname' => 'qrpay_test',
-				],
-			],
-			'static' => [
-				'domain' => 'http://qr.yii/',
-				'publicPath' => '@frontend/web/',
-			],
-			'wsdl' => [
-				'domain' => 'http://www.test.wooppay.com/api/wsdl',
-				'payment_hash' => 'Q8nFbQeU236zYQmHDq5vHVqeQBgjNmu9sTCVtEP7hL7p6kKC2vJc66pUGbrAhD3G',
-				'user' => [
-					[
-						'login' => 'QRPayMerchant',
-						'password' => 'A12345678a',
-					],
-					[
-						'login' => 'QRPaySub',
-						'password' => 'A12345678a',
-					],
-					[
-						'login' => 'QRPayMerchant',
-						'password' => 'A12345678a',
-					],
-					[
-						'login' => 'QRPaySub',
-						'password' => 'A12345678a',
-					],
-				],
-			],
-			'mail' => [
-				'host' => 'mail',
-				'username' => 'info@qrp.kz',
-				'password' => 'SEqwBmUlnykbj2p5',
-				'port' => '25',
-			],
-		],
+		'servers' => null,
 		'MRP' => 2121,
 		'EPAY_PERCENT' => 2,
-		'EpayPath' => 'C:\\OpenServer\\domains\\qr.yii\\common\\config/../../../epay_test/',
-		'CnpPath' => 'C:\\OpenServer\\domains\\qr.yii\\common\\config/../../../cnp_test/',
-		'WooppayPath' => 'C:\\OpenServer\\domains\\qr.yii\\common\\config/../../../wp_test/',
+		'EpayPath' => 'C:\\OpenServer\\domains\\qr.yii\\vendor\\yii2lab\\yii2-app\\tests\\store\\app\\common\\config/../../../epay_test/',
+		'CnpPath' => 'C:\\OpenServer\\domains\\qr.yii\\vendor\\yii2lab\\yii2-app\\tests\\store\\app\\common\\config/../../../cnp_test/',
+		'WooppayPath' => 'C:\\OpenServer\\domains\\qr.yii\\vendor\\yii2lab\\yii2-app\\tests\\store\\app\\common\\config/../../../wp_test/',
 		'AcquiringTest' => true,
 		'AcquiringType' => 'wooppay',
 		'AcquiringAccess' => 70,
@@ -669,8 +659,6 @@ return [
 		'SECURITY_EMAIL' => 'security@wooppay.com',
 		'article' => [
 			'links' => [
-				'about',
-				'contact',
 				'about',
 				'contact',
 			],
@@ -696,9 +684,14 @@ return [
 			'HBPAY' => 'kkbsub_regular',
 			'LINKED' => 'wpsub_regular',
 		],
+		'dee.migration.scan' => [],
+		'dee.migration.path' => [
+			'@vendor/yii2module/yii2-article/src/domain/migrations',
+			'@vendor/yii2lab/yii2-geo/src/domain/migrations',
+		],
 	],
-	'controllerNamespace' => 'common\\controllers',
-	'id' => 'app-common',
-	'basePath' => 'C:\\OpenServer\\domains\\qr.yii\\common',
+	'controllerNamespace' => 'console\\controllers',
+	'id' => 'app-console',
+	'basePath' => 'C:\\OpenServer\\domains\\qr.yii\\console',
 	'vendorPath' => 'C:\\OpenServer\\domains\\qr.yii\\vendor\\',
 ];
