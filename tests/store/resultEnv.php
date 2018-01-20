@@ -90,14 +90,6 @@ return [
 			'yii2lab\\app\\domain\\filters\\config\\SetAppId',
 			'yii2lab\\app\\domain\\filters\\config\\SetPath',
 			'yii2module\\offline\\domain\\filters\\IsOffline',
-			[
-				'class' => 'yii2lab\\migration\\domain\\filters\\SetPath',
-				'path' => [
-					'@vendor/yii2module/yii2-article/src/domain/migrations',
-					'@vendor/yii2lab/yii2-geo/src/domain/migrations',
-				],
-				'scan' => [],
-			],
 		],
 	],
 	'project' => 'qrpay',

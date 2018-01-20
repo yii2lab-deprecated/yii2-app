@@ -227,7 +227,7 @@ return [
 						'R',
 						'QRS',
 					],
-					'defaultRole' => 'rUnknownUser',
+					'defaultRole' => null,
 					'defaultStatus' => 1,
 					'forbiddenStatusList' => [
 						0,
@@ -683,11 +683,6 @@ return [
 		'acquiring' => [
 			'HBPAY' => 'kkbsub_regular',
 			'LINKED' => 'wpsub_regular',
-		],
-		'dee.migration.scan' => [],
-		'dee.migration.path' => [
-			'@vendor/yii2module/yii2-article/src/domain/migrations',
-			'@vendor/yii2lab/yii2-geo/src/domain/migrations',
 		],
 	],
 	'controllerNamespace' => 'console\\controllers',

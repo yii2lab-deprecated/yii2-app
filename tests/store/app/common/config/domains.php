@@ -1,6 +1,5 @@
 <?php
 
-use common\enums\rbac\RoleEnum;
 use yii2lab\domain\Domain;
 use yii2lab\domain\enums\Driver;
 
@@ -159,7 +158,7 @@ return [
 					'address' => 'profile.address',*/
 				],
 				'prefixList' => ['B', 'BS', 'R', 'QRS'],
-				'defaultRole' => RoleEnum::UNKNOWN_USER,
+				'defaultRole' => null,
 				'defaultStatus' => 1,
 			    'forbiddenStatusList' => [0],
 			],

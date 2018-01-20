@@ -8,6 +8,7 @@ class Env
 {
 
 	private static $config = [];
+	//private static $defaultDefinition = ;
 	
 	static function get($key = null) {
 		if (empty(self::$config)) {
@@ -20,6 +21,22 @@ class Env
 	}
 	
 	public static function init($definition) {
+		if(is_string($definition)) {
+			$definition = [
+				'commands' => [],
+				'filters' => [
+					[
+						'class' => 'yii2lab\app\domain\filters\env\LoadConfig',
+						'paths' => [
+							$definition,
+							'vendor/yii2lab/yii2-app/src/domain/config',
+						],
+					],
+					'yii2lab\app\domain\filters\env\YiiEnv',
+					'yii2lab\app\domain\filters\env\NormalizeDbConfig',
+				],
+			];
+		}
 		self::$config = self::load($definition);
 	}
 	
