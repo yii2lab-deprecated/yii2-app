@@ -10,4 +10,4 @@ settings:
 modules:
     config:
         Yii2:
-            configFile: '../../yii2lab/yii2-app/src/loadConfig.php'
+            configFile: 'tests/_config/unit.php'
