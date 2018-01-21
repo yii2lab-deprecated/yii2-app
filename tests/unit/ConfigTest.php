@@ -22,6 +22,13 @@ class ConfigTest extends Unit
 		expect($configExpect)->equals($config);
 	}
 	
+	public function testEnvGetDefinition()
+	{
+		$definition = $this->loadData('definitionEnv.php');
+		$definitionGenerated = Env::getDefinition('vendor/yii2lab/yii2-app/tests/store/app');
+		expect($definition)->equals($definitionGenerated);
+	}
+	
 	public function testLoadEnv()
 	{
 		$definition = $this->loadData('definitionEnv.php');
