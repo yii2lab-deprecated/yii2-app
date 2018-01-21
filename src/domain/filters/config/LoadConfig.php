@@ -57,6 +57,9 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	
 	protected function requireConfigItem($from, $name) {
 		$config = @include(ROOT_DIR . DS . $from . DS  . 'config' . DS . $name.'.php');
+		if(empty($config)) {
+			$config = @include(ROOT_DIR . DS . $from . DS  . $name.'.php');
+		}
 		$config = !empty($config) ? $config : [];
 		$config = $this->normalizeItems($config);
 		return $config;
