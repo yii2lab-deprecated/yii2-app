@@ -69,6 +69,10 @@ return [
 			'class' => 'yii\\db\\Connection',
 			'charset' => 'utf8',
 			'enableSchemaCache' => false,
+			'username' => 'root',
+			'password' => '',
+			'tablePrefix' => '',
+			'dsn' => 'mysql:host=localhost;dbname=qrpay_test',
 		],
 		'mailer' => [
 			'class' => 'yii\\swiftmailer\\Mailer',
@@ -79,10 +83,10 @@ return [
 			'fileTransportPath' => '@common/runtime/mail',
 			'transport' => [
 				'class' => 'Swift_SmtpTransport',
-				'host' => null,
-				'username' => null,
-				'password' => null,
-				'port' => 25,
+				'host' => 'mail',
+				'username' => 'info@qrp.kz',
+				'password' => 'SEqwBmUlnykbj2p5',
+				'port' => '25',
 			],
 		],
 		'queue' => [
@@ -136,20 +140,6 @@ return [
 			],
 			'id' => 'tool',
 		],
-		'encrypt' => [
-			'class' => 'yii2module\\encrypt\\domain\\Domain',
-			'id' => 'encrypt',
-			'services' => [
-				'coder' => [
-					'profiles' => [
-						'default' => [
-							'password' => 'qwerty123',
-							'iv' => 'ZZZZZZZZZZZZZZZZ',
-						],
-					],
-				],
-			],
-		],
 		'account' => [
 			'class' => 'yii2lab\\domain\\Domain',
 			'path' => 'yii2woop\\account\\domain',
@@ -174,20 +164,20 @@ return [
 				],
 			],
 			'repositories' => [
-				'auth' => 'disc',
-				'login' => 'disc',
+				'auth' => 'ar',
+				'login' => 'ar',
 				'authClient' => 'domain\\v4\\account\\repositories\\ar\\AuthClientRepository',
 				'authCashier' => 'domain\\v4\\account\\repositories\\ar\\AuthCashierRepository',
 				'point' => 'domain\\v4\\account\\repositories\\ar\\PointRepository',
-				'registration' => 'disc',
+				'registration' => 'ar',
 				'temp' => 'ar',
-				'restorePassword' => 'disc',
-				'security' => 'disc',
+				'restorePassword' => 'ar',
+				'security' => 'ar',
 				'test' => 'disc',
-				'balance' => 'disc',
+				'balance' => 'ar',
 				'rbac' => 'memory',
 				'confirm' => 'ar',
-				'assignment' => 'disc',
+				'assignment' => 'ar',
 				'merchant' => 'domain\\v4\\account\\repositories\\ar\\MerchantRepository',
 				'cashier' => 'domain\\v4\\account\\repositories\\ar\\CashierRepository',
 				'manager' => 'domain\\v4\\account\\repositories\\ar\\ManagerRepository',
@@ -287,7 +277,7 @@ return [
 					'size' => 256,
 				],
 				'qr' => 'file',
-				'iin' => 'disc',
+				'iin' => 'ar',
 				'active' => 'ar',
 			],
 			'services' => [
@@ -376,22 +366,6 @@ return [
 				'flash' => [],
 			],
 		],
-		'geo' => [
-			'class' => 'yii2lab\\geo\\domain\\Domain',
-			'id' => 'geo',
-			'repositories' => [
-				'region' => [],
-				'city' => [],
-				'country' => [],
-				'currency' => [],
-			],
-			'services' => [
-				'region' => [],
-				'city' => [],
-				'country' => [],
-				'currency' => [],
-			],
-		],
 		'service' => [
 			'class' => 'yii2woop\\service\\domain\\v1\\Domain',
 			'id' => 'service',
@@ -433,18 +407,6 @@ return [
 			'repositories' => [
 				'generator' => 'file',
 				'cache' => 'ar',
-			],
-		],
-		'article' => [
-			'class' => 'yii2module\\article\\domain\\Domain',
-			'id' => 'article',
-			'repositories' => [
-				'article' => 'disc',
-				'category' => 'disc',
-				'categories' => 'disc',
-			],
-			'services' => [
-				'article' => [],
 			],
 		],
 		'core' => [
@@ -608,9 +570,9 @@ return [
 		'user.auth.rememberExpire' => 2592000,
 		'user.login.mask' => '+9 (999) 999-99-99',
 		'url' => [
-			'frontend' => 'http:///',
-			'backend' => 'http://admin./',
-			'api' => 'http://api./',
+			'frontend' => 'http://qr.yii/',
+			'backend' => 'http://admin.qr.yii/',
+			'api' => 'http://api.qr.yii/',
 		],
 		'adminEmail' => 'admin@example.com',
 		'fixture' => [
@@ -643,7 +605,49 @@ return [
 				'qr' => 'images/qr',
 			],
 		],
-		'servers' => null,
+		'servers' => [
+			'db' => [
+				'main' => [
+					'driver' => 'pgsql',
+					'host' => 'dbweb',
+					'username' => 'logging',
+					'password' => 'moneylogger',
+					'dbname' => 'qrpay',
+					'defaultSchema' => 'qrpay',
+				],
+				'test' => [
+					'driver' => 'mysql',
+					'host' => 'localhost',
+					'username' => 'root',
+					'password' => '',
+					'dbname' => 'qrpay_test',
+				],
+			],
+			'static' => [
+				'domain' => 'http://qr.yii/',
+				'publicPath' => '@frontend/web/',
+			],
+			'wsdl' => [
+				'domain' => 'http://www.test.wooppay.com/api/wsdl',
+				'payment_hash' => 'Q8nFbQeU236zYQmHDq5vHVqeQBgjNmu9sTCVtEP7hL7p6kKC2vJc66pUGbrAhD3G',
+				'user' => [
+					[
+						'login' => 'QRPayMerchant',
+						'password' => 'A12345678a',
+					],
+					[
+						'login' => 'QRPaySub',
+						'password' => 'A12345678a',
+					],
+				],
+			],
+			'mail' => [
+				'host' => 'mail',
+				'username' => 'info@qrp.kz',
+				'password' => 'SEqwBmUlnykbj2p5',
+				'port' => '25',
+			],
+		],
 		'MRP' => 2121,
 		'EPAY_PERCENT' => 2,
 		'EpayPath' => 'C:\\OpenServer\\domains\\qr.yii\\vendor\\yii2lab\\yii2-app\\tests\\store\\app\\common\\config/../../../epay_test/',

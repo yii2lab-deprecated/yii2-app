@@ -52,9 +52,6 @@ return [
 			],
 		],
 	],
-	'encrypt' => [
-		'class' => 'yii2module\encrypt\domain\Domain',
-	],
 	/*'active' => [
 		'class' => Domain::class,
 		'path' => 'domain\v4\active',
@@ -321,11 +318,10 @@ return [
 		],
 	],*/
 	'notify' => 'yii2lab\notify\domain\Domain',
-	'geo' => 'yii2lab\geo\domain\Domain',
+	//'geo' => 'yii2lab\geo\domain\Domain',
 	'service' => 'yii2woop\service\domain\v1\Domain',
 	'serviceV5' => 'yii2woop\service\domain\v2\Domain',
 	'qr' => 'yii2lab\qr\domain\Domain',
-	'article' => 'yii2module\article\domain\Domain',
 	'core' => 'yii2lab\core\domain\Domain',
 	'navigation' => 'yii2lab\navigation\domain\Domain',
 	'app' => 'yii2lab\app\domain\Domain',

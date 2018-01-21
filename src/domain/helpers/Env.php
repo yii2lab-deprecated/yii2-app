@@ -21,6 +21,10 @@ class Env
 	}
 	
 	public static function init($definition) {
+		self::$config = self::load($definition);
+	}
+	
+	public static function load($definition = []) {
 		if(is_string($definition)) {
 			$definition = [
 				'commands' => [],
@@ -37,10 +41,6 @@ class Env
 				],
 			];
 		}
-		self::$config = self::load($definition);
-	}
-	
-	public static function load($definition = []) {
 		return EnvLoader::run($definition);
 	}
 	

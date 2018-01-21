@@ -12,7 +12,7 @@ class ConfigTest extends Unit
 	
 	const DATA_PATH_ALIAS = '@vendor/yii2lab/yii2-app/tests/store/';
 	
-	/*public function testLoadConfig()
+	public function testLoadConfig()
 	{
 		$env = $this->loadData('app/common/config/env.php');
 		$envLocal = $this->loadData('app/common/config/env-local.php');
@@ -20,7 +20,7 @@ class ConfigTest extends Unit
 		$config = Config::load($env['config']);
 		$configExpect = $this->loadData('resultConfig.php', $config);
 		expect($configExpect)->equals($config);
-	}*/
+	}
 	
 	public function testLoadEnv()
 	{
