@@ -4,7 +4,7 @@ use yii2lab\app\domain\helpers\Db;
 use yii2module\lang\domain\enums\LanguageEnum;
 
 return [
-	'name' => 'Qrpay',
+	'name' => 'Test',
 	'language' => LanguageEnum::RU, // current Language
 	'sourceLanguage' => LanguageEnum::SOURCE, // Language development
 	'bootstrap' => ['log', 'language', 'queue'],
@@ -17,10 +17,6 @@ return [
 		'language' => 'yii2module\lang\domain\components\Language',
         'user' => [
 			'class' => 'yii2woop\account\domain\web\User',
-			//'identityClass' => 'yii2woop\account\domain\models\User',
-		],
-		'httpClient' => [
-			'class' => 'yii\httpclient\Client',
 		],
 		'log' => [
 			'targets' => [
@@ -76,19 +72,10 @@ return [
             'textLayout' => '@yii2lab/notify/domain/mail/layouts/text',
 			'useFileTransport' => YII_DEBUG,
 			'fileTransportPath' => '@common/runtime/mail',
-			'transport' => [
-				'class' => 'Swift_SmtpTransport',
-				'host' => env('servers.mail.host'),
-				'username' => env('servers.mail.username'),
-				'password' => env('servers.mail.password'),
-				'port' => env('servers.mail.port', 25),
-				//'encryption' => 'ssl', // It is often used, check your provider or mail server specs
-			],
 		],
 		'queue' => [
 			'class' => 'yii\queue\file\Queue',
 			'path' => '@common/runtime/queue',
 		],
-		'security' => 'domain\v4\account\base\Security',
 	],
 ];

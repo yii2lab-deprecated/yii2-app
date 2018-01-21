@@ -1,15 +1,15 @@
 <?php
 
 return [
-	'project' => 'qrpay',
+	'project' => 'test',
 	'mode' => [
 		'debug' => true,
 		'env' => 'dev',
 	],
 	'url' => [
-		'frontend' => 'http://qr.yii/',
-		'backend' => 'http://admin.qr.yii/',
-		'api' => 'http://api.qr.yii/',
+		'frontend' => 'http://example.com/',
+		'backend' => 'http://admin.example.com/',
+		'api' => 'http://api.example.com/',
 	],
 	'cookieValidationKey' => [
 		'frontend' => 'bBXEWnH5ERCG7SF3wxtbotYxq3W-Op7B',
@@ -24,52 +24,19 @@ return [
 	'servers' => [
 		'db' => [
 			'main' => [
-				'driver' => 'pgsql',
-				'host' => 'dbweb',
-				'username' => 'logging',
-				'password' => 'moneylogger',
-				'dbname' => 'qrpay',
-				'defaultSchema' => 'qrpay',
+				'driver' => 'mysql',
+				'host' => 'localhost',
+				'username' => 'root',
+				'password' => '',
+				'dbname' => 'example',
 			],
 			'test' => [
 				'driver' => 'mysql',
 				'host' => 'localhost',
 				'username' => 'root',
 				'password' => '',
-				'dbname' => 'qrpay_test',
+				'dbname' => 'example_test',
 			],
-		],
-		'static' => [
-			'domain' => 'http://qr.yii/',
-			'publicPath' => '@frontend/web/',
-			/*'connection' => [
-				'address' => '192.168.8.10',
-				'port' => '22',
-				'username' => 'static',
-				'password' => '',
-				'publicKey' => dirname(__FILE__) . '/../../../keys/static.pub',
-				'privateKey' => dirname(__FILE__) . '/../../../keys/static.ppk',
-			],*/
-		],
-		'wsdl' => [
-			'domain' => 'http://www.test.wooppay.com/api/wsdl',
-			'payment_hash' => 'Q8nFbQeU236zYQmHDq5vHVqeQBgjNmu9sTCVtEP7hL7p6kKC2vJc66pUGbrAhD3G',
-			'user' => [
-				[
-					'login' => 'QRPayMerchant',
-					'password' => 'A12345678a',
-				],
-				[
-					'login' => 'QRPaySub',
-					'password' => 'A12345678a',
-				],
-			],
-		],
-		'mail' => [
-			'host' => 'mail',
-			'username' => 'info@qrp.kz',
-			'password' => 'SEqwBmUlnykbj2p5',
-			'port' => '25',
 		],
 	],
 ];
