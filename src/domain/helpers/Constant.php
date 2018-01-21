@@ -76,7 +76,7 @@ class Constant {
 	}
 	
 	private static function getRootDir() {
-		$up = DIRECTORY_SEPARATOR . '..';
+		$up = DS . '..';
 		$upScope = str_repeat($up, 6);
 		return realpath(__DIR__ . $upScope);
 	}
