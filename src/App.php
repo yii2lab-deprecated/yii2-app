@@ -20,10 +20,10 @@ class App
 	];
 	private static $initedAs = null;
 	
-	public static function run($appName = null, $appDir = 'common/config')
+	public static function run($appName = null, $projectDir = '')
 	{
 		if(!empty($appName)) {
-			self::init($appName, $appDir);
+			self::init($appName, $projectDir);
 		}
 		$definition = Env::get('config');
 		Config::init($definition);
@@ -31,7 +31,7 @@ class App
 		self::runApplication($config);
 	}
 
-	public static function init($appName, $appDir = 'common/config')
+	public static function init($appName, $projectDir = '')
 	{
 		if(self::$initedAs) {
 			return;
@@ -40,7 +40,7 @@ class App
 		Load::helpers();
 		Constant::init($appName);
 		Load::autoload();
-		Env::init(self::envDefinition($appDir));
+		Env::init($projectDir);
 		$env = Env::get();
 		Constant::setYiiEnv($env);
 		Load::required();
@@ -72,20 +72,4 @@ class App
 		CommandHelper::runAll($commands);
 	}
 	
-	public static function envDefinition($evnConfigDir) {
-		return [
-			'commands' => [],
-			'filters' => [
-				[
-					'class' => 'yii2lab\app\domain\filters\env\LoadConfig',
-					'paths' => [
-						$evnConfigDir,
-						'vendor/yii2lab/yii2-app/src/domain/config',
-					],
-				],
-				'yii2lab\app\domain\filters\env\YiiEnv',
-				'yii2lab\app\domain\filters\env\NormalizeDbConfig',
-			],
-		];
-	}
 }

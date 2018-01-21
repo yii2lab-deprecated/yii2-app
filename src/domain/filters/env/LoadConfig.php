@@ -11,10 +11,7 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	const FILE_ENV = 'env';
 	const FILE_ENV_LOCAL = 'env-local';
 	
-	public $paths = [
-		'common/config',
-		'vendor/yii2lab/yii2-app/src/domain/config',
-	];
+	public $paths = [];
 	
 	public function run($config) {
 		$mainConfig = $this->loadByFileName(self::FILE_ENV);
