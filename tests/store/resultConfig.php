@@ -88,7 +88,7 @@ return [
 			'id' => 'lang',
 			'repositories' => [
 				'language' => 'disc',
-				'store' => 'cookie',
+				'store' => 'mock',
 			],
 			'services' => [
 				'language' => [
