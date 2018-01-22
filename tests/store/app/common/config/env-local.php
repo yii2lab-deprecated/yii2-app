@@ -17,7 +17,7 @@ return [
 	],
 	'domain' => [
 		'driver' => [
-			'primary' => 'ar',
+			'primary' => 'disc',
 			'slave' => 'ar',
 		],
 	],
