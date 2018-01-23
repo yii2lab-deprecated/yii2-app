@@ -1,6 +1,6 @@
 <?php
 
-namespace api\tests\unit\helpers;
+namespace tests\unit\helpers;
 
 use Codeception\Test\Unit;
 use yii\helpers\ArrayHelper;
@@ -41,8 +41,8 @@ class ConfigTest extends Unit
 	
 	public function testLoadConfig()
 	{
-		$env = DataHelper::load(self::PACKAGE, 'store/app/common/config/env.php');
-		$envLocal = DataHelper::load(self::PACKAGE, 'store/app/common/config/env-local.php');
+		$env = DataHelper::load(self::PACKAGE, '_application/common/config/env.php');
+		$envLocal = DataHelper::load(self::PACKAGE, '_application/common/config/env-local.php');
 		$env = ArrayHelper::merge($env, $envLocal);
 		$config = Config::load($env['config']);
 		$configExpect = DataHelper::load(self::PACKAGE, 'store/resultConfig.php', $config);

@@ -53,7 +53,7 @@ class Env
 	private static function initItem($projectDir) {
 		$projectDir = FileHelper::trimRootPath($projectDir);
 		$definitionItem = trim($projectDir, '/') . '/common/config';
-		$definitionItem = trim($definitionItem, '/');
+		//$definitionItem = trim($definitionItem, '/');
 		return $definitionItem;
 	}
 	
