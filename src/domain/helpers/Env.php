@@ -3,6 +3,7 @@
 namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
+use yii2lab\helpers\yii\FileHelper;
 
 class Env
 {
@@ -50,6 +51,7 @@ class Env
 	}
 	
 	private static function initItem($projectDir) {
+		$projectDir = FileHelper::trimRootPath($projectDir);
 		$definitionItem = trim($projectDir, '/') . '/common/config';
 		$definitionItem = trim($definitionItem, '/');
 		return $definitionItem;
