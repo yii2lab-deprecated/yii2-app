@@ -73,6 +73,7 @@ class Constant {
 		define('CONSOLE_DIR', ROOT_DIR . DS . CONSOLE);
 		define('VENDOR_DIR', ROOT_DIR . DS . VENDOR);
 		define('DOMAIN_DIR', ROOT_DIR . DS . DOMAIN);
+		define('TEST_APPLICATION_DIR', 'vendor/yii2lab/yii2-test/src/base/_application');
 	}
 	
 	private static function getRootDir() {

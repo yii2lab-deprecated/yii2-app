@@ -21,6 +21,24 @@ class ConfigTest extends Unit
 	
 	const PACKAGE = 'yii2lab/yii2-app';
 	
+	public function testLoadEnv()
+	{
+		$definition = DataHelper::load(self::PACKAGE, 'store/definitionEnv.php');
+		$config = Env::load($definition);
+		$configExpect = DataHelper::load(self::PACKAGE, 'store/resultEnv.php', $config);
+		expect($configExpect)->equals($config);
+	}
+	
+	public function testEnvGetDefinition()
+	{
+		$definition = DataHelper::load(self::PACKAGE, 'store/definitionEnv.php');
+		$definitionGenerated = Env::getDefinition(TEST_APPLICATION_DIR);
+		expect($definition)->equals($definitionGenerated);
+		
+		$definitionGenerated = Env::getDefinition([TEST_APPLICATION_DIR]);
+		expect($definition)->equals($definitionGenerated);
+	}
+	
 	public function testLoadConfig()
 	{
 		$env = DataHelper::load(self::PACKAGE, 'store/app/common/config/env.php');
@@ -28,24 +46,6 @@ class ConfigTest extends Unit
 		$env = ArrayHelper::merge($env, $envLocal);
 		$config = Config::load($env['config']);
 		$configExpect = DataHelper::load(self::PACKAGE, 'store/resultConfig.php', $config);
-		expect($configExpect)->equals($config);
-	}
-	
-	public function testEnvGetDefinition()
-	{
-		$definition = DataHelper::load(self::PACKAGE, 'store/definitionEnv.php');
-		$definitionGenerated = Env::getDefinition('vendor/yii2lab/yii2-app/tests/store/app');
-		expect($definition)->equals($definitionGenerated);
-		
-		$definitionGenerated = Env::getDefinition(['vendor/yii2lab/yii2-app/tests/store/app']);
-		expect($definition)->equals($definitionGenerated);
-	}
-	
-	public function testLoadEnv()
-	{
-		$definition = DataHelper::load(self::PACKAGE, 'store/definitionEnv.php');
-		$config = Env::load($definition);
-		$configExpect = DataHelper::load(self::PACKAGE, 'store/resultEnv.php', $config);
 		expect($configExpect)->equals($config);
 	}
 	
