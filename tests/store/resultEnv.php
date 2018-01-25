@@ -99,9 +99,9 @@ return [
 		'env' => 'test',
 	],
 	'url' => [
-		'frontend' => 'http://example.com/',
-		'backend' => 'http://admin.example.com/',
-		'api' => 'http://api.example.com/',
+		'frontend' => 'http://qr.yii/',
+		'backend' => 'http://admin.qr.yii/',
+		'api' => 'http://api.qr.yii/',
 	],
 	'cookieValidationKey' => [
 		'frontend' => 'bBXEWnH5ERCG7SF3wxtbotYxq3W-Op7B',
@@ -116,39 +116,65 @@ return [
 	'servers' => [
 		'db' => [
 			'main' => [
-				'driver' => 'mysql',
-				'host' => 'localhost',
-				'username' => 'root',
-				'password' => '',
-				'dbname' => 'example',
+				'driver' => 'pgsql',
+				'host' => 'dbweb',
+				'username' => 'logging',
+				'password' => 'moneylogger',
+				'dbname' => 'qrpay',
+				'defaultSchema' => 'qrpay',
 			],
 			'test' => [
 				'driver' => 'mysql',
 				'host' => 'localhost',
 				'username' => 'root',
 				'password' => '',
-				'dbname' => 'example_test',
+				'dbname' => 'qrpay_test',
 			],
+		],
+		'static' => [
+			'domain' => 'http://qr.yii/',
+			'publicPath' => '@frontend/web/',
+		],
+		'wsdl' => [
+			'domain' => 'http://www.test.wooppay.com/api/wsdl',
+			'payment_hash' => 'Q8nFbQeU236zYQmHDq5vHVqeQBgjNmu9sTCVtEP7hL7p6kKC2vJc66pUGbrAhD3G',
+			'user' => [
+				[
+					'login' => 'QRPayMerchant',
+					'password' => 'A12345678a',
+				],
+				[
+					'login' => 'QRPaySub',
+					'password' => 'A12345678a',
+				],
+			],
+		],
+		'mail' => [
+			'host' => 'mail',
+			'username' => 'info@qrp.kz',
+			'password' => 'SEqwBmUlnykbj2p5',
+			'port' => '25',
 		],
 	],
 	'db' => [
 		'main' => [
-			'driver' => 'mysql',
-			'host' => 'localhost',
-			'username' => 'root',
-			'password' => '',
-			'dbname' => 'example',
+			'driver' => 'pgsql',
+			'host' => 'dbweb',
+			'username' => 'logging',
+			'password' => 'moneylogger',
+			'dbname' => 'qrpay',
+			'defaultSchema' => 'qrpay',
 			'tablePrefix' => '',
-			'dsn' => 'mysql:host=localhost;dbname=example',
+			'dsn' => 'pgsql:host=dbweb;dbname=qrpay',
 		],
 		'test' => [
 			'driver' => 'mysql',
 			'host' => 'localhost',
 			'username' => 'root',
 			'password' => '',
-			'dbname' => 'example_test',
+			'dbname' => 'qrpay_test',
 			'tablePrefix' => '',
-			'dsn' => 'mysql:host=localhost;dbname=example_test',
+			'dsn' => 'mysql:host=localhost;dbname=qrpay_test',
 		],
 	],
 ];
