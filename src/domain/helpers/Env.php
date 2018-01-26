@@ -41,8 +41,8 @@ class Env extends BaseConfig {
 	
 	private static function initItem($projectDir) {
 		$projectDir = FileHelper::trimRootPath($projectDir);
-		$definitionItem = trim($projectDir, '/') . '/common/config';
-		$definitionItem = trim($definitionItem, '/');
+		$definitionItem = trim($projectDir, SL) . '/common/config';
+		$definitionItem = trim($definitionItem, SL);
 		return $definitionItem;
 	}
 	
