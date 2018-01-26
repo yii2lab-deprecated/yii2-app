@@ -30,50 +30,50 @@ class Constant {
 	}
 	
 	public static function setApplication($appName) {
-		define('APP', $appName);
-		define('APP_DIR', ROOT_DIR . DS . strtolower($appName));
+		defined('APP') OR define('APP', $appName);
+		defined('APP_DIR') OR define('APP_DIR', ROOT_DIR . DS . strtolower($appName));
 		//Yii::setAlias('@app', APP_DIR);
 	}
 	
 	private static function setNames() {
-		define('COMMON', 'common');
-		define('FRONTEND', 'frontend');
-		define('BACKEND', 'backend');
-		define('API', 'api');
-		define('CONSOLE', 'console');
-		define('VENDOR', 'vendor');
-		define('DOMAIN', 'domain');
+		defined('COMMON') OR define('COMMON', 'common');
+		defined('FRONTEND') OR define('FRONTEND', 'frontend');
+		defined('BACKEND') OR define('BACKEND', 'backend');
+		defined('API') OR define('API', 'api');
+		defined('CONSOLE') OR define('CONSOLE', 'console');
+		defined('VENDOR') OR define('VENDOR', 'vendor');
+		defined('DOMAIN') OR define('DOMAIN', 'domain');
 	}
 	
 	private static function setBase() {
-		define('DS', DIRECTORY_SEPARATOR);
-		define('SL', '/');
-		define('BSL', '\\');
-		define('NBSP', '&nbsp;');
-		define('NBSP2X', '&nbsp;&nbsp;');
-		define('NS', "\n"); //new string Linux
-		//define('NSW', "\r\n"); //new string Windows
-		define('BL', '_'); //bottom line
-		define('DL', '-'); //dash line
-		define('DOT', '.');
-		define('SPC', ' ');
-		define('EMP', '');
-		define('TAB', "\t");
-		define('BR', '<br/>');
-		define('TIMESTAMP', time());
+		defined('DS') OR define('DS', DIRECTORY_SEPARATOR);
+		defined('SL') OR define('SL', '/');
+		defined('BSL') OR define('BSL', '\\');
+		defined('NBSP') OR define('NBSP', '&nbsp;');
+		//defined('NBSP2X') OR define('NBSP2X', '&nbsp;&nbsp;');
+		defined('NS') OR define('NS', "\n"); //new string Linux
+		//defined('NSW') OR define('NSW', "\r\n"); //new string Windows
+		defined('BL') OR define('BL', '_'); //bottom line
+		defined('DL') OR define('DL', '-'); //dash line
+		defined('DOT') OR define('DOT', '.');
+		defined('SPC') OR define('SPC', ' ');
+		defined('EMP') OR define('EMP', '');
+		defined('TAB') OR define('TAB', "\t");
+		defined('BR') OR define('BR', '<br/>');
+		defined('TIMESTAMP') OR define('TIMESTAMP', time());
 	}
 	
 	private static function setDirs() {
-		define('ROOT_DIR', self::getRootDir());
-		define('COMMON_DIR', ROOT_DIR . DS . COMMON);
-		define('COMMON_DATA_DIR', COMMON_DIR . DS . 'data');
-		define('FRONTEND_DIR', ROOT_DIR . DS . FRONTEND);
-		define('BACKEND_DIR', ROOT_DIR . DS . BACKEND);
-		define('API_DIR', ROOT_DIR . DS . API);
-		define('CONSOLE_DIR', ROOT_DIR . DS . CONSOLE);
-		define('VENDOR_DIR', ROOT_DIR . DS . VENDOR);
-		define('DOMAIN_DIR', ROOT_DIR . DS . DOMAIN);
-		define('TEST_APPLICATION_DIR', 'vendor/yii2lab/yii2-test/src/base/_application');
+		defined('ROOT_DIR') OR define('ROOT_DIR', self::getRootDir());
+		defined('COMMON_DIR') OR define('COMMON_DIR', ROOT_DIR . DS . COMMON);
+		defined('COMMON_DATA_DIR') OR define('COMMON_DATA_DIR', COMMON_DIR . DS . 'data');
+		defined('FRONTEND_DIR') OR define('FRONTEND_DIR', ROOT_DIR . DS . FRONTEND);
+		defined('BACKEND_DIR') OR define('BACKEND_DIR', ROOT_DIR . DS . BACKEND);
+		defined('API_DIR') OR define('API_DIR', ROOT_DIR . DS . API);
+		defined('CONSOLE_DIR') OR define('CONSOLE_DIR', ROOT_DIR . DS . CONSOLE);
+		defined('VENDOR_DIR') OR define('VENDOR_DIR', ROOT_DIR . DS . VENDOR);
+		defined('DOMAIN_DIR') OR define('DOMAIN_DIR', ROOT_DIR . DS . DOMAIN);
+		defined('TEST_APPLICATION_DIR') OR define('TEST_APPLICATION_DIR', 'vendor/yii2lab/yii2-test/src/base/_application');
 	}
 	
 	private static function getRootDir() {
