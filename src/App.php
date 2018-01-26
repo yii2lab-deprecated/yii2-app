@@ -40,7 +40,7 @@ class App
 		Constant::setYiiEnv($env);
 		Load::required();
 		Constant::setAliases();
-		CommandHelper::runAll(Env::get('app.commands'));
+		CommandHelper::runAll(Env::get('app.commands', []));
 		self::$initedAs = $appName;
 	}
 	

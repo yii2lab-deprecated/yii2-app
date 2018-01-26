@@ -11,12 +11,16 @@ class Config {
 	
 	private static $config = [];
 	
-	static function get($key = null) {
-		if (empty(self::$config)) {
+	static function get($key = null, $default = null) {
+		if(empty(self::$config)) {
 			return null;
 		}
 		if(empty($key)) {
 			return self::$config;
+		}
+		$value = ArrayHelper::getValue(self::$config, $key);
+		if(func_num_args() > 1 && $value === null) {
+			return $default;
 		}
 		return ArrayHelper::getValue(self::$config, $key);
 	}
