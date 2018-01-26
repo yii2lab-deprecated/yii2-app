@@ -11,6 +11,7 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	public $withLocal = true;
 	public $name;
 	public $app = APP;
+	public $dir = EMP;
 	public $assignTo;
 	
 	public function run($config) {
@@ -57,10 +58,9 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	
 	protected function requireConfigItem($from, $name) {
 		$config = @include(ROOT_DIR . DS . $from . DS  . 'config' . DS . $name.'.php');
-		if(empty($config)) {
-			$config = @include(ROOT_DIR . DS . $from . DS  . $name.'.php');
+		if(empty($config) || !is_array($config)) {
+			return [];
 		}
-		$config = !empty($config) ? $config : [];
 		$config = $this->normalizeItems($config);
 		return $config;
 	}

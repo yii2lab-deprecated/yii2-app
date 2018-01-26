@@ -8,16 +8,11 @@ use yii2lab\app\domain\helpers\Env;
 use yii2lab\app\domain\helpers\Constant;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Load;
-use yii2lab\helpers\Helper;
 use yii2lab\designPattern\command\helpers\CommandHelper;
 
 class App
 {
 	
-	private static $commands = [
-		'yii2lab\app\domain\commands\RunBootstrap',
-		'yii2lab\app\domain\commands\ApiVersion',
-	];
 	private static $initedAs = null;
 	
 	public static function run($appName = null, $projectDir = '')
@@ -45,7 +40,7 @@ class App
 		Constant::setYiiEnv($env);
 		Load::required();
 		Constant::setAliases();
-		self::runCommands(self::$commands, $appName, $env);
+		CommandHelper::runAll(Env::get('app.commands'));
 		self::$initedAs = $appName;
 	}
 	
@@ -59,17 +54,6 @@ class App
 			$application = new WebApplication($config);
 			$application->run();
 		}
-	}
-	
-	private static function runCommands($commands, $appName, $config) {
-		if(empty($commands)) {
-			return null;
-		}
-		$commands = Helper::assignAttributesForList($commands, [
-			'appName' => $appName,
-			'env' => $config,
-		]);
-		CommandHelper::runAll($commands);
 	}
 	
 }

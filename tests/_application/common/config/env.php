@@ -1,5 +1,7 @@
 <?php
 
+use yii2lab\app\domain\commands\ApiVersion;
+use yii2lab\app\domain\commands\RunBootstrap;
 use yii2lab\app\domain\filters\config\LoadConfig;
 use yii2lab\app\domain\filters\config\LoadModuleConfig;
 use yii2lab\domain\filters\LoadDomainConfig;
@@ -8,6 +10,22 @@ use yii2lab\misc\enums\YiiEnvEnum;
 $basePath = 'vendor/yii2lab/yii2-app/tests/store/app/';
 
 return [
+	'app' => [
+		'commands' => [
+			[
+				'class' => RunBootstrap::class,
+				'app' => COMMON,
+			],
+			[
+				'class' => RunBootstrap::class,
+				'app' => APP,
+			],
+			[
+				'class' => ApiVersion::class,
+				'isEnabled' => APP == API,
+			],
+		],
+	],
 	'config' => [
 		'filters' => [
 			[

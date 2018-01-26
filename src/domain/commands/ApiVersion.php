@@ -8,13 +8,7 @@ use yii2lab\designPattern\command\interfaces\CommandInterface;
 
 class ApiVersion extends BaseObject implements CommandInterface {
 
-	public $appName;
-	public $env;
-	
 	public function run() {
-		if($this->appName != API) {
-			return null;
-		}
 		$version = self::getApiVersion();
 		if(empty($version)) {
 			self::showError();

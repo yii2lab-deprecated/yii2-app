@@ -1,6 +1,22 @@
 <?php 
 
 return [
+	'app' => [
+		'commands' => [
+			[
+				'class' => 'yii2lab\\app\\domain\\commands\\RunBootstrap',
+				'app' => 'common',
+			],
+			[
+				'class' => 'yii2lab\\app\\domain\\commands\\RunBootstrap',
+				'app' => 'console',
+			],
+			[
+				'class' => 'yii2lab\\app\\domain\\commands\\ApiVersion',
+				'isEnabled' => false,
+			],
+		],
+	],
 	'config' => [
 		'filters' => [
 			[
