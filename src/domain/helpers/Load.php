@@ -7,6 +7,7 @@ class Load
 
 	public static function helpers()
 	{
+		require('BaseConfig.php');
 		require('Env.php');
 		require('Constant.php');
 		require('Func.php');

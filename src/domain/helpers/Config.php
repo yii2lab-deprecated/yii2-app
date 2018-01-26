@@ -7,22 +7,19 @@ use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
 use yii2lab\helpers\Helper;
 
-class Config {
+class Config extends BaseConfig {
 	
-	private static $config = [];
+	protected static $config = [];
 	
-	static function get($key = null, $default = null) {
-		if(empty(self::$config)) {
-			return null;
-		}
-		if(empty($key)) {
-			return self::$config;
-		}
-		$value = ArrayHelper::getValue(self::$config, $key);
-		if(func_num_args() > 1 && $value === null) {
-			return $default;
-		}
-		return ArrayHelper::getValue(self::$config, $key);
+	public static function init($definition) {
+		static::$config = self::load($definition);
+	}
+	
+	public static function load($definition = []) {
+		$definition['class'] = Handler::class;
+		/** @var Handler $loader */
+		$loader = Helper::createObject($definition);
+		return $loader->run();
 	}
 	
 	/**
@@ -85,17 +82,6 @@ class Config {
 				],
 			],
 		];
-	}
-	
-	public static function init($definition) {
-		self::$config = self::load($definition);
-	}
-	
-	public static function load($definition = []) {
-		$definition['class'] = Handler::class;
-		/** @var Handler $loader */
-		$loader = Helper::createObject($definition);
-		return $loader->run();
 	}
 	
 }

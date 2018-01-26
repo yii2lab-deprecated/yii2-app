@@ -5,28 +5,13 @@ namespace yii2lab\app\domain\helpers;
 use yii\helpers\ArrayHelper;
 use yii2lab\helpers\yii\FileHelper;
 
-class Env {
-
-	private static $config = [];
+class Env extends BaseConfig {
 	
-	static function get($key = null, $default = null) {
-		if(empty(self::$config)) {
-			return null;
-		}
-		if(empty($key)) {
-			return self::$config;
-		}
-		$value = ArrayHelper::getValue(self::$config, $key);
-		if(func_num_args() > 1 && $value === null) {
-			return $default;
-		}
-		return ArrayHelper::getValue(self::$config, $key);
-	}
+	protected static $config = [];
 	
 	public static function init($projectDir) {
 		$definition = self::getDefinition($projectDir);
-		//print_r(self::load($definition));exit;
-		self::$config = self::load($definition);
+		static::$config = self::load($definition);
 	}
 	
 	public static function load($definition) {
