@@ -14,11 +14,11 @@ return [
 		'commands' => [
 			[
 				'class' => RunBootstrap::class,
-				'app' => COMMON,
+				'app' => $basePath . COMMON,
 			],
 			[
 				'class' => RunBootstrap::class,
-				'app' => APP,
+				'app' => $basePath . APP,
 			],
 			[
 				'class' => ApiVersion::class,

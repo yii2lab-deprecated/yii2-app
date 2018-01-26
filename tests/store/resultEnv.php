@@ -5,11 +5,11 @@ return [
 		'commands' => [
 			[
 				'class' => 'yii2lab\\app\\domain\\commands\\RunBootstrap',
-				'app' => 'common',
+				'app' => 'vendor/yii2lab/yii2-test/src/base/_application\\common',
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\commands\\RunBootstrap',
-				'app' => 'console',
+				'app' => 'vendor/yii2lab/yii2-test/src/base/_application\\console',
 			],
 			[
 				'class' => 'yii2lab\\app\\domain\\commands\\ApiVersion',
@@ -109,11 +109,6 @@ return [
 			'yii2lab\\domain\\filters\\SetDomainTranslationConfig',
 		],
 	],
-	'project' => 'test',
-	'mode' => [
-		'debug' => true,
-		'env' => 'test',
-	],
 	'url' => [
 		'frontend' => 'http://qr.yii/',
 		'backend' => 'http://admin.qr.yii/',
@@ -122,6 +117,11 @@ return [
 	'cookieValidationKey' => [
 		'frontend' => 'bBXEWnH5ERCG7SF3wxtbotYxq3W-Op7B',
 		'backend' => 'zbfqVR5PhdO3E8Xi7DB4aoxmxSstJ6aI',
+	],
+	'project' => 'test',
+	'mode' => [
+		'debug' => true,
+		'env' => 'test',
 	],
 	'domain' => [
 		'driver' => [
