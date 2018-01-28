@@ -4,6 +4,7 @@ namespace yii2lab\app\admin\forms;
 
 use Yii;
 use yii2lab\domain\base\Model;
+use yii2lab\misc\enums\DbDriverEnum;
 
 class ConnectionForm extends Model {
 
@@ -13,6 +14,17 @@ class ConnectionForm extends Model {
 	public $password;
 	public $dbname;
 	public $defaultSchema;
+	
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['driver', 'host', 'username', 'password', 'dbname'], 'required'],
+			['driver', 'in', 'range' => DbDriverEnum::values()],
+		];
+	}
 	
 	/**
 	 * @inheritdoc
@@ -28,4 +40,5 @@ class ConnectionForm extends Model {
 			'defaultSchema' => Yii::t('app/connection', 'defaultSchema'),
 		];
 	}
+	
 }
