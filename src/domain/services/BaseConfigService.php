@@ -2,7 +2,6 @@
 
 namespace yii2lab\app\domain\services;
 
-use Yii;
 use yii2lab\domain\services\BaseService;
 
 class BaseConfigService extends BaseService {

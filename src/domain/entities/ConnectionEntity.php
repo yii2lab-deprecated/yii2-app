@@ -5,11 +5,9 @@ namespace yii2lab\app\domain\entities;
 use Yii;
 use yii2lab\app\domain\validators\ConnectionValidator;
 use yii2lab\domain\BaseEntity;
+use yii2lab\misc\enums\DbDriverEnum;
 
 class ConnectionEntity extends BaseEntity {
-
-	const DRIVER_MYSQL = 'mysql';
-	const DRIVER_PGSQL = 'pgsql';
 
 	protected $driver;
 	protected $host;
@@ -23,10 +21,9 @@ class ConnectionEntity extends BaseEntity {
 	 */
 	public function rules()
 	{
-		$drivers = $this->getConstantEnum('driver');
 		return [
 			[['driver', 'host', 'username', 'dbname'], 'required'],
-			['driver', 'in', 'range' => $drivers],
+			['driver', 'in', 'range' => DbDriverEnum::values()],
 		];
 	}
 

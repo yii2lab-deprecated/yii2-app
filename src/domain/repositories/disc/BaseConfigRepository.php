@@ -3,13 +3,12 @@
 namespace yii2lab\app\domain\repositories\disc;
 
 use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
 use yii2lab\domain\repositories\BaseRepository as YiiBaseRepository;
 use yii2lab\store\Store;
 
 class BaseConfigRepository extends YiiBaseRepository {
 
-	public $file = '@common/config/env.php';
+	public $file = '@common/config/env-local.php';
 	public $key;
 
 	public function load() {

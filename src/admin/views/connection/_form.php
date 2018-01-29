@@ -6,7 +6,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii2lab\app\domain\entities\ConnectionEntity;
+use yii2lab\misc\enums\DbDriverEnum;
 
 ?>
 
@@ -15,8 +15,8 @@ use yii2lab\app\domain\entities\ConnectionEntity;
 <?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($model, 'driver')->dropDownList([
-	ConnectionEntity::DRIVER_MYSQL => Yii::t('app/connection', 'driver_mysql'),
-	ConnectionEntity::DRIVER_PGSQL => Yii::t('app/connection', 'driver_pgsql'),
+	DbDriverEnum::MYSQL => Yii::t('app/connection', 'driver_mysql'),
+	DbDriverEnum::PGSQL => Yii::t('app/connection', 'driver_pgsql'),
 ]); ?>
 
 <?= $form->field($model, 'host')->textInput(); ?>

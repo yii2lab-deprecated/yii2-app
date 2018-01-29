@@ -4,6 +4,7 @@ namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
 use yii2lab\app\domain\entities\ConnectionEntity;
+use yii2lab\misc\enums\DbDriverEnum;
 
 class Db
 {
@@ -20,7 +21,7 @@ class Db
 	}
 
 	public static function schemaMap($config) {
-		if($config['driver'] != ConnectionEntity::DRIVER_PGSQL) {
+		if($config['driver'] != DbDriverEnum::PGSQL) {
 			unset($config['schemaMap']);
 			return $config;
 		}
