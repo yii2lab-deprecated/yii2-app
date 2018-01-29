@@ -3,7 +3,6 @@
 namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
-use yii2lab\app\domain\entities\ConnectionEntity;
 use yii2lab\misc\enums\DbDriverEnum;
 
 class Db
