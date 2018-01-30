@@ -1,8 +1,5 @@
 <?php
 
-$envLocal = @include(ROOT_DIR . '/common/config/env-local.php');
-$testConnection = !empty($envLocal['servers']['db']['test']) ? $envLocal['servers']['db']['test'] : [];
-
 return [
 	'project' => 'test',
 	'mode' => [
@@ -33,7 +30,13 @@ return [
 				'password' => '',
 				'dbname' => 'example',
 			],
-			'test' => $testConnection,
+			'test' => [
+				'driver' => 'mysql',
+				'host' => 'localhost',
+				'username' => 'root',
+				'password' => '',
+				'dbname' => 'example_test',
+			],
 		],
 	],
 ];

@@ -110,22 +110,22 @@ return [
 		],
 	],
 	'url' => [
-		'frontend' => 'http://example.com/',
-		'backend' => 'http://admin.example.com/',
-		'api' => 'http://api.example.com/',
+		'frontend' => 'http://qr.yii/',
+		'backend' => 'http://admin.qr.yii/',
+		'api' => 'http://api.qr.yii/',
 	],
 	'cookieValidationKey' => [
-		'frontend' => 'bBXEWnH5ERCG7SF3wxtbotYxq3W-Op7B',
-		'backend' => 'zbfqVR5PhdO3E8Xi7DB4aoxmxSstJ6aI',
+		'frontend' => 'fdDymVkKhCNkVGq8l5pFIU00isrvtz6L',
+		'backend' => 'F4vmQmhD8QENUls5JHyhBYRTCpS1Xgjm',
 	],
 	'servers' => [
 		'db' => [
 			'main' => [
-				'driver' => 'mysql',
-				'host' => 'localhost',
-				'username' => 'root',
-				'password' => '',
-				'dbname' => 'example',
+				'driver' => 'pgsql',
+				'host' => 'dbweb',
+				'username' => 'logging',
+				'password' => 'moneylogger',
+				'dbname' => 'qrpay',
 				'defaultSchema' => 'qrpay',
 			],
 			'test' => [
@@ -133,7 +133,7 @@ return [
 				'host' => 'localhost',
 				'username' => 'root',
 				'password' => '',
-				'dbname' => 'example_test',
+				'dbname' => 'qrpay_test',
 			],
 		],
 		'mail' => [
@@ -174,22 +174,23 @@ return [
 	'project' => 'test',
 	'db' => [
 		'main' => [
-			'driver' => 'mysql',
-			'host' => 'localhost',
-			'username' => 'root',
-			'password' => '',
-			'dbname' => 'example',
+			'driver' => 'pgsql',
+			'host' => 'dbweb',
+			'username' => 'logging',
+			'password' => 'moneylogger',
+			'dbname' => 'qrpay',
+			'defaultSchema' => 'qrpay',
 			'tablePrefix' => '',
-			'dsn' => 'mysql:host=localhost;dbname=example',
+			'dsn' => 'pgsql:host=dbweb;dbname=qrpay',
 		],
 		'test' => [
 			'driver' => 'mysql',
 			'host' => 'localhost',
 			'username' => 'root',
 			'password' => '',
-			'dbname' => 'example_test',
+			'dbname' => 'qrpay_test',
 			'tablePrefix' => '',
-			'dsn' => 'mysql:host=localhost;dbname=example_test',
+			'dsn' => 'mysql:host=localhost;dbname=qrpay_test',
 		],
 	],
 ];
