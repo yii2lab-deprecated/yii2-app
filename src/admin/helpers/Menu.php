@@ -4,11 +4,9 @@ namespace yii2lab\app\admin\helpers;
 
 use common\enums\rbac\PermissionEnum;
 
-// todo: отрефакторить - сделать нормальный интерфейс и родителя
-
 class Menu {
 	
-	static function getMenu() {
+	public function toArray() {
 		return [
 			'label' => ['app/main', 'title'],
 			'module' => 'app',
