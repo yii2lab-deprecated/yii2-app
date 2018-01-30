@@ -10,7 +10,7 @@ class NormalizeDbConfig extends BaseObject implements FilterInterface {
 
 	public function run($config) {
 		if(!empty($config['connection'])) {
-			// todo: удалить устаревший параметр
+			// todo: @deprecated удалить устаревший параметр
 			$config['db'] = self::initConfig($config['connection']);
 		} elseif(!empty($config['servers']['db'])) {
 			$config['db'] = self::initConfig($config['servers']['db']);
