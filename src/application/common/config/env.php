@@ -123,7 +123,7 @@ return [
 			'yii2lab\domain\filters\SetDomainTranslationConfig',
 			
 			[
-				'class' => 'yii2lab\migration\domain\filters\SetPath',
+				'class' => 'yii2lab\db\domain\filters\migration\SetPath',
 				'path' => [
 					'@vendor/yii2woop/yii2-account/src/domain/migrations',
 					'@vendor/yii2woop/yii2-profile/src/domain/migrations',
