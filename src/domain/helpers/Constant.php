@@ -3,6 +3,7 @@
 namespace yii2lab\app\domain\helpers;
 
 use Yii;
+use yii2lab\misc\enums\YiiEnvEnum;
 
 class Constant {
 	
@@ -13,9 +14,12 @@ class Constant {
 		self::setApplication($appName);
 	}
 	
-	public static function setYiiEnv($env) {
-		defined('YII_DEBUG') OR define('YII_DEBUG', $env['mode']['debug']);
-		defined('YII_ENV') OR define('YII_ENV', $env['mode']['env']);
+	public static function setYiiEnv($env = YiiEnvEnum::PROD) {
+		defined('YII_ENV') OR define('YII_ENV', $env);
+	}
+	
+	public static function setYiiDebug($debug = false) {
+		defined('YII_DEBUG') OR define('YII_DEBUG', $debug);
 	}
 	
 	public static function setAliases() {

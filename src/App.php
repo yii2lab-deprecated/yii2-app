@@ -37,7 +37,8 @@ class App
 		Load::autoload();
 		Env::init($projectDir);
 		$env = Env::get();
-		Constant::setYiiEnv($env);
+		Constant::setYiiEnv($env['mode']['env']);
+		Constant::setYiiDebug($env['mode']['debug']);
 		Load::required();
 		Constant::setAliases();
 		CommandHelper::runAll(Env::get('app.commands', []));
