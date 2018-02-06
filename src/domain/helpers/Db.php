@@ -8,8 +8,17 @@ use yii2lab\misc\enums\DbDriverEnum;
 class Db
 {
 
+	private static $defaultConfig = [
+		'class' => 'yii\db\Connection',
+		'charset' => 'utf8',
+		'enableSchemaCache' => false,
+		'schemaCacheDuration' => 3600,
+		'schemaCache' => 'cache',
+	];
+	
 	public static function getConfig($config, $name = 'main') {
 		$pre = 'db.' . $name;
+		$config = ArrayHelper::merge(self::$defaultConfig, $config);
 		$config = ArrayHelper::merge($config, Env::get($pre));
 		$config = self::schemaMap($config);
 		unset($config['defaultSchema']);
