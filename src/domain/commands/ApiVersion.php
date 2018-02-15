@@ -10,7 +10,7 @@ class ApiVersion extends BaseObject implements CommandInterface {
 
 	public function run() {
 		$version = self::getApiVersion();
-		if(empty($version)) {
+		if(empty($version) && !YII_ENV_TEST) {
 			self::showError();
 		}
 		self::setApiVersionConst($version);
@@ -62,7 +62,7 @@ class ApiVersion extends BaseObject implements CommandInterface {
 	
 	private static function getApiVersionFromHeader()
 	{
-		$headers = getallheaders();
+		$headers = function_exists('getallheaders') ? getallheaders() : [];
 		if(empty($headers['Version'])) {
 			return null;
 		}
