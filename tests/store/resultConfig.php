@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 	'modules' => [],
@@ -10,6 +10,6 @@ return [
 	'params' => [],
 	'controllerNamespace' => 'console\\controllers',
 	'id' => 'app-console',
-	'basePath' => 'C:\\OpenServer\\domains\\qr.yii\\console',
-	'vendorPath' => 'C:\\OpenServer\\domains\\qr.yii\\vendor\\',
+	'basePath' => 'C:\\OpenServer\\domains\\demo.yii\\console',
+	'vendorPath' => 'C:\\OpenServer\\domains\\demo.yii\\vendor\\',
 ];
