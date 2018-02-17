@@ -46,6 +46,10 @@ class ConfigTest extends Unit
 		$env = ArrayHelper::merge($env, $envLocal);
 		$config = Config::load($env['config']);
 		$configExpect = DataHelper::load(self::PACKAGE, 'store/resultConfig.php', $config);
+		unset($configExpect['basePath']);
+		unset($configExpect['vendorPath']);
+		unset($config['basePath']);
+		unset($config['vendorPath']);
 		expect($configExpect)->equals($config);
 	}
 	
