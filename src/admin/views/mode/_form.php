@@ -13,7 +13,7 @@ use yii2lab\widgets\SwitchInput;
 
 <?php $form = ActiveForm::begin(); ?>
 
-<?= $form->field($model, 'debug')->widget(SwitchInput::classname(), SwitchInput::yesNoConfig());?>
+<?= $form->field($model, 'debug')->widget(SwitchInput::class, SwitchInput::yesNoConfig());?>
 
 <?= $form->field($model, 'env')->dropDownList([
 	ModeEntity::ENV_DEV => Yii::t('app/mode', 'env_dev'),

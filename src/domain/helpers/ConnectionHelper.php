@@ -13,7 +13,7 @@ class ConnectionHelper extends BaseConfig {
 	public static function test(array $config) {
 		$config = Db::normalizeConfig($config);
 		$config = Db::schemaMap($config);
-		$connection = Yii::createObject(Connection::className());
+		$connection = Yii::createObject(Connection::class);
 		$connection->dsn = $config['dsn'];
 		$connection->username = $config['username'];
 		$connection->password = $config['password'];

@@ -30,7 +30,7 @@ class ConnectionEntity extends BaseEntity {
 	public function validate()
 	{
 		parent::validate();
-		$validator = Yii::createObject(ConnectionValidator::className());
+		$validator = Yii::createObject(ConnectionValidator::class);
 		$validator->validateAttribute($this, null);
 	}
 }

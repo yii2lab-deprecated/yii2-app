@@ -30,9 +30,9 @@ if(!$model->hasErrors()) {
 }
 ?>
 
-<?= $form->field($model, 'frontend_gen')->widget(SwitchInput::classname(), $pluginOptions) ?>
+<?= $form->field($model, 'frontend_gen')->widget(SwitchInput::class, $pluginOptions) ?>
 
-<?= $form->field($model, 'backend_gen')->widget(SwitchInput::classname(), $pluginOptions) ?>
+<?= $form->field($model, 'backend_gen')->widget(SwitchInput::class, $pluginOptions) ?>
 
 <div class="form-group">
 	<?= Html::submitButton(t('action', 'save'), ['class' => 'btn btn-primary']) ?>

@@ -31,7 +31,7 @@ class Config extends BaseConfig {
 	static function genAccess($roles, $only = null, $allow = true) {
 		$roles = is_array($roles) ? $roles : [$roles];
 		$access = [
-			'class' => AccessControl::className(),
+			'class' => AccessControl::class,
 			'rules' => [
 				[
 					'allow' => $allow,
@@ -58,7 +58,7 @@ class Config extends BaseConfig {
 		}
 		// todo: load from env.php
 		return [
-			'class' => Cors::className(),
+			'class' => Cors::class,
 			'cors' => [
 				'Origin' => $origin,
 				'Access-Control-Request-Method' => ['get', 'post', 'put', 'delete', 'options'],
