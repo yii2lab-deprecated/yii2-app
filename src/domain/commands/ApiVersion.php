@@ -2,8 +2,8 @@
 
 namespace yii2lab\app\domain\commands;
 
+use common\enums\app\ApiVersionEnum;
 use yii\base\BaseObject;
-use yii2lab\helpers\Helper;
 use yii2lab\designPattern\command\interfaces\CommandInterface;
 
 class ApiVersion extends BaseObject implements CommandInterface {
@@ -44,7 +44,7 @@ class ApiVersion extends BaseObject implements CommandInterface {
 			"code" => 0,
 			"status" => 400,
 			"type" => "Exception",
-			"versions" => Helper::getApiVersionNumberList(),
+			"versions" => ApiVersionEnum::getApiVersionNumberList(),
 		];
 		exit(json_encode($body));
 	}

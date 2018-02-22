@@ -5,6 +5,7 @@ namespace yii2lab\app\domain\helpers;
 use yii\filters\AccessControl;
 use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
+use yii2lab\helpers\ClassHelper;
 use yii2lab\helpers\Helper;
 
 class Config extends BaseConfig {
@@ -18,7 +19,7 @@ class Config extends BaseConfig {
 	public static function load($definition = []) {
 		$definition['class'] = Handler::class;
 		/** @var Handler $loader */
-		$loader = Helper::createObject($definition);
+		$loader = ClassHelper::createObject($definition);
 		return $loader->run();
 	}
 	
