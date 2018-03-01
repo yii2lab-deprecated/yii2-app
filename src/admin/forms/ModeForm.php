@@ -8,6 +8,8 @@ use yii2lab\misc\enums\YiiEnvEnum;
 
 class ModeForm extends Model {
 
+	const SCENARIO_ENV = 'SCENARIO_ENV';
+	
 	public $debug;
 	public $env;
 	
@@ -32,5 +34,11 @@ class ModeForm extends Model {
 			'debug' => Yii::t('app/mode', 'debug'),
 			'env' => Yii::t('app/mode', 'env'),
 		];
+	}
+	
+	public function scenarios() {
+		$scenarios = parent::scenarios();
+		$scenarios[self::SCENARIO_ENV] = ['env'];
+		return $scenarios;
 	}
 }

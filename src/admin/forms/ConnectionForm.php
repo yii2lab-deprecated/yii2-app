@@ -21,7 +21,7 @@ class ConnectionForm extends Model {
 	public function rules()
 	{
 		return [
-			[['driver', 'host', 'username', 'password', 'dbname'], 'required'],
+			[['driver', 'host', 'username', 'dbname'], 'required'],
 			['driver', 'in', 'range' => DbDriverEnum::values()],
 		];
 	}
