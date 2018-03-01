@@ -22,7 +22,7 @@ class UpdateAction extends Action {
 			try{
 				$method = $this->serviceMethod;
 				$this->service->$method($model->toArray());
-				Yii::$app->notify->flash->send(['main', 'update_success'], Alert::TYPE_SUCCESS);
+				Yii::$app->navigation->alert->create(['main', 'update_success'], Alert::TYPE_SUCCESS);
 				$redirectAction = isset($this->redirectAction) ? $this->redirectAction : $this->id;
 				return $this->redirect(['/' . $this->baseUrl . $redirectAction]);
 			} catch (UnprocessableEntityHttpException $e){
