@@ -5,15 +5,15 @@ namespace yii2lab\app\domain\helpers;
 use yii\filters\AccessControl;
 use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
+use yii2lab\helpers\BaseRegistry;
 use yii2lab\helpers\ClassHelper;
-use yii2lab\helpers\Helper;
 
-class Config extends BaseConfig {
+class Config extends BaseRegistry {
 	
-	protected static $config = [];
+	protected static $data = [];
 	
 	public static function init($definition) {
-		static::$config = self::load($definition);
+		static::$data = self::load($definition);
 	}
 	
 	public static function load($definition = []) {

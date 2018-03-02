@@ -8,7 +8,7 @@ use yii\db\Connection;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\domain\helpers\ErrorCollection;
 
-class ConnectionHelper extends BaseConfig {
+class ConnectionHelper {
 	
 	public static function test(array $config) {
 		$config = Db::normalizeConfig($config);

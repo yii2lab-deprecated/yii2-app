@@ -3,15 +3,16 @@
 namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
+use yii2lab\helpers\BaseRegistry;
 use yii2lab\helpers\yii\FileHelper;
 
-class Env extends BaseConfig {
+class Env extends BaseRegistry {
 	
-	protected static $config = [];
+	protected static $data = [];
 	
 	public static function init($projectDir) {
 		$definition = self::getDefinition($projectDir);
-		static::$config = self::load($definition);
+		static::$data = self::load($definition);
 	}
 	
 	public static function load($definition) {
