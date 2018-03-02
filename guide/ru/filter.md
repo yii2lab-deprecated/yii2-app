@@ -1,7 +1,13 @@
 Фильтры
 ===
 
-## yii2lab\app\domain\filters\config\LoadConfig
+## Основное
+
+У всех, представленных ниже фильтров нейспейс такой: `yii2lab\app\domain\filters\config\*`.
+
+## Фильтры
+
+### LoadConfig
 
 загрузчик конфигов.
 
@@ -12,9 +18,10 @@
 * `name` - имя конфига
 * `withLocal` - грузить вместе с файлом `*-local.php`
 
-## yii2lab\app\domain\filters\config\LoadModuleConfig
 > Note: Если необходимо назначить конфиг, начиная с корня, 
 то создаем сегмент `@config`, и в нем прописываем конфиг.
+
+### LoadModuleConfig
 
 загрузчик конфига модулей
 
@@ -24,23 +31,23 @@
 
 Те же, что у [LoadConfig](#yii2lab\app\domain\filters\config\loadconfig)
 
-## yii2lab\app\domain\filters\config\SetControllerNamespace
+### SetControllerNamespace
 
 устанавливает путь к контроллерам приложения, если не указано
 
-## yii2lab\app\domain\filters\config\FixValidationKeyInTest
+### FixValidationKeyInTest
 
 Фикс отсутствия ключей валидации куки при тестах
 
-## yii2lab\app\domain\filters\config\SetAppId
+### SetAppId
 
 Назначает ID приложения, если не указано
 
-## yii2lab\app\domain\filters\config\SetPath
+### SetPath
 
 Назначает `basePath` и `vendorPath`, если не указано
 
-## yii2lab\app\domain\filters\config\LoadRouteConfig
+### LoadRouteConfig
 
 Загрузчик конфига роутов.
 Назначает роуты в общий конфиг в `components.urlManager.rules`.
