@@ -8,7 +8,7 @@ class Load
 	public static function helpers()
 	{
 		$vendorDir = __DIR__ . '/../../../../..';
-		require($vendorDir . '/yii2lab/yii2-helpers/src/BaseRegistry.php');
+		require($vendorDir . '/yii2lab/yii2-extension/src/registry/base/BaseRegistry.php');
 		require('BaseConfig.php');
 		require('Env.php');
 		require('Constant.php');

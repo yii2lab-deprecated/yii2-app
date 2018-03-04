@@ -3,7 +3,7 @@
 namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
-use yii2lab\helpers\BaseRegistry;
+use yii2lab\extension\registry\base\BaseRegistry;
 use yii2lab\helpers\yii\FileHelper;
 
 class Env extends BaseRegistry {
