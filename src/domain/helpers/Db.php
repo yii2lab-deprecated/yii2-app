@@ -4,6 +4,7 @@ namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
 use yii2lab\misc\enums\DbDriverEnum;
+use yii2lab\misc\enums\TimeEnum;
 
 class Db
 {
@@ -12,7 +13,7 @@ class Db
 		'class' => 'yii\db\Connection',
 		'charset' => 'utf8',
 		'enableSchemaCache' => false,
-		'schemaCacheDuration' => 3600,
+		'schemaCacheDuration' => TimeEnum::SECOND_PER_HOUR,
 		'schemaCache' => 'cache',
 	];
 	
