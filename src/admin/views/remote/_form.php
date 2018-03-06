@@ -19,7 +19,7 @@ use yii2lab\app\domain\entities\RemoteEntity;
 ]); ?>
 
 <div class="form-group">
-	<?= Html::submitButton(t('action', 'save'), ['class' => 'btn btn-primary']) ?>
+	<?= Html::submitButton(Yii::t('action', 'save'), ['class' => 'btn btn-primary']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>
