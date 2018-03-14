@@ -23,8 +23,8 @@ return [
 	],
 	'domain' => [
 		'driver' => [
-			'primary' => 'disc',
-			'slave' => 'disc',
+			'primary' => 'filedb',
+			'slave' => 'filedb',
 		],
 	],
 ];
