@@ -13,8 +13,15 @@ class YiiEnv extends BaseObject implements FilterInterface {
 		$config = $this->toOldFormat($config);
 		$config['mode']['debug'] = defined('YII_DEBUG') ? YII_DEBUG : !empty($config['mode']['debug']);
 		$config['mode']['env'] = ArrayHelper::getValue($config, 'mode.env', YiiEnvEnum::PROD);
+		$this->checkProdMode($config['mode']['env']);
 		$config['mode']['env'] = defined('YII_ENV') ? YII_ENV : YiiEnvEnum::value($config['mode']['env'], YiiEnvEnum::PROD);
 		return $config;
+	}
+	
+	private function checkProdMode($env) {
+		if(defined('YII_ENV') && YII_ENV == YiiEnvEnum::TEST && $env == YiiEnvEnum::PROD) {
+			exit('Attempt to launch a test mode on the production server! The test mode is only possible from the development mode.');
+		}
 	}
 	
 	private function toOldFormat($config) {
