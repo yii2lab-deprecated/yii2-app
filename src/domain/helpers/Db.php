@@ -26,6 +26,7 @@ class Db
 		unset($config['driver']);
 		unset($config['host']);
 		unset($config['dbname']);
+		$config['enableSchemaCache'] = isset($config['enableSchemaCache']) ? $config['enableSchemaCache'] : YII_ENV_PROD;
 		return $config;
 	}
 
