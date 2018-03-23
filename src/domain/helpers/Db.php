@@ -17,10 +17,12 @@ class Db
 		'schemaCache' => 'cache',
 	];
 	
-	public static function getConfig($config, $name = 'main') {
-		$pre = 'db.' . $name;
+	public static function getConfig($config = [], $name = null) {
+		if(empty($name)) {
+			$name = YII_ENV_TEST ? 'test' : 'main';
+		}
 		$config = ArrayHelper::merge(self::$defaultConfig, $config);
-		$config = ArrayHelper::merge($config, Env::get($pre));
+		$config = ArrayHelper::merge($config, Env::get('db' . DOT . $name));
 		$config = self::schemaMap($config);
 		unset($config['defaultSchema']);
 		unset($config['driver']);
