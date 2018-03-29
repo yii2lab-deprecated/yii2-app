@@ -5,6 +5,8 @@ namespace yii2lab\app\domain\helpers;
 class Load
 {
 
+	const YII_CLASS = VENDOR_DIR . DS . 'yiisoft' . DS . 'yii2' . DS . 'Yii.php';
+	
 	public static function helpers()
 	{
 		$vendorDir = __DIR__ . '/../../../../..';
@@ -22,9 +24,16 @@ class Load
 		require(VENDOR_DIR . DS . 'autoload.php');
 	}
 	
+	public static function yii($class)
+	{
+		if(empty($class)) {
+			$class = self::YII_CLASS;
+		}
+		require($class);
+	}
+	
 	public static function required()
 	{
-		require(VENDOR_DIR . DS . 'yiisoft' . DS . 'yii2' . DS . 'Yii.php');
 		require(VENDOR_DIR . DS . 'yii2lab/yii2-helpers/src' . DS . 'Func.php');
 	}
 
