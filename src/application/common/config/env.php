@@ -8,6 +8,9 @@ use yii2lab\domain\filters\LoadDomainConfig;
 use yii2lab\misc\enums\YiiEnvEnum;
 
 return [
+	'yii' => [
+		'class' => VENDOR_DIR . DS . 'yii2lab/yii2-domain/src/yii2' . DS . 'Yii.php',
+	],
 	'app' => [
 		'commands' => [
 			[
