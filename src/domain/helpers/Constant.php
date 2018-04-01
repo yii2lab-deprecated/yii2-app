@@ -65,6 +65,7 @@ class Constant {
 		defined('TAB') OR define('TAB', "\t");
 		defined('BR') OR define('BR', '<br/>');
 		defined('TIMESTAMP') OR define('TIMESTAMP', time());
+		defined('MICRO_TIME') OR define('MICRO_TIME', microtime(true));
 	}
 	
 	private static function setDirs() {
