@@ -2,16 +2,16 @@
 
 namespace yii2lab\app\domain\filters\config;
 
-use yii\base\BaseObject;
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 
-class SetAppId extends BaseObject implements FilterInterface {
-
-	public function run($config) {
+class SetAppId extends BaseScenario {
+	
+	public function run() {
+		$config = $this->getData();
 		if(empty($config['id'])) {
 			$config['id'] = $this->generateId(APP);
 		}
-		return $config;
+		$this->setData($config);
 	}
 	
 	private function generateId($app) {

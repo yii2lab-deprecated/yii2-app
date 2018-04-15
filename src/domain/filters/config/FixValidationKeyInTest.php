@@ -2,16 +2,16 @@
 
 namespace yii2lab\app\domain\filters\config;
 
-use yii\base\BaseObject;
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 
-class FixValidationKeyInTest extends BaseObject implements FilterInterface {
-
-	public function run($config) {
+class FixValidationKeyInTest extends BaseScenario {
+	
+	public function run() {
+		$config = $this->getData();
 		if(APP != CONSOLE && empty($config['components']['request']['cookieValidationKey'])) {
 			$config['components']['request']['cookieValidationKey'] = 'testValidationKey'; // костыль, чтоб не выдавало ошибку при тестах в common
 		}
-		return $config;
+		$this->setData($config);
 	}
 	
 }

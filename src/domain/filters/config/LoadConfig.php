@@ -2,11 +2,10 @@
 
 namespace yii2lab\app\domain\filters\config;
 
-use yii\base\BaseObject;
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 use yii2mod\helpers\ArrayHelper;
 
-class LoadConfig extends BaseObject implements FilterInterface {
+class LoadConfig extends BaseScenario {
 	
 	public $withLocal = true;
 	public $name;
@@ -14,13 +13,14 @@ class LoadConfig extends BaseObject implements FilterInterface {
 	public $dir = EMP;
 	public $assignTo;
 	
-	public function run($config) {
+	public function run() {
+		$config = $this->getData();
 		$loadedConfig = $this->requireConfigWithLocal($this->app, $this->name, $this->withLocal);
 		$config = $this->merge($config, $loadedConfig, $this->assignTo);
 		if(!empty($loadedConfig['@config'])) {
 			$config = ArrayHelper::merge($config, $loadedConfig['@config']);
 		}
-		return $config;
+		$this->setData($config);
 	}
 	
 	protected function merge($config, $loadedConfig, $name = null) {

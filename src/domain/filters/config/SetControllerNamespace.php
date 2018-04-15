@@ -2,16 +2,16 @@
 
 namespace yii2lab\app\domain\filters\config;
 
-use yii\base\BaseObject;
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 
-class SetControllerNamespace extends BaseObject implements FilterInterface {
-
-	public function run($config) {
+class SetControllerNamespace extends BaseScenario {
+	
+	public function run() {
+		$config = $this->getData();
 		if(empty($config['controllerNamespace'])) {
 			$config['controllerNamespace'] = APP . '\controllers';
 		}
-		return $config;
+		$this->setData($config);
 	}
 	
 }

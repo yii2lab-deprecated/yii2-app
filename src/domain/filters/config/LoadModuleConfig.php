@@ -2,11 +2,10 @@
 
 namespace yii2lab\app\domain\filters\config;
 
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
 use yii2lab\helpers\ClassHelper;
 use yii2lab\helpers\Helper;
 
-class LoadModuleConfig extends LoadConfig implements FilterInterface {
+class LoadModuleConfig extends LoadConfig {
 	
 	public $assignTo = 'modules';
 	
