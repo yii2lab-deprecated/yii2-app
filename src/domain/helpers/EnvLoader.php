@@ -2,19 +2,27 @@
 
 namespace yii2lab\app\domain\helpers;
 
+use yii2lab\designPattern\scenario\helpers\ScenarioHelper;
 use yii2lab\helpers\Helper;
-use yii2lab\designPattern\command\helpers\CommandHelper;
-use yii2lab\designPattern\filter\helpers\FilterHelper;
 
 class EnvLoader
 {
-
+	
+	/**
+	 * @param $definition
+	 *
+	 * @return \yii2lab\domain\values\BaseValue
+	 * @throws \yii\base\InvalidConfigException
+	 * @throws \yii\web\ServerErrorHttpException
+	 */
 	public static function run($definition) {
-		$config = FilterHelper::runAll($definition['filters'], []);
+		$filterCollection = ScenarioHelper::forgeCollection($definition['filters']);
+		$config = ScenarioHelper::runAll($filterCollection, []);
 		$definition['commands'] = Helper::assignAttributesForList($definition['commands'], [
 			'env' => $config,
 		]);
-		CommandHelper::runAll($definition['commands']);
+		$commandCollection = ScenarioHelper::forgeCollection($definition['commands']);
+		ScenarioHelper::runAll($commandCollection);
 		return $config;
 	}
 	

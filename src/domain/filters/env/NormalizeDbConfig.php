@@ -2,20 +2,20 @@
 
 namespace yii2lab\app\domain\filters\env;
 
-use yii\base\BaseObject;
 use yii2lab\app\domain\helpers\Db;
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 
-class NormalizeDbConfig extends BaseObject implements FilterInterface {
-
-	public function run($config) {
+class NormalizeDbConfig extends BaseScenario {
+	
+	public function run() {
+		$config = $this->getData();
 		if(!empty($config['connection'])) {
 			// todo: @deprecated удалить устаревший параметр
 			$config['db'] = self::initConfig($config['connection']);
 		} elseif(!empty($config['servers']['db'])) {
 			$config['db'] = self::initConfig($config['servers']['db']);
 		}
-		return $config;
+		$this->setData($config);
 	}
 	
 	public static function initConfig($connection)

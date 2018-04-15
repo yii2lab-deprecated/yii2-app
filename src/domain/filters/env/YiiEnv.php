@@ -2,20 +2,21 @@
 
 namespace yii2lab\app\domain\filters\env;
 
-use yii\base\BaseObject;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 use yii2lab\helpers\yii\ArrayHelper;
 use yii2lab\misc\enums\YiiEnvEnum;
-use yii2lab\designPattern\filter\interfaces\FilterInterface;
 
-class YiiEnv extends BaseObject implements FilterInterface {
-
-	public function run($config) {
+class YiiEnv extends BaseScenario {
+	
+	
+	public function run() {
+		$config = $this->getData();
 		$config = $this->toOldFormat($config);
 		$config['mode']['debug'] = defined('YII_DEBUG') ? YII_DEBUG : !empty($config['mode']['debug']);
 		$config['mode']['env'] = ArrayHelper::getValue($config, 'mode.env', YiiEnvEnum::PROD);
 		$this->checkProdMode($config['mode']['env']);
 		$config['mode']['env'] = defined('YII_ENV') ? YII_ENV : YiiEnvEnum::value($config['mode']['env'], YiiEnvEnum::PROD);
-		return $config;
+		$this->setData($config);
 	}
 	
 	private function checkProdMode($env) {
