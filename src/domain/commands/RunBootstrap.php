@@ -2,10 +2,9 @@
 
 namespace yii2lab\app\domain\commands;
 
-use yii\base\BaseObject;
-use yii2lab\designPattern\command\interfaces\CommandInterface;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 
-class RunBootstrap extends BaseObject implements CommandInterface {
+class RunBootstrap extends BaseScenario {
 
 	public $app;
 	

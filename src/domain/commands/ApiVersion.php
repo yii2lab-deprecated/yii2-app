@@ -3,10 +3,9 @@
 namespace yii2lab\app\domain\commands;
 
 use common\enums\app\ApiVersionEnum;
-use yii\base\BaseObject;
-use yii2lab\designPattern\command\interfaces\CommandInterface;
+use yii2lab\designPattern\scenario\base\BaseScenario;
 
-class ApiVersion extends BaseObject implements CommandInterface {
+class ApiVersion extends BaseScenario {
 
 	public function run() {
 		$version = self::getApiVersion();

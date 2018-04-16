@@ -2,13 +2,15 @@
 
 namespace yii2lab\app;
 
+use yii\base\InvalidConfigException;
 use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
+use yii\web\ServerErrorHttpException;
 use yii2lab\app\domain\helpers\Env;
 use yii2lab\app\domain\helpers\Constant;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Load;
-use yii2lab\designPattern\command\helpers\CommandHelper;
+use yii2lab\designPattern\scenario\helpers\ScenarioHelper;
 
 class App
 {
@@ -25,7 +27,7 @@ class App
 		$config = Config::get();
 		self::runApplication($config);
 	}
-
+	
 	public static function init($appName, $projectDir = '')
 	{
 		if(self::$initedAs) {
@@ -43,8 +45,19 @@ class App
 		Load::yii($yiiClass);
 		Load::required();
 		Constant::setAliases();
-		CommandHelper::runAll(Env::get('app.commands', []));
+		$commands = Env::get('app.commands', []);
+		self::runCommands($commands);
 		self::$initedAs = $appName;
+	}
+	
+	private static function runCommands($commands)
+	{
+		$commandCollection = ScenarioHelper::forgeCollection($commands);
+		try {
+			ScenarioHelper::runAll($commandCollection);
+		} catch(InvalidConfigException $e) {
+		} catch(ServerErrorHttpException $e) {
+		}
 	}
 	
 	private static function runApplication($config)
