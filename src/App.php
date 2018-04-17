@@ -2,6 +2,7 @@
 
 namespace yii2lab\app;
 
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
@@ -22,9 +23,11 @@ class App
 		if(!empty($appName)) {
 			self::init($appName, $projectDir);
 		}
+		Yii::beginProfile('init_config', __METHOD__);
 		$definition = Env::get('config');
 		Config::init($definition);
 		$config = Config::get();
+		Yii::endProfile('init_config', __METHOD__);
 		self::runApplication($config);
 	}
 	
@@ -43,11 +46,15 @@ class App
 		Constant::setYiiDebug($env['mode']['debug']);
 		$yiiClass = Env::get('yii.class');
 		Load::yii($yiiClass);
+		Yii::beginProfile('init_yii', __METHOD__);
 		Load::required();
 		Constant::setAliases();
+		Yii::endProfile('init_yii', __METHOD__);
+		Yii::beginProfile('run_env_commands', __METHOD__);
 		$commands = Env::get('app.commands', []);
 		self::runCommands($commands);
 		self::$initedAs = $appName;
+		Yii::endProfile('run_env_commands', __METHOD__);
 	}
 	
 	private static function runCommands($commands)
