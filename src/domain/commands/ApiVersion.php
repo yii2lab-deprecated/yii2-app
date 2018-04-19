@@ -10,7 +10,7 @@ class ApiVersion extends BaseScenario {
 	public function run() {
 		$version = self::getApiVersion();
 		if(empty($version) && !YII_ENV_TEST) {
-			self::showError();
+			self::showError('No API version specified');
 		}
 		self::setApiVersionConst($version);
 	}
@@ -30,16 +30,19 @@ class ApiVersion extends BaseScenario {
 			}
 			self::forgeRequestUri($version);
 		}
+		if(!ApiVersionEnum::isValid('v' . $version)) {
+			self::showError('Version ' . $version . ' not found');
+		}
 		return $version;
 	}
 	
-	private static function showError()
+	private static function showError($message)
 	{
 		header('HTTP/1.1 400 Bad Request', true, 400);
 		header('Content-Type: application/json');
 		$body = [
 			"name" => "Bad Request",
-			"message" => "No API version specified",
+			"message" => $message,
 			"code" => 0,
 			"status" => 400,
 			"type" => "Exception",
