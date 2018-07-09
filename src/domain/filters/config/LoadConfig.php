@@ -16,11 +16,21 @@ class LoadConfig extends BaseScenario {
 	public function run() {
 		$config = $this->getData();
 		$loadedConfig = $this->requireConfigWithLocal($this->app, $this->name, $this->withLocal);
+		$rootConfig = self::extractRootConfig($loadedConfig);
 		$config = $this->merge($config, $loadedConfig, $this->assignTo);
-		if(!empty($loadedConfig['@config'])) {
-			$config = ArrayHelper::merge($config, $loadedConfig['@config']);
+		if(!empty($rootConfig)) {
+			$config = ArrayHelper::merge($config, $rootConfig);
 		}
 		$this->setData($config);
+	}
+	
+	protected function extractRootConfig(&$loadedConfig) {
+		$rootConfig = [];
+		if(!empty($loadedConfig['@config'])) {
+			$rootConfig = ArrayHelper::getValue($loadedConfig, '@config');
+			unset($loadedConfig['@config']);
+		}
+		return $rootConfig;
 	}
 	
 	protected function merge($config, $loadedConfig, $name = null) {
