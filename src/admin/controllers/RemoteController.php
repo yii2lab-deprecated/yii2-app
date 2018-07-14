@@ -11,7 +11,7 @@ class RemoteController extends ActiveController
 	const ACTION_UPDATE = 'yii2lab\app\admin\actions\UpdateAction';
 
 	public $defaultAction = 'update';
-	public $serviceName = 'app.remote';
+	public $service = 'app.remote';
 	public $formClass = 'yii2lab\app\admin\forms\RemoteForm';
 
 	public function actions() {

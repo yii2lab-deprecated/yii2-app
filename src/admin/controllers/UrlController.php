@@ -11,7 +11,7 @@ class UrlController extends ActiveController
 	const ACTION_UPDATE = 'yii2lab\app\admin\actions\UpdateAction';
 
 	public $defaultAction = 'update';
-	public $serviceName = 'app.url';
+	public $service = 'app.url';
 	public $formClass = 'yii2lab\app\admin\forms\UrlForm';
 
 	public function actions() {

@@ -11,7 +11,7 @@ class ModeController extends ActiveController
 	const ACTION_UPDATE = 'yii2lab\app\admin\actions\UpdateAction';
 
 	public $defaultAction = 'update';
-	public $serviceName = 'app.mode';
+	public $service = 'app.mode';
 	public $formClass = 'yii2lab\app\admin\forms\ModeForm';
 
 	public function actions() {

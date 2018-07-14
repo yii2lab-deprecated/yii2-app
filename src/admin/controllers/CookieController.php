@@ -11,7 +11,7 @@ class CookieController extends ActiveController
 	const ACTION_UPDATE = 'yii2lab\app\admin\actions\UpdateAction';
 
 	public $defaultAction = 'update';
-	public $serviceName = 'app.cookie';
+	public $service = 'app.cookie';
 	public $formClass = 'yii2lab\app\admin\forms\CookieForm';
 
 	public function actions() {

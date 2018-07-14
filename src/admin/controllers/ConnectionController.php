@@ -11,7 +11,7 @@ class ConnectionController extends ActiveController
 	const ACTION_UPDATE = 'yii2lab\app\admin\actions\UpdateAction';
 
 	public $defaultAction = 'main';
-	public $serviceName = 'app.connection';
+	public $service = 'app.connection';
 	public $formClass = 'yii2lab\app\admin\forms\ConnectionForm';
 
 	public function actions() {
