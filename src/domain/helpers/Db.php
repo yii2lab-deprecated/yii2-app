@@ -57,11 +57,14 @@ class Db
 		$db['password'] = isset($db['password']) ? $db['password'] : '';
 		$db['tablePrefix'] = isset($db['tablePrefix']) ? $db['tablePrefix'] : '';
 		if (empty($db['dsn'])) {
-			$db['driver'] = isset($db['driver']) ? $db['driver'] : 'mysql';
-			$db['host'] = isset($db['host']) ? $db['host'] : 'localhost';
-			$db['dsn'] = $db['driver'] . ':host=' . $db['host'] . ';dbname=' . $db['dbname'];
+			if($db['driver'] == DbDriverEnum::SQLITE) {
+				$db['dsn'] = $db['driver'] . ':' . $db['dbname'];
+			} else {
+				$db['host'] = isset($db['host']) ? $db['host'] : 'localhost';
+				$db['dsn'] = $db['driver'] . ':host=' . $db['host'] . ';dbname=' . $db['dbname'];
+			}
 		}
-		if($db['driver'] != 'pgsql' && isset($db['defaultSchema'])) {
+		if($db['driver'] != DbDriverEnum::PGSQL && isset($db['defaultSchema'])) {
 			unset($db['defaultSchema']);
 		}
 		return $db;
