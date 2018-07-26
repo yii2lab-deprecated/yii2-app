@@ -40,7 +40,7 @@ class Db
 		if(!empty($config['schemaMap'])) {
 			$config = self::postgresFix($config, $config['schemaMap']);
 		}
-		if(!empty($config['defaultSchema'])) {
+		if($config['driver'] == 'pgsql') {
 			$schemaMap =  [
 				'pgsql' => [
 					'class' => 'yii\db\pgsql\Schema',
