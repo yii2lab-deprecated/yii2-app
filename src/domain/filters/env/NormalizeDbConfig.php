@@ -2,6 +2,8 @@
 
 namespace yii2lab\app\domain\filters\env;
 
+use yii2lab\designPattern\scenario\base\BaseScenario;
+
 /**
  * Class NormalizeDbConfig
  *
@@ -9,6 +11,10 @@ namespace yii2lab\app\domain\filters\env;
  *
  * @deprecated
  */
-class NormalizeDbConfig extends \yii2lab\db\domain\filters\env\NormalizeDbConfig {
-
+class NormalizeDbConfig extends BaseScenario {
+	
+	
+	public function run() {
+		// TODO: Implement run() method.
+	}
 }

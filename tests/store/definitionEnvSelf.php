@@ -10,6 +10,5 @@ return [
 			],
 		],
 		'yii2lab\\app\\domain\\filters\\env\\YiiEnv',
-		'yii2lab\db\domain\filters\env\NormalizeDbConfig',
 	],
 ];

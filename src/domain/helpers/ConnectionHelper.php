@@ -12,8 +12,8 @@ use yii2lab\domain\helpers\ErrorCollection;
 class ConnectionHelper {
 	
 	public static function test(array $config) {
-		$config = DbHelper::normalizeConfig($config);
-		$config = DbHelper::schemaMap($config);
+		//$config = DbHelper::normalizeConfig($config);
+		//$config = DbHelper::schemaMap($config);
 		$connection = Yii::createObject(Connection::class);
 		$connection->dsn = $config['dsn'];
 		$connection->username = $config['username'];
