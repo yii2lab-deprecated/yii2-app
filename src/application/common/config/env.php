@@ -123,7 +123,7 @@ return [
 			'yii2lab\app\domain\filters\config\SetAppId',
 			'yii2lab\app\domain\filters\config\SetPath',
 			'yii2module\offline\domain\filters\IsOffline',
-			'yii2lab\domain\filters\SetDomainTranslationConfig',
+			//'yii2lab\domain\filters\SetDomainTranslationConfig',
 			'yii2lab\domain\filters\DefineDomainLocator',
 			[
 				'class' => 'yii2lab\db\domain\filters\migration\SetPath',
