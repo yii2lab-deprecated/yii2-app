@@ -2,11 +2,13 @@
 
 namespace yii2lab\app\helpers;
 
+use yii2lab\db\domain\helpers\DbHelper;
+
 /**
  * Class Db
  *
  * @package yii2lab\app\helpers
  *
- * @deprecated moved to \yii2lab\app\domain\helpers\Db
+ * @deprecated use class \yii2lab\db\domain\helpers\DbHelper
  */
-class Db extends \yii2lab\app\domain\helpers\Db {}
+class Db extends DbHelper {}

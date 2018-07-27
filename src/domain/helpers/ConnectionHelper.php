@@ -5,14 +5,15 @@ namespace yii2lab\app\domain\helpers;
 use Yii;
 use yii\db\Exception;
 use yii\db\Connection;
+use yii2lab\db\domain\helpers\DbHelper;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\domain\helpers\ErrorCollection;
 
 class ConnectionHelper {
 	
 	public static function test(array $config) {
-		$config = Db::normalizeConfig($config);
-		$config = Db::schemaMap($config);
+		$config = DbHelper::normalizeConfig($config);
+		$config = DbHelper::schemaMap($config);
 		$connection = Yii::createObject(Connection::class);
 		$connection->dsn = $config['dsn'];
 		$connection->username = $config['username'];
