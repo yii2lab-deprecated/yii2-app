@@ -2,20 +2,12 @@
 
 namespace tests\unit\helpers;
 
-use Codeception\Test\Unit;
+use yii2lab\test\Test\Unit;
 use yii\helpers\ArrayHelper;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Env;
-use UnitTester;
 use yii2lab\test\helpers\DataHelper;
 
-/**
- * Class ConfigTest
- *
- * @package api\tests\unit\helpers
- *
- * @property UnitTester $tester
- */
 class ConfigTest extends Unit
 {
 	
@@ -25,18 +17,20 @@ class ConfigTest extends Unit
 	{
 		$definition = DataHelper::load(self::PACKAGE, 'store/definitionEnvSelf.php');
 		$config = Env::load($definition);
-		$expect = DataHelper::load(self::PACKAGE, 'store/resultEnv.php', $config);
-		expect($expect)->equals($config);
+		
+		$expected = DataHelper::loadForTest(self::PACKAGE, __METHOD__, $config);
+		
+		expect($expected)->equals($config);
 	}
 	
 	public function testEnvGetDefinition()
 	{
-		$expect = DataHelper::load(self::PACKAGE, 'store/definitionEnv.php');
 		$definitionGenerated = Env::getDefinition('vendor/yii2lab/yii2-app/tests/_application_test');
-		expect($expect)->equals($definitionGenerated);
+		$expected = DataHelper::loadForTest(self::PACKAGE, __METHOD__, $definitionGenerated);
+		expect($expected)->equals($definitionGenerated);
 		
 		$definitionGenerated = Env::getDefinition(['vendor/yii2lab/yii2-app/tests/_application_test']);
-		expect($expect)->equals($definitionGenerated);
+		expect($expected)->equals($definitionGenerated);
 	}
 	
 	public function testLoadConfig()
@@ -45,12 +39,14 @@ class ConfigTest extends Unit
 		$envLocal = DataHelper::load(self::PACKAGE, '_application_test/common/config/env-local.php');
 		$env = ArrayHelper::merge($env, $envLocal);
 		$config = Config::load($env['config']);
-		$configExpect = DataHelper::load(self::PACKAGE, 'store/resultConfig.php', $config);
-		unset($configExpect['basePath']);
-		unset($configExpect['vendorPath']);
+		
+		$expected = DataHelper::loadForTest(self::PACKAGE, __METHOD__, $config);
+		
+		unset($expected['basePath']);
+		unset($expected['vendorPath']);
 		unset($config['basePath']);
 		unset($config['vendorPath']);
-		expect($configExpect)->equals($config);
+		expect($expected)->equals($config);
 	}
 	
 }

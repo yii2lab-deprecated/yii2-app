@@ -1,0 +1,13 @@
+{
+	"modules": [],
+	"components": {
+		"urlManager": {
+			"rules": []
+		}
+	},
+	"params": [],
+	"controllerNamespace": "console\\controllers",
+	"id": "app-console",
+	"basePath": "C:\\OpenServer\\domains\\yii\\core\\console",
+	"vendorPath": "C:\\OpenServer\\domains\\yii\\core\\vendor\\"
+}
