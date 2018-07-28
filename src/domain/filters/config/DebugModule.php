@@ -6,15 +6,14 @@ use yii2lab\designPattern\scenario\base\BaseScenario;
 
 class DebugModule extends BaseScenario {
 	
-	public $isEnable = YII_ENV_DEV && YII_DEBUG && APP != API;
+	public $isEnableBootstrap = YII_ENV_DEV && YII_DEBUG && APP != API;
 	
 	public function run() {
+		$config = $this->getData();
 		if(!isset($config['modules']['debug'])) {
 			return;
 		}
-		$config = $this->getData();
-		$isEnabledDebug = $this->isEnable;
-		if($isEnabledDebug) {
+		if($this->isEnableBootstrap) {
 			$config['bootstrap'][] = 'debug';
 		} else {
 			unset($config['modules']['debug']);
