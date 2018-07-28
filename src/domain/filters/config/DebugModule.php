@@ -9,8 +9,11 @@ class DebugModule extends BaseScenario {
 	public $isEnable = YII_ENV_DEV && YII_DEBUG && APP != API;
 	
 	public function run() {
+		if(!isset($config['modules']['debug'])) {
+			return;
+		}
 		$config = $this->getData();
-		$isEnabledDebug = $this->isEnable && isset($config['modules']['debug']);
+		$isEnabledDebug = $this->isEnable;
 		if($isEnabledDebug) {
 			$config['bootstrap'][] = 'debug';
 		} else {
