@@ -6,8 +6,12 @@ use yii2lab\helpers\UrlHelper;
 
 class EnvService {
 	
-	public static function getConnection($name) {
-		return env('servers.db.' . $name, []);
+	public static function getServer($name, $default = null) {
+		return env('servers.' . $name, $default);
+	}
+	
+	public static function getConnection($name, $default = null) {
+		return env('servers.db.' . $name, $default);
 	}
 	
 	public static function getStaticDomain() {
