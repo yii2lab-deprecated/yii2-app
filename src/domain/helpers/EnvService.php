@@ -11,11 +11,11 @@ class EnvService {
 	}
 	
 	public static function getConnection($name, $default = null) {
-		return env('servers.db.' . $name, $default);
+		return self::getServer('db.' . $name, $default);
 	}
 	
-	public static function getStaticDomain() {
-		$domain = env('servers.static.domain');
+	public static function getStaticHost() {
+		$domain = self::getServer('static.domain');
 		$domain = trim($domain, SL);
 		return $domain;
 	}
@@ -28,7 +28,7 @@ class EnvService {
 	public static function getStaticUrl($path) {
 		$path = trim($path, SL);
 		if(!UrlHelper::isAbsolute($path)) {
-			$path = self::getStaticDomain() . SL . $path;
+			$path = self::getStaticHost() . SL . $path;
 		}
 		return $path;
 	}
