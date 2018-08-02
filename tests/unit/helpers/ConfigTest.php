@@ -20,17 +20,17 @@ class ConfigTest extends Unit
 		
 		$expected = DataHelper::loadForTest(self::PACKAGE, __METHOD__, $config);
 		
-		expect($expected)->equals($config);
+		$this->tester->assertEquals($expected, $config);
 	}
 	
 	public function testEnvGetDefinition()
 	{
 		$definitionGenerated = Env::getDefinition('vendor/yii2lab/yii2-app/tests/_application_test');
 		$expected = DataHelper::loadForTest(self::PACKAGE, __METHOD__, $definitionGenerated);
-		expect($expected)->equals($definitionGenerated);
+		$this->tester->assertEquals($expected, $definitionGenerated);
 		
 		$definitionGenerated = Env::getDefinition(['vendor/yii2lab/yii2-app/tests/_application_test']);
-		expect($expected)->equals($definitionGenerated);
+		$this->tester->assertEquals($expected, $definitionGenerated);
 	}
 	
 	public function testLoadConfig()
@@ -46,7 +46,7 @@ class ConfigTest extends Unit
 		unset($expected['vendorPath']);
 		unset($config['basePath']);
 		unset($config['vendorPath']);
-		expect($expected)->equals($config);
+		$this->tester->assertEquals($expected, $config);
 	}
 	
 }
