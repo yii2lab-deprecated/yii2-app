@@ -48,7 +48,8 @@ class App
 		Load::yii($yiiClass);
 		Yii::beginProfile('init_yii', __METHOD__);
 		Load::required();
-		Constant::setAliases();
+		$aliases = Env::get('aliases');
+		Constant::setAliases($aliases);
 		Yii::endProfile('init_yii', __METHOD__);
 		Yii::beginProfile('run_env_commands', __METHOD__);
 		$commands = Env::get('app.commands', []);

@@ -22,7 +22,7 @@ class Constant {
 		defined('YII_DEBUG') OR define('YII_DEBUG', $debug);
 	}
 	
-	public static function setAliases() {
+	public static function setAliases($aliases = []) {
 		Yii::setAlias('@root', ROOT_DIR);
 		Yii::setAlias('@common', COMMON_DIR);
 		Yii::setAlias('@frontend', FRONTEND_DIR);
@@ -31,6 +31,11 @@ class Constant {
 		Yii::setAlias('@console', CONSOLE_DIR);
 		Yii::setAlias('@vendor', VENDOR_DIR);
 		Yii::setAlias('@domain', DOMAIN_DIR);
+		if(!empty($aliases)) {
+		    foreach ($aliases as $alias => $path) {
+                Yii::setAlias($alias, $path);
+            }
+        }
 	}
 	
 	public static function setApplication($appName) {
