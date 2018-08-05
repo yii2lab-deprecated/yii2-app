@@ -125,6 +125,12 @@ return [
 						'name' => 'domains',
 						'withLocal' => true,
 					],
+                    [
+                        'class' => LoadDomainConfig::class,
+                        'app' => APP,
+                        'name' => 'domains',
+                        'withLocal' => true,
+                    ],
 				],
 			],
 			[
