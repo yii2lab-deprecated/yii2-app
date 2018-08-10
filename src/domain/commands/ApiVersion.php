@@ -26,7 +26,11 @@ class ApiVersion extends BaseScenario {
 		if(empty($version)) {
 			$version = self::getApiVersionFromHeader();
 			if(empty($version)) {
-				return null;
+				if(APP == CONSOLE) {
+					$version = 1;
+				} else {
+					return null;
+				}
 			}
 			self::forgeRequestUri($version);
 		}
