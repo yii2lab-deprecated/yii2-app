@@ -6,6 +6,16 @@ use yii2lab\helpers\UrlHelper;
 
 class EnvService {
 	
+	public static function getServerHost($name, $default = null) {
+		$host = env('servers.' . $name . '.host', $default);
+		return rtrim($host, SL);
+	}
+	
+	public static function getServerHostUrl($name, $uri) {
+		$host = env('servers.' . $name . '.host');
+		return self::generateUrl($host, $uri);
+	}
+	
 	public static function getServer($name, $default = null) {
 		return env('servers.' . $name, $default);
 	}
