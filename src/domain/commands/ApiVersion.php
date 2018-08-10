@@ -34,7 +34,7 @@ class ApiVersion extends BaseScenario {
 			}
 			self::forgeRequestUri($version);
 		}
-		if(!ApiVersionEnum::isValid('v' . $version)) {
+		if(APP != CONSOLE && !ApiVersionEnum::isValid('v' . $version)) {
 			self::showError('Version ' . $version . ' not found');
 		}
 		return $version;
