@@ -2,7 +2,7 @@
 
 namespace yii2lab\app\admin\helpers;
 
-use common\enums\rbac\PermissionEnum;
+use yii2lab\app\domain\enums\AppPermissionEnum;
 use yii2lab\extension\menu\interfaces\MenuInterface;
 
 class Menu implements MenuInterface {
@@ -11,7 +11,7 @@ class Menu implements MenuInterface {
 		return [
 			'label' => ['app/main', 'title'],
 			'module' => 'app',
-			'access' => PermissionEnum::APP_CONFIG,
+			'access' => AppPermissionEnum::CONFIG,
 			'icon' => 'sliders',
 			'items' => [
 				[
