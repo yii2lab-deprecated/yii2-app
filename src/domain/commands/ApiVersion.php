@@ -76,6 +76,9 @@ class ApiVersion extends BaseScenario {
 	}
 	
 	private static function forgeRequestUri($version) {
+		if(!isset($_SERVER['REQUEST_URI'])) {
+			return;
+		}
 		$_SERVER['REQUEST_URI'] = '/v' . $version . $_SERVER['REQUEST_URI'];
 	}
 }
