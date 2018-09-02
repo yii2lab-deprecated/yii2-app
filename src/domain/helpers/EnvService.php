@@ -5,7 +5,11 @@ namespace yii2lab\app\domain\helpers;
 use yii2lab\helpers\UrlHelper;
 
 class EnvService {
-	
+
+    public static function get($name, $default = null) {
+        return env($name, $default);
+    }
+
 	public static function getServerHost($name, $default = null) {
 		$host = env('servers.' . $name . '.host', $default);
 		return rtrim($host, SL);
