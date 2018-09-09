@@ -5,7 +5,7 @@ use yii2lab\app\domain\commands\RunBootstrap;
 use yii2lab\app\domain\filters\config\LoadConfig;
 use yii2lab\app\domain\filters\config\LoadModuleConfig;
 use yii2lab\domain\filters\LoadDomainConfig;
-use yii2lab\misc\enums\YiiEnvEnum;
+use yii2lab\app\domain\enums\YiiEnvEnum;
 
 return [
 	'yii' => [

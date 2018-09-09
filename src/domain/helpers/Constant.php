@@ -3,7 +3,7 @@
 namespace yii2lab\app\domain\helpers;
 
 use Yii;
-use yii2lab\misc\enums\YiiEnvEnum;
+use yii2lab\app\domain\enums\YiiEnvEnum;
 
 class Constant {
 	

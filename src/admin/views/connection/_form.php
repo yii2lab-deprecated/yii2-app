@@ -6,7 +6,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii2lab\misc\enums\DbDriverEnum;
+use yii2lab\db\domain\enums\DbDriverEnum;
 
 ?>
 

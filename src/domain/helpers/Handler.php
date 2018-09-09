@@ -2,7 +2,7 @@
 
 namespace yii2lab\app\domain\helpers;
 
-use yii2lab\designPattern\scenario\helpers\ScenarioHelper;
+use yii2lab\extension\scenario\helpers\ScenarioHelper;
 
 class Handler {
 	

@@ -4,7 +4,7 @@ namespace yii2lab\app\domain\repositories\disc;
 
 use yii2lab\domain\BaseEntity;
 use yii2lab\domain\repositories\BaseRepository as YiiBaseRepository;
-use yii2lab\store\Store;
+use yii2lab\extension\store\Store;
 
 class BaseConfigRepository extends YiiBaseRepository {
 

@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii2lab\app\domain\entities\ModeEntity;
-use yii2lab\widgets\SwitchInput;
+use yii2lab\extension\widget\SwitchInput;
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 
 use yii2lab\helpers\UrlHelper;
-use yii2lab\misc\enums\YiiEnvEnum;
+use yii2lab\app\domain\enums\YiiEnvEnum;
 
 $domain = UrlHelper::currentDomain();
 $baseDomain = UrlHelper::baseDomain($domain);

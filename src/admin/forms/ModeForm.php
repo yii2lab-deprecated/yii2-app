@@ -4,7 +4,7 @@ namespace yii2lab\app\admin\forms;
 
 use Yii;
 use yii2lab\domain\base\Model;
-use yii2lab\misc\enums\YiiEnvEnum;
+use yii2lab\app\domain\enums\YiiEnvEnum;
 
 class ModeForm extends Model {
 

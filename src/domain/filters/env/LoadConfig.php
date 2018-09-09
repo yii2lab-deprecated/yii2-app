@@ -3,7 +3,7 @@
 namespace yii2lab\app\domain\filters\env;
 
 use yii\helpers\ArrayHelper;
-use yii2lab\designPattern\scenario\base\BaseScenario;
+use yii2lab\extension\scenario\base\BaseScenario;
 
 class LoadConfig extends BaseScenario {
 

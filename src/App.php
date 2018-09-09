@@ -11,7 +11,7 @@ use yii2lab\app\domain\helpers\Env;
 use yii2lab\app\domain\helpers\Constant;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Load;
-use yii2lab\designPattern\scenario\helpers\ScenarioHelper;
+use yii2lab\extension\scenario\helpers\ScenarioHelper;
 
 class App
 {

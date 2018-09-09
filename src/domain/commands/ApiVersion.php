@@ -3,7 +3,7 @@
 namespace yii2lab\app\domain\commands;
 
 use common\enums\app\ApiVersionEnum;
-use yii2lab\designPattern\scenario\base\BaseScenario;
+use yii2lab\extension\scenario\base\BaseScenario;
 
 class ApiVersion extends BaseScenario {
 
