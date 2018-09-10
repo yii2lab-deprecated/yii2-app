@@ -7,10 +7,12 @@ use yii\base\InvalidConfigException;
 use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
 use yii\web\ServerErrorHttpException;
+use yii2lab\app\domain\helpers\CacheHelper;
 use yii2lab\app\domain\helpers\Env;
 use yii2lab\app\domain\helpers\Constant;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Load;
+use yii2lab\extension\develop\helpers\Benchmark;
 use yii2lab\extension\scenario\helpers\ScenarioHelper;
 
 class App
@@ -23,14 +25,19 @@ class App
 		if(!empty($appName)) {
 			self::init($appName, $projectDir);
 		}
-		Yii::beginProfile('init_config', __METHOD__);
-		$definition = Env::get('config');
-		Config::init($definition);
-		$config = Config::get();
-		Yii::endProfile('init_config', __METHOD__);
+        $config = self::initConfig();
 		self::runApplication($config);
 	}
-	
+
+	private static function initConfig() {
+        Benchmark::begin('init_config');
+        $definition = Env::get('config');
+        Config::init($definition);
+        $config = Config::get();
+        Benchmark::end('init_config');
+        return $config;
+	}
+
 	public static function init($appName, $projectDir = '')
 	{
 		if(self::$initedAs) {
@@ -46,16 +53,16 @@ class App
 		Constant::setYiiDebug($env['mode']['debug']);
 		$yiiClass = Env::get('yii.class');
 		Load::yii($yiiClass);
-		Yii::beginProfile('init_yii', __METHOD__);
+        Benchmark::begin('init_yii' . __METHOD__);
 		Load::required();
 		$aliases = Env::get('aliases');
 		Constant::setAliases($aliases);
-		Yii::endProfile('init_yii', __METHOD__);
-		Yii::beginProfile('run_env_commands', __METHOD__);
+        Benchmark::end('init_yii' . __METHOD__);
+        Benchmark::begin('run_env_commands' . __METHOD__);
 		$commands = Env::get('app.commands', []);
 		self::runCommands($commands);
 		self::$initedAs = $appName;
-		Yii::endProfile('run_env_commands', __METHOD__);
+        Benchmark::end('run_env_commands' . __METHOD__);
 	}
 	
 	private static function runCommands($commands)

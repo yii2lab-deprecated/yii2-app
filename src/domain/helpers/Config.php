@@ -10,7 +10,10 @@ class Config extends BaseRegistry {
 	protected static $data = [];
 	
 	public static function init($definition) {
-		static::$data = self::load($definition);
+	    $callback = function () use ($definition) {
+            return self::load($definition);
+        };
+        static::$data = CacheHelper::forge(APP . '_app_config', $callback);
 	}
 	
 	public static function load($definition = []) {
