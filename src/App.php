@@ -2,18 +2,18 @@
 
 namespace yii2lab\app;
 
-use Yii;
 use yii\base\InvalidConfigException;
 use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
 use yii\web\ServerErrorHttpException;
-use yii2lab\app\domain\helpers\CacheHelper;
 use yii2lab\app\domain\helpers\Env;
 use yii2lab\app\domain\helpers\Constant;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Load;
 use yii2lab\extension\develop\helpers\Benchmark;
 use yii2lab\extension\scenario\helpers\ScenarioHelper;
+
+define('MICRO_TIME', microtime(true));
 
 class App
 {
@@ -47,22 +47,29 @@ class App
 		Load::helpers();
 		Constant::init($appName);
 		Load::autoload();
+		//CodeCacheHelper::loadClassesCache();
+		
+		Benchmark::begin('pre_init_yii_' . __METHOD__);
 		Env::init($projectDir);
 		$env = Env::get();
 		Constant::setYiiEnv($env['mode']['env']);
 		Constant::setYiiDebug($env['mode']['debug']);
 		$yiiClass = Env::get('yii.class');
 		Load::yii($yiiClass);
-        Benchmark::begin('init_yii' . __METHOD__);
+		Benchmark::end('pre_init_yii_' . __METHOD__);
+		
+        Benchmark::begin('init_yii_' . __METHOD__);
 		Load::required();
 		$aliases = Env::get('aliases');
 		Constant::setAliases($aliases);
-        Benchmark::end('init_yii' . __METHOD__);
-        Benchmark::begin('run_env_commands' . __METHOD__);
+        Benchmark::end('init_yii_' . __METHOD__);
+        
+        Benchmark::begin('run_env_commands_' . __METHOD__);
 		$commands = Env::get('app.commands', []);
 		self::runCommands($commands);
+        Benchmark::end('run_env_commands_' . __METHOD__);
+		
 		self::$initedAs = $appName;
-        Benchmark::end('run_env_commands' . __METHOD__);
 	}
 	
 	private static function runCommands($commands)
