@@ -150,10 +150,7 @@ return [
 				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
 			],
 			
-			'yii2lab\app\domain\filters\config\SetControllerNamespace',
-			'yii2lab\app\domain\filters\config\FixValidationKeyInTest',
-			'yii2lab\app\domain\filters\config\SetAppId',
-			'yii2lab\app\domain\filters\config\SetPath',
+            'yii2lab\app\domain\filters\config\StandardConfigMutations',
 		],
 	],
 ];
