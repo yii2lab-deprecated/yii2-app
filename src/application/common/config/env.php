@@ -6,6 +6,7 @@ use yii2lab\app\domain\filters\config\LoadConfig;
 use yii2lab\app\domain\filters\config\LoadModuleConfig;
 use yii2lab\domain\filters\LoadDomainConfig;
 use yii2lab\app\domain\enums\YiiEnvEnum;
+use yii2lab\app\domain\filters\config\LoadRouteConfig;
 
 return [
 	/*'yii' => [
@@ -93,22 +94,20 @@ return [
 				'name' => 'modules',
 				'withLocal' => true,
 			],
-			
-			[
-				'class' => LoadConfig::class,
-				'app' => COMMON,
-				'name' => 'routes',
-				'withLocal' => true,
-				'assignTo' => 'components.urlManager.rules',
-			],
-			[
-				'class' => LoadConfig::class,
-				'app' => APP,
-				'name' => 'routes',
-				'withLocal' => true,
-				'assignTo' => 'components.urlManager.rules',
-			],
-			
+
+            [
+                'class' => LoadRouteConfig::class,
+                'app' => COMMON,
+                'name' => 'routes',
+                'withLocal' => true,
+            ],
+            [
+                'class' => LoadRouteConfig::class,
+                'app' => APP,
+                'name' => 'routes',
+                'withLocal' => true,
+            ],
+
 			[
 				'class' => LoadConfig::class,
 				'app' => COMMON,
