@@ -42,6 +42,28 @@ return [
                     ],
                 ],
             ],
+            [
+                'class' => 'yii2module\offline\domain\filters\IsOffline',
+                'exclude' => [
+                    CONSOLE,
+                    BACKEND,
+                ],
+            ],
+            [
+                'class' => 'yii2lab\db\domain\filters\migration\SetPath',
+                'path' => [
+                    '@vendor/yii2module/yii2-account/src/domain/v2/migrations',
+                    '@vendor/yii2module/yii2-profile/src/domain/v2/migrations',
+                    '@vendor/yii2module/yii2-article/src/domain/migrations',
+                    '@vendor/yii2module/yii2-rest-client/src/migrations',
+                    '@vendor/yii2lab/yii2-qr/src/domain/migrations',
+                    '@vendor/yii2lab/yii2-geo/src/domain/migrations',
+                    //'@vendor/yii2lab/yii2-notify/src/migrations',
+                ],
+                'scan' => [
+                    '@domain',
+                ],
+            ],
 		],
 	],
 	'config' => [
@@ -132,23 +154,6 @@ return [
 			'yii2lab\app\domain\filters\config\FixValidationKeyInTest',
 			'yii2lab\app\domain\filters\config\SetAppId',
 			'yii2lab\app\domain\filters\config\SetPath',
-			'yii2module\offline\domain\filters\IsOffline',
-			[
-				'class' => 'yii2lab\db\domain\filters\migration\SetPath',
-				'path' => [
-					'@vendor/yii2module/yii2-account/src/domain/v2/migrations',
-					'@vendor/yii2module/yii2-profile/src/domain/v2/migrations',
-					'@vendor/yii2module/yii2-article/src/domain/migrations',
-					'@vendor/yii2module/yii2-rest-client/src/migrations',
-					'@vendor/yii2lab/yii2-qr/src/domain/migrations',
-					'@vendor/yii2lab/yii2-geo/src/domain/migrations',
-					//'@vendor/yii2lab/yii2-notify/src/migrations',
-				],
-				'scan' => [
-					'@domain',
-				],
-			],
-			
 		],
 	],
 ];
