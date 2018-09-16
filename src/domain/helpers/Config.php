@@ -6,17 +6,16 @@ use yii2lab\extension\registry\base\BaseRegistry;
 use yii2lab\helpers\ClassHelper;
 
 class Config extends BaseRegistry {
-	
-	protected static $data = [];
-	
+
 	public static function init($definition) {
 	    $callback = function () use ($definition) {
-            return self::load($definition);
+            return self::loadData($definition);
         };
-        static::$data = CacheHelper::forge(APP . '_app_config', $callback);
+        $config = CacheHelper::forge(APP . '_app_config', $callback);
+        self::load($config);
 	}
 	
-	public static function load($definition = []) {
+	public static function loadData($definition = []) {
 		$definition['class'] = Handler::class;
 		/** @var Handler $loader */
 		$loader = ClassHelper::createObject($definition);

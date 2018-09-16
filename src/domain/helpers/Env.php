@@ -7,18 +7,17 @@ use yii2lab\extension\registry\base\BaseRegistry;
 use yii2lab\extension\yii\helpers\FileHelper;
 
 class Env extends BaseRegistry {
-	
-	protected static $data = [];
-	
+
 	public static function init($projectDir) {
 		$definition = self::getDefinition($projectDir);
-		static::$data = self::load($definition);
+        $config = EnvLoader::run($definition);
+		self::load($config);
 	}
-	
-	public static function load($definition) {
-		return EnvLoader::run($definition);
-	}
-	
+
+    public static function loadData($definition) {
+        return EnvLoader::run($definition);
+    }
+
 	public static function getDefinition($projectDir) {
 		$projectDirs = ArrayHelper::toArray($projectDir);
 		$projectDirs[] = 'vendor/yii2lab/yii2-app/src/application';
