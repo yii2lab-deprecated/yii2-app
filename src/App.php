@@ -81,6 +81,8 @@ namespace yii2lab\app\parent {
             Load::required();
             $aliases = Env::get('aliases');
             Constant::setAliases($aliases);
+	        $container = Env::get('container');
+	        Constant::setContainer($container);
             Benchmark::end('init_yii_' . __METHOD__);
 
             Benchmark::begin('run_env_commands_' . __METHOD__);

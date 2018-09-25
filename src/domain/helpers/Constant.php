@@ -22,6 +22,14 @@ class Constant {
 		defined('YII_DEBUG') OR define('YII_DEBUG', $debug);
 	}
 	
+	public static function setContainer($container = []) {
+		if(!empty($container)) {
+			foreach ($container as $name => $definition) {
+				Yii::$container->set($name, $definition);
+			}
+		}
+	}
+	
 	public static function setAliases($aliases = []) {
 		Yii::setAlias('@root', ROOT_DIR);
 		Yii::setAlias('@common', COMMON_DIR);
