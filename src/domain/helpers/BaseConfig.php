@@ -4,6 +4,9 @@ namespace yii2lab\app\domain\helpers;
 
 use yii\helpers\ArrayHelper;
 
+/**
+ * @deprecated
+ */
 class BaseConfig {
 	
 	protected static $config = [];
