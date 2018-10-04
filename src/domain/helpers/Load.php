@@ -12,7 +12,7 @@ class Load
 		//$vendorDir = __DIR__ . '/../../../../..';
 		//require($vendorDir . '/yii2lab/yii2-extension/src/registry/base/BaseRegistry.php');
 		//require($vendorDir . '/yii2lab/yii2-db/src/domain/helpers/DbHelper.php');
-		require('BaseConfig.php');
+		//require('BaseConfig.php');
 		//require('Env.php');
 		require('Constant.php');
 		//require('Db.php');
