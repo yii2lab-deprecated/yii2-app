@@ -12,6 +12,13 @@ function config($name, $default = null) {
 	return $value;
 }
 
+/**
+ * @param      $name
+ * @param null $default
+ *
+ * @return array|mixed|null|object
+ * @deprecated use EnvService
+ */
 function env($name, $default = null) {
 	$value = Env::get($name);
 	if($value === null) {

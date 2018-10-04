@@ -7,21 +7,25 @@ use yii2lab\extension\common\helpers\UrlHelper;
 class EnvService {
 
     public static function get($name, $default = null) {
-        return env($name, $default);
+	    $value = Env::get($name);
+	    if($value === null) {
+		    $value = $default;
+	    }
+	    return $value;
     }
 
 	public static function getServerHost($name, $default = null) {
-		$host = env('servers.' . $name . '.host', $default);
+		$host = self::get('servers.' . $name . '.host', $default);
 		return rtrim($host, SL);
 	}
 	
 	public static function getServerHostUrl($name, $uri) {
-		$host = env('servers.' . $name . '.host');
+		$host = self::get('servers.' . $name . '.host');
 		return self::generateUrl($host, $uri);
 	}
 	
 	public static function getServer($name, $default = null) {
-		return env('servers.' . $name, $default);
+		return self::get('servers.' . $name, $default);
 	}
 	
 	public static function getConnection($name, $default = null) {
@@ -35,7 +39,7 @@ class EnvService {
 	}
 	
 	public static function getUrl($name, $uri = null) {
-		$domain = env('url' . DOT . $name);
+		$domain = self::get('url' . DOT . $name);
 		return self::generateUrl($domain, $uri);
 	}
 	
