@@ -3,7 +3,6 @@
 namespace yii2lab\app\domain\filters\config;
 
 use yii2lab\extension\scenario\base\BaseGroupScenario;
-use yii2lab\extension\scenario\helpers\ScenarioHelper;
 
 class StandardConfigMutations extends BaseGroupScenario {
 
