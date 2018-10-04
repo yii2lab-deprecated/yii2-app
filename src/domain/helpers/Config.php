@@ -3,7 +3,7 @@
 namespace yii2lab\app\domain\helpers;
 
 use yii2lab\extension\registry\base\BaseRegistry;
-use yii2lab\helpers\ClassHelper;
+use yii2lab\extension\common\helpers\ClassHelper;
 
 class Config extends BaseRegistry {
 
