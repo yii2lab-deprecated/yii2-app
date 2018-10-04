@@ -15,7 +15,6 @@ class Load
 		require('BaseConfig.php');
 		//require('Env.php');
 		require('Constant.php');
-		require('Func.php');
 		//require('Db.php');
 		//require('Config.php');
 	}
@@ -35,7 +34,7 @@ class Load
 	
 	public static function required()
 	{
-		require(VENDOR_DIR . DS . 'yii2lab/yii2-helpers/src' . DS . 'Func.php');
+        require('Func.php');
 	}
 
 }
