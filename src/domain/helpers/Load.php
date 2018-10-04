@@ -7,6 +7,11 @@ class Load
 
 	const YII_CLASS = VENDOR_DIR . DS . 'yiisoft' . DS . 'yii2' . DS . 'Yii.php';
 	
+	public static function autoload()
+	{
+		require(__DIR__ . '/../../../../../autoload.php');
+	}
+	
 	public static function helpers()
 	{
 		//$vendorDir = __DIR__ . '/../../../../..';
@@ -14,14 +19,9 @@ class Load
 		//require($vendorDir . '/yii2lab/yii2-db/src/domain/helpers/DbHelper.php');
 		//require('BaseConfig.php');
 		//require('Env.php');
-		require('Constant.php');
+		//require('Constant.php');
 		//require('Db.php');
 		//require('Config.php');
-	}
-	
-	public static function autoload()
-	{
-		require(VENDOR_DIR . DS . 'autoload.php');
 	}
 	
 	public static function yii($class)

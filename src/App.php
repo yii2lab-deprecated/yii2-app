@@ -63,9 +63,9 @@ namespace yii2lab\app\parent {
                 return;
             }
             require_once(__DIR__ . '/domain/helpers/Load.php');
-            Load::helpers();
+	        Load::autoload();
+            //Load::helpers();
             Constant::init($appName);
-            Load::autoload();
             //CodeCacheHelper::loadClassesCache();
 
             Benchmark::begin('pre_init_yii_' . __METHOD__);
