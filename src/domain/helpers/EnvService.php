@@ -2,7 +2,7 @@
 
 namespace yii2lab\app\domain\helpers;
 
-use yii2lab\helpers\UrlHelper;
+use yii2lab\extension\common\helpers\UrlHelper;
 
 class EnvService {
 
