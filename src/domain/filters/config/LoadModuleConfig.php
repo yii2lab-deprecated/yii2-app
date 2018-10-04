@@ -3,7 +3,7 @@
 namespace yii2lab\app\domain\filters\config;
 
 use yii2lab\helpers\ClassHelper;
-use yii2lab\helpers\Helper;
+use yii2lab\extension\common\helpers\Helper;
 
 class LoadModuleConfig extends LoadConfig {
 	
