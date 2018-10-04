@@ -24,41 +24,29 @@ return [
                 'app' => COMMON,
                 'name' => 'main',
                 'withLocal' => true,
+                'isEnabled' => YII_ENV != YiiEnvEnum::TEST,
             ],
             [
                 'class' => LoadConfig::class,
                 'app' => APP,
                 'name' => 'main',
                 'withLocal' => true,
+                'isEnabled' => YII_ENV != YiiEnvEnum::TEST,
             ],
 
             [
                 'class' => LoadConfig::class,
                 'app' => COMMON,
-                'name' => 'params',
-                'withLocal' => true,
-                'assignTo' => 'params',
-            ],
-            [
-                'class' => LoadConfig::class,
-                'app' => APP,
-                'name' => 'params',
-                'withLocal' => true,
-                'assignTo' => 'params',
-            ],
-
-            [
-                'class' => LoadConfig::class,
-                'app' => COMMON,
-                'name' => 'test',
-                'withLocal' => true,
+                'name' => 'test-local',
+                'withLocal' => false,
                 'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
             ],
+
             [
                 'class' => LoadConfig::class,
                 'app' => APP,
-                'name' => 'test',
-                'withLocal' => true,
+                'name' => 'test-local',
+                'withLocal' => false,
                 'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
             ],
         ],
