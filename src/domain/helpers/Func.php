@@ -3,7 +3,7 @@
 use yii\helpers\ArrayHelper;
 use yii2lab\app\domain\helpers\Config;
 use yii2lab\app\domain\helpers\Env;
-use yii2lab\helpers\Debug;
+use yii2lab\extension\develop\helpers\Debug;
 
 function config($name, $default = null) {
 	$value = Config::get($name);
