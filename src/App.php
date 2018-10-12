@@ -3,6 +3,7 @@
 namespace {
 
     use common\locators\DomainLocator;
+    use \yii2lab\domain\base\BaseDomainLocator;
 
     define('MICRO_TIME', microtime(true));
 
@@ -10,7 +11,7 @@ namespace {
     {
 
         /**
-         * @var DomainLocator|\yii2lab\domain\locators\DomainLocator the domain container
+         * @var DomainLocator|BaseDomainLocator the domain container
          */
         public static $domain;
 
