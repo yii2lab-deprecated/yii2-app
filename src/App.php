@@ -10,7 +10,7 @@ namespace {
     {
 
         /**
-         * @var DomainLocator the domain container
+         * @var DomainLocator|\yii2lab\domain\locators\DomainLocator the domain container
          */
         public static $domain;
 
