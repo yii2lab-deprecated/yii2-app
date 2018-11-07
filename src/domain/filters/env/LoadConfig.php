@@ -9,13 +9,16 @@ class LoadConfig extends BaseScenario {
 
 	const FILE_ENV = 'env';
 	const FILE_ENV_LOCAL = 'env-local';
+	const FILE_ENV_SYSTEM_LOCAL = 'env-system-local';
 	
 	public $paths = [];
 	
 	public function run() {
 		$mainConfig = $this->loadByFileName(self::FILE_ENV);
 		$localConfig = $this->loadByFileName(self::FILE_ENV_LOCAL);
+		$systemLocalConfig = $this->loadByFileName(self::FILE_ENV_SYSTEM_LOCAL);
 		$config = ArrayHelper::merge($mainConfig, $localConfig);
+		$config = ArrayHelper::merge($config, $systemLocalConfig);
 		$this->setData($config);
 	}
 	
