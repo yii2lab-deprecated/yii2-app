@@ -2,7 +2,7 @@
 
 return [
     /*'codeception' => [
-        'command' => 'P:\OpenServer\custom\bin\codeception run',
+		'command' => 'C:\OpenServer\custom\bin\codeception run',
     ],
     'test' => [
         'console' => [
