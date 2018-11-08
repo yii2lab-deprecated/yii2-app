@@ -56,13 +56,13 @@ return [
                     ],
                 ],
             ],
-            [
+            /*[
                 'class' => 'yii2module\offline\domain\filters\IsOffline',
                 'exclude' => [
                     CONSOLE,
                     BACKEND,
                 ],
-            ],
+            ],*/
 		],
 	],
 	'config' => [

@@ -43,13 +43,13 @@ return [
                     ],
                 ],
             ],
-            [
+            /*[
                 'class' => 'yii2module\offline\domain\filters\IsOffline',
                 'exclude' => [
                     CONSOLE,
                     BACKEND,
                 ],
-            ],
+            ],*/
             [
                 'class' => 'yii2lab\db\domain\filters\migration\SetPath',
                 'path' => [

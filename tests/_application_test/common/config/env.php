@@ -105,7 +105,7 @@ return [
 			'yii2lab\\app\\domain\\filters\\config\\FixValidationKeyInTest',
 			'yii2lab\\app\\domain\\filters\\config\\SetAppId',
 			'yii2lab\\app\\domain\\filters\\config\\SetPath',
-			'yii2module\\offline\\domain\\filters\\IsOffline',
+			//'yii2module\\offline\\domain\\filters\\IsOffline',
 		],
 	],
 	'url' => [
