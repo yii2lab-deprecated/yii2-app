@@ -1,7 +1,5 @@
 <?php
 
-use yii2module\account\domain\v2\helpers\UserFixture;
-
 return [
 	1 => [
 		'id' => 1,

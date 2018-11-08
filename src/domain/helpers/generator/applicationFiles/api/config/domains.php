@@ -1,9 +1,7 @@
 <?php
 
-use yii2lab\helpers\ApiVersionConfig;
+use yii2lab\rest\domain\helpers\ApiVersionConfig;
 
-$config = [
-
-];
+$config = [];
 
 return ApiVersionConfig::load('domains', $config);

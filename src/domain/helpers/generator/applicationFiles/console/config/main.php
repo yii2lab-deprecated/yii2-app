@@ -1,6 +1,5 @@
 <?php
 
-use yii2lab\db\domain\helpers\MigrationHelper;
 use yii2module\lang\domain\enums\LanguageEnum;
 
 return [
@@ -11,6 +10,8 @@ return [
 		],
 	],
 	'controllerMap' => [
-		'migrate' => MigrationHelper::getControllerConfig(),
+		'migrate' => [
+			'class' => 'yii2lab\db\console\controllers\MigrateController',
+		],
 	],
 ];

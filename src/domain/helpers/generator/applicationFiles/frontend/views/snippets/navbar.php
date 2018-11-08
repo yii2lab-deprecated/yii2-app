@@ -2,7 +2,6 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 /* @var $isFixedTop boolean */
 
 use yii\bootstrap\Nav;

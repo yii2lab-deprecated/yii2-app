@@ -1,12 +1,9 @@
 <?php
 
 use common\enums\rbac\PermissionEnum;
-use yii2lab\helpers\Behavior;
+use yii2lab\extension\web\helpers\Behavior;
 
 return [
-	'offline' => [
-		'class' => 'yii2module\offline\web\Module',
-	],
 	'lang' => [
 		'class' => 'yii2module\lang\module\Module',
 	],

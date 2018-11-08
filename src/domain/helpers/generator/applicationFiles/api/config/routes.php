@@ -8,9 +8,7 @@ $config = [
 	
 	[
 		'class' => 'yii2lab\app\domain\filters\config\LoadRouteConfig',
-		'modules' => [
-			'vendor/yii2lab/yii2-rest/src/api',
-		],
+		'modules' => [],
 	],
 ];
 
