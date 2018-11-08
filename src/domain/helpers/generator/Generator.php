@@ -25,6 +25,7 @@ class Generator {
 			'environments/files/frontend',
 		],
 		'console' => [
+			'cmd',
 			'console',
 			'environments/files/console',
 		],

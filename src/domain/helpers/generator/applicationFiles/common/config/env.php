@@ -36,18 +36,6 @@ return [
 			],
 		],
 	],
-    'jwt' => [
-        'profiles' => [
-            'default' => [
-                // 'key' => 'need define in env-local',
-                // 'issuer_url' => 'http://api.extended.tpl/v1/auth',
-                'life_time' => \yii2lab\extension\enum\enums\TimeEnum::SECOND_PER_MINUTE * 20,
-                'allowed_algs' => ['HS256', 'SHA512', 'HS384'],
-                'default_alg' => 'HS256',
-                'audience' => ["http://api.core.yii"],
-            ],
-        ],
-    ],
 	'app' => [
 		'commands' => [
 			[
@@ -79,23 +67,6 @@ return [
                     CONSOLE,
                     BACKEND,
                 ],
-            ],
-            [
-                'class' => 'yii2lab\db\domain\filters\migration\SetPath',
-                'path' => [
-                    '@vendor/yii2lab/yii2-geo/src/domain/migrations',
-                    '@vendor/yii2lab/yii2-rest/src/domain/migrations',
-                    '@vendor/yii2lab/yii2-rbac/src/domain/migrations',
-                    '@vendor/yii2lab/yii2-qr/src/domain/migrations',
-                    '@vendor/yii2module/yii2-account/src/domain/v2/migrations',
-                    '@vendor/yii2module/yii2-profile/src/domain/v2/migrations',
-                    '@vendor/yii2module/yii2-article/src/domain/migrations',
-                    '@vendor/yii2module/yii2-summary/src/domain/migrations',
-                    '@vendor/yiisoft/yii2/log/migrations',
-                ],
-                'scan' => array_merge([
-                    '@domain',
-                ], $migrateScan),
             ],
 		],
 	],
@@ -175,6 +146,24 @@ return [
 				'isEnabled' => YII_ENV == YiiEnvEnum::TEST,
 			],
 			
+			[
+				'class' => 'yii2lab\db\domain\filters\migration\SetPath',
+				'path' => [
+					'@vendor/yii2lab/yii2-geo/src/domain/migrations',
+					'@vendor/yii2lab/yii2-rest/src/domain/migrations',
+					'@vendor/yii2lab/yii2-rbac/src/domain/migrations',
+					'@vendor/yii2lab/yii2-qr/src/domain/migrations',
+					'@vendor/yii2module/yii2-account/src/domain/v2/migrations',
+					'@vendor/yii2module/yii2-profile/src/domain/v2/migrations',
+					'@vendor/yii2module/yii2-article/src/domain/migrations',
+					'@vendor/yii2module/yii2-summary/src/domain/migrations',
+					'@vendor/yiisoft/yii2/log/migrations',
+				],
+				'scan' => array_merge([
+					'@domain',
+				], $migrateScan),
+			],
+			
 			'yii2lab\app\domain\filters\config\SetControllerNamespace',
 			'yii2lab\app\domain\filters\config\FixValidationKeyInTest',
 			'yii2lab\app\domain\filters\config\SetAppId',
@@ -182,27 +171,4 @@ return [
 			'yii2lab\app\domain\filters\config\DebugModule',
 		],
 	],
-    /*
-     * 'mode' => [
-		'env' => 'dev',
-		'debug' => true,
-        'benchmark' => false,
-	],
-    'jwt' => [
-        'profiles' => [
-            'default' => [
-                'key' => 'qwerty123',
-            ],
-        ],
-    ],
-    'encrypt' => [
-		'profiles' => [
-			'default' => [
-				'password' => 'qwerty123',
-				'iv' => 'ZZZZZZZZZZZZZZZZ',
-			],
-		],
-	],
-    */
-
 ];
