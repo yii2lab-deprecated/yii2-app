@@ -1,0 +1,128 @@
+{
+	"name": "woop/yii2-wooppay-com",
+	"description": "Wooppay web application",
+	"keywords": [
+		"wooppay",
+		"wallet",
+		"payment"
+	],
+	"homepage": "http://wooppay.com/",
+	"type": "project",
+	"minimum-stability": "stable",
+	"require": {
+		"dpodium/yii2-colorpicker": "*",
+		"yii2lab/yii2-app": "1.38.*",
+		"yii2lab/yii2-application-template": "0.19.*",
+		"yii2lab/yii2-init": "1.19.*",
+		"yii2lab/yii2-console": "1.12.*",
+		"yii2lab/yii2-rbac": "1.27.*",
+		"yii2lab/yii2-store": "1.7.*",
+		"yii2lab/yii2-rest": "1.36.*",
+		"yii2lab/yii2-helpers": "1.51.*",
+		"yii2lab/yii2-misc": "1.20.*",
+		"yii2lab/yii2-ubuntu-font": "1.3.*",
+		"yii2lab/yii2-validator": "1.8.*",
+		"yii2lab/yii2-domain": "1.69.*",
+		"yii2lab/yii2-extension": "0.36.*",
+		"yii2lab/yii2-qr": "1.10.*",
+		"yii2lab/yii2-notify": "1.22.*",
+		"yii2lab/yii2-widgets": "1.8.*",
+		"yii2lab/yii2-core": "1.18.*",
+		"yii2lab/yii2-geo": "2.20.*",
+		"yii2lab/yii2-navigation": "1.6.*",
+		"yii2lab/yii2-db": "1.18.*",
+		"yii2lab/yii2-design-pattern": "0.7.*",
+		"yii2lab/yii2-ai": "0.0.*",
+		"yii2module/yii2-offline": "1.14.*",
+		"yii2module/yii2-cleaner": "1.13.*",
+		"yii2module/yii2-error": "1.7.*",
+		"yii2module/yii2-lang": "2.19.*",
+		"yii2module/yii2-markdown": "0.9.*",
+		"yii2module/yii2-dashboard": "0.8.*",
+		"yii2woop/yii2-tps-generated": "1.5.*",
+		"yii2woop/yii2-common": "2.29.*",
+		"yii2woop/yii2-bank": "2.21.*",
+		"yii2woop/yii2-service": "1.66.*",
+		"yii2woop/yii2-operation": "0.75.*",
+		"yii2woop/yii2-history": "0.20.*",
+		"yii2woop/yii2-mbilling": "0.2.*",
+		"yii2woop/yii2-partner": "0.8.*",
+		"yii2woop/yii2-geo": "0.1.*",
+		"yii2module/yii2-account": "1.66.*",
+		"yii2module/yii2-profile": "0.22.*",
+		"yii2module/yii2-summary": "0.4.*",
+		"alex-lyanik/yii2-viewlog": "dev-master",
+		"sentry/sentry": "^1.8",
+		"mito/yii2-sentry": "~1.0.0",
+		"yii2game/yii2-evo": "dev-master",
+		"yii2game/yii2-engine": "dev-master"
+	},
+	"require-dev": {
+		"yii2lab/yii2-test": "1.266.*",
+		"yii2module/yii2-guide": "1.23.*",
+		"yii2module/yii2-vendor": "0.44.*",
+		"yii2module/yii2-tool": "0.9.*",
+		"yii2guide/markdown": "0.0.*",
+		"yii2guide/misc": "0.0.*",
+		"yii2guide/perfect-code": "0.0.*",
+		"yii2guide/team": "0.0.*"
+	},
+	"config": {
+		"secure-http": false,
+		"process-timeout": 1800
+	},
+	"extra": {
+		"installer-types": [
+			"bower-asset",
+			"npm-asset"
+		],
+		"installer-paths": {
+			"vendor/{$vendor}/{$name}/": [
+				"type:bower-asset",
+				"type:npm-asset"
+			]
+		}
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://asset-packagist.org"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-service.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-partner.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-tps-generated.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-common.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-bank.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-operation.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-history.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-mbilling.git"
+		},
+		{
+			"type": "git",
+			"url": "http://git.wooppay.local/yii2woop/yii2-geo.git"
+		}
+	]
+}

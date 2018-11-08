@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+use yii2lab\app\domain\helpers\generator\Generator;
+
+@include_once('App.php');
+App::init('console');
+
+Generator::generateApplication();
