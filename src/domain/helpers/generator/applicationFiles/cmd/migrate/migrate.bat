@@ -1,4 +1,4 @@
 @echo off
-cd ..\..\..
+cd ..\..
 php yii migrate
 pause
