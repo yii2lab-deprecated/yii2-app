@@ -1,9 +1,8 @@
 <?php
 
-use yii2lab\extension\web\helpers\Behavior;
-
 return [
 	'error' => 'yii2module\error\module\Module',
+	'dashboard' => 'yii2module\dashboard\admin\Module',
 	'user' => [
 		'class' => 'yii2module\account\module\Module',
 		'controllerMap' => [
@@ -13,9 +12,4 @@ return [
 			],
 		],
 	],
-	'dashboard' => [
-		'class' => 'yii2module\dashboard\admin\Module',
-		'as access' => Behavior::access(PermissionEnum::BACKEND_ALL),
-	],
-	'vendor' => 'yii2module\vendor\admin\Module',
 ];

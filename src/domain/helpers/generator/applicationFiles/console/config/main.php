@@ -11,8 +11,6 @@ return [
 		],
 	],
 	'controllerMap' => [
-		'migrate' => [
-			'class' => 'yii2lab\db\console\controllers\MigrateController',
-		],
+		'migrate' => 'yii2lab\db\console\controllers\MigrateController',
 	],
 ];

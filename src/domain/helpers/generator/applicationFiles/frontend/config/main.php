@@ -8,7 +8,7 @@ return [
 		'user' => [
 			'enableAutoLogin' => true,
 			'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
-			'loginUrl'=>['user/auth/login'],
+			'loginUrl' => ['user/auth/login'],
 		],
 		'request' => [
 			'csrfParam' => '_csrf-frontend',

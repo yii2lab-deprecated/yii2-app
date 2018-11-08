@@ -48,38 +48,13 @@ $jwtProfiles = [
 		'life_time' => TimeEnum::SECOND_PER_MINUTE * 20,
 		'allowed_algs' => ['HS256', 'SHA512', 'HS384'],
 		'default_alg' => 'HS256',
-		'audience' => ['http://api.wooppay.yii'],
+		'audience' => ['http://api.' . $domain],
 	],
 ];
 
 $authclientProfiles = [
 	'github' => [
 		'class' => 'yii\authclient\clients\Github',
-		'clientId' => '7c16a98aa622ddb44b7e',
-		'clientSecret' => '5353b6de215534691d046d9d173642a222b6ef80',
-	],
-	'facebook' => [
-		'class' => 'yii\authclient\clients\Facebook',
-		'clientId' => '',
-		'clientSecret' => '',
-	],
-	'google' => [
-		'class' => 'yii\authclient\clients\Google',
-		'clientId' => '',
-		'clientSecret' => '',
-	],
-	'yandex' => [
-		'class' => 'yii\authclient\clients\Yandex',
-		'clientId' => '',
-		'clientSecret' => '',
-	],
-	'twitter' => [
-		'class' => 'yii\authclient\clients\TwitterOAuth2',
-		'clientId' => '',
-		'clientSecret' => '',
-	],
-	'vkontakte' => [
-		'class' => 'yii\authclient\clients\VKontakte',
 		'clientId' => '',
 		'clientSecret' => '',
 	],

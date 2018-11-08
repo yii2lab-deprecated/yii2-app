@@ -16,6 +16,9 @@ nbproject
 # windows thumbnail cache
 Thumbs.db
 
+# PHP Storm IDE
+/.idea
+
 # composer vendor dir
 /vendor
 
@@ -34,4 +37,5 @@ phpunit.phar
 /.vagrant
 
 /composer.lock
+.dbeaver-data-sources.xml
 session/
