@@ -4,12 +4,12 @@ use yii2lab\app\domain\enums\YiiEnvEnum;
 use yii2lab\extension\common\helpers\StringHelper;
 use yii2lab\extension\enum\enums\TimeEnum;
 
-$domain = 'core.yii';
+$domain = 'demo.yii';
 
 $servers = [
 	'static' => [
 		'publicPath' => '@frontend/web/',
-		'domain' => 'https://static.test.wooppay.com/',
+		'domain' => 'http://' . $domain . '/',
 		'driver' => 'local',
 		'connection' => [
 			'path' => '@frontend/web',
@@ -24,16 +24,11 @@ $servers = [
 	],*/
 	'db' => [
 		'main' => [
-			'driver' => 'pgsql',
-			'host' => 'dbweb',
-			'username' => 'logging',
-			'password' => 'moneylogger',
-			'dbname' => 'core',
-			'defaultSchema' => 'core',
-			/*'migrator' => [
-				'username' => 'migrator',
-				'password' => 'the_best_migrator',
-			],*/
+			'driver' => 'mysql',
+			'host' => 'localhost',
+			'username' => 'root',
+			'password' => '',
+			'dbname' => 'demo_yii',
 		],
 	],
 ];

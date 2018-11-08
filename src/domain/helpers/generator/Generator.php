@@ -46,6 +46,7 @@ class Generator {
 		$dirs = ArrayHelper::merge($dirs, [
 			'common',
 			'environments/files/common',
+			'environments/config',
 		]);
 		return $dirs;
 	}
