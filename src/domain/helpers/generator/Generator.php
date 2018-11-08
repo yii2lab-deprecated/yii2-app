@@ -15,14 +15,20 @@ class Generator {
 		'api' => [
 			'api',
 			'environments/files/api',
+			'common',
+			'environments/files/common',
 		],
 		'backend' => [
 			'backend',
 			'environments/files/backend',
+			'common',
+			'environments/files/common',
 		],
 		'frontend' => [
 			'frontend',
 			'environments/files/frontend',
+			'common',
+			'environments/files/common',
 		],
 		'console' => [
 			'cmd',
@@ -44,8 +50,6 @@ class Generator {
 			$dirs = ArrayHelper::merge($dirs, $itemDirs);
 		}
 		$dirs = ArrayHelper::merge($dirs, [
-			'common',
-			'environments/files/common',
 			'environments/config',
 		]);
 		return $dirs;

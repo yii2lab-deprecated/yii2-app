@@ -6,6 +6,7 @@ return [
 	'language' => LanguageEnum::EN, // current Language
 	'components' => [
 		'user' => [
+			'class' => 'yii2module\account\domain\v2\web\User',
 			'enableSession' => false, // ! important
 		],
 	],
