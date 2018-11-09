@@ -3,6 +3,7 @@
 namespace yii2lab\app\domain\filters\config;
 
 use yii2lab\extension\common\helpers\ClassHelper;
+use yii2lab\extension\yii\helpers\FileHelper;
 use yii2mod\helpers\ArrayHelper;
 
 class LoadRouteConfig extends LoadConfig {
@@ -16,8 +17,13 @@ class LoadRouteConfig extends LoadConfig {
 		$newRules = [];
 		foreach ($rules as $key => $value) {
 			$valueNormalized = ClassHelper::normalizeComponentConfig($value);
-			if(isset($valueNormalized['class']) && $valueNormalized['class'] == static::class) {
-				$loadedRules = $this->load($value['modules']);
+			$isImport = $key == '@import';
+			$isImportOld = isset($valueNormalized['class']) && $valueNormalized['class'] == static::class;
+			if($isImport || $isImportOld) {
+				if($isImportOld) {
+					$value = $value['modules'];
+				}
+				$loadedRules = $this->load($value);
 				$newRules = ArrayHelper::merge($newRules, $loadedRules);
 			} else {
 				$newRules[$key] = $value;
@@ -31,7 +37,8 @@ class LoadRouteConfig extends LoadConfig {
         $newRules = [];
         foreach ($modules as $path) {
             if(is_string($path)) {
-                $file = ROOT_DIR . DS . $path . DS . 'config/routes.php';
+	            $dir = FileHelper::getAlias($path);
+	            $file = $dir . DS . 'config/routes.php';
                 $loadedRules = @include($file);
                 if(!empty($loadedRules)) {
                     $newRules = ArrayHelper::merge($newRules, $loadedRules);
