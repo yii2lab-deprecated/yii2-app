@@ -9,47 +9,16 @@ use yii2lab\extension\console\helpers\Output;
 
 class Generator {
 	
-	const SOURCE_DIR = 'vendor/yii2lab/yii2-app/src/domain/helpers/generator/applicationFiles';
-	
-	private static $forCopy = [
-		'api' => [
-			'api',
-			'environments/files/api',
-			'common',
-			'environments/files/common',
-		],
-		'backend' => [
-			'backend',
-			'environments/files/backend',
-			'common',
-			'environments/files/common',
-		],
-		'frontend' => [
-			'frontend',
-			'environments/files/frontend',
-			'common',
-			'environments/files/common',
-		],
-		'console' => [
-			'cmd',
-			'console',
-			'environments/files/console',
-		],
-		'phpStorm' => [
-			'.idea',
-		],
-	];
-	
-	static function generateApplication($sourceDir) {
-		$selected = Select::display('Select applications for generate', array_keys(self::$forCopy), true);
-		$dirs = self::dirsFromSelect($selected);
+	static function generateApplication($sourceDir, $forCopy) {
+		$selected = Select::display('Select applications for generate', array_keys($forCopy), true);
+		$dirs = self::dirsFromSelect($selected, $forCopy);
 		self::copyFiles($dirs, $sourceDir);
 	}
 	
-	private static function dirsFromSelect($selected) {
+	private static function dirsFromSelect($selected, $forCopy) {
 		$dirs = [];
 		foreach($selected as $name) {
-			$itemDirs = self::$forCopy[$name];
+			$itemDirs = $forCopy[$name];
 			$dirs = ArrayHelper::merge($dirs, $itemDirs);
 		}
 		$dirs = ArrayHelper::merge($dirs, [
