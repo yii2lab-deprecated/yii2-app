@@ -1,6 +1,6 @@
 <?php
 
-use common\enums\rbac\PermissionEnum;
+use yii2lab\applicationTemplate\common\enums\ApplicationPermissionEnum;
 use yii2lab\extension\web\helpers\Behavior;
 
 return [
@@ -10,12 +10,12 @@ return [
 	'debug' => [
 		'class' => 'yii\debug\Module',
 		'allowedIPs' => ['127.0.0.1'],
-		'as access' => Behavior::access(PermissionEnum::BACKEND_ALL),
+		'as access' => Behavior::access(ApplicationPermissionEnum::BACKEND_ALL),
 	],
 	'gii' => [
 		'class' => 'yii\gii\Module',
 		'allowedIPs' => ['127.0.0.1'],
-		'as access' => Behavior::access(PermissionEnum::BACKEND_ALL),
+		'as access' => Behavior::access(ApplicationPermissionEnum::BACKEND_ALL),
 		'isEnabled' => YII_ENV_DEV,
 	],
 ];
