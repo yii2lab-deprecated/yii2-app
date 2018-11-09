@@ -35,12 +35,15 @@ class Generator {
 			'console',
 			'environments/files/console',
 		],
+		'phpStorm' => [
+			'.idea',
+		],
 	];
 	
-	static function generateApplication() {
+	static function generateApplication($sourceDir) {
 		$selected = Select::display('Select applications for generate', array_keys(self::$forCopy), true);
 		$dirs = self::dirsFromSelect($selected);
-		self::copyFiles($dirs);
+		self::copyFiles($dirs, $sourceDir);
 	}
 	
 	private static function dirsFromSelect($selected) {
@@ -55,13 +58,13 @@ class Generator {
 		return $dirs;
 	}
 	
-	private static function copyFiles($dirs) {
+	private static function copyFiles($dirs, $sourceDir) {
 		$copyFiles = new CopyFiles;
-		$copyFiles->copyAllFiles(self::SOURCE_DIR . DS . 'root');
+		$copyFiles->copyAllFiles($sourceDir . DS . 'root');
 		foreach($dirs as $dir) {
 			Output::title($dir);
 			Output::line();
-			$mainFiles = self::SOURCE_DIR . DS . $dir;
+			$mainFiles = $sourceDir . DS . $dir;
 			$copyFiles->copyAllFiles($mainFiles, $dir);
 		}
 	}

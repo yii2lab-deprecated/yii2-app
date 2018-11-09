@@ -6,4 +6,5 @@ use yii2lab\app\domain\helpers\generator\Generator;
 @include_once('App.php');
 App::init('console');
 
-Generator::generateApplication();
+$sourceDir = 'vendor/yii2lab/yii2-app/src/data/appOnRails';
+Generator::generateApplication($sourceDir);
