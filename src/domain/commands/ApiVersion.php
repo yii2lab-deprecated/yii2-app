@@ -2,8 +2,8 @@
 
 namespace yii2lab\app\domain\commands;
 
-use common\enums\app\ApiVersionEnum;
 use yii2lab\extension\scenario\base\BaseScenario;
+use yii2lab\rest\domain\helpers\MiscHelper;
 
 class ApiVersion extends BaseScenario {
 
@@ -34,7 +34,7 @@ class ApiVersion extends BaseScenario {
 			}
 			self::forgeRequestUri($version);
 		}
-		if(APP != CONSOLE && !ApiVersionEnum::isValid('v' . $version)) {
+		if(APP != CONSOLE && !MiscHelper::isValidVersion('v' . $version)) {
 			self::showError('Version ' . $version . ' not found');
 		}
 		return $version;
@@ -50,7 +50,7 @@ class ApiVersion extends BaseScenario {
 			"code" => 0,
 			"status" => 400,
 			"type" => "Exception",
-			"versions" => ApiVersionEnum::getApiVersionNumberList(),
+			"versions" => $versionList = MiscHelper::getAllVersions(),
 		];
 		exit(json_encode($body));
 	}
