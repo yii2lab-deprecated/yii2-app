@@ -77,6 +77,8 @@ class Constant {
 		defined('EMP') OR define('EMP', '');
 		defined('TAB') OR define('TAB', "\t");
 		defined('BR') OR define('BR', '<br/>');
+		defined('DLU') OR define('DLU', '..');
+		defined('DLC') OR define('DLC', '.');
 		defined('TIMESTAMP') OR define('TIMESTAMP', time());
 	}
 	
