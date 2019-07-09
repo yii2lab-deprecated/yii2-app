@@ -1,3 +1,4 @@
+namespace: "yii2lab\\app"
 paths:
     tests: tests
     log: tests/_output
