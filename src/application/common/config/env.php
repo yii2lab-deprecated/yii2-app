@@ -59,7 +59,7 @@ return [
                     '@vendor/yii2module/yii2-rest-client/src/migrations',
                     '@vendor/yii2lab/yii2-qr/src/domain/migrations',
                     '@vendor/yii2lab/yii2-geo/src/domain/migrations',
-                    //'@vendor/yii2lab/yii2-notify/src/migrations',
+                    //'@vendor/yii2woop/yii2-notify/src/migrations',
                 ],
                 'scan' => [
                     '@domain',
