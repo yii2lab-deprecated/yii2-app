@@ -21,7 +21,7 @@
 		"yii2lab/yii2-validator": "dev-master",
 		"yii2lab/yii2-domain": "dev-master",
 		"yii2lab/yii2-extension": "dev-master",
-		"yii2lab/yii2-notify": "dev-master",
+		"yii2woop/yii2-notify": "dev-master",
 		"yii2lab/yii2-widgets": "dev-master",
 		"yii2lab/yii2-core": "dev-master",
 		"yii2lab/yii2-navigation": "dev-master",
