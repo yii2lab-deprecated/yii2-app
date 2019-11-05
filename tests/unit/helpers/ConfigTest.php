@@ -17,7 +17,7 @@ class ConfigTest extends Unit
 	{
 		$definition = DataHelper::load(self::PACKAGE, 'store/definitionEnvSelf.php');
 		$config = Env::loadData($definition);
-		
+
 		$expected = DataHelper::loadForTest(self::PACKAGE, __METHOD__, $config);
 		
 		$this->tester->assertEquals($expected, $config);

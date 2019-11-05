@@ -8,6 +8,6 @@
 	"params": [],
 	"controllerNamespace": "console\\controllers",
 	"id": "app-console",
-	"basePath": "C:\\OpenServer\\domains\\yii\\core\\console",
-	"vendorPath": "C:\\OpenServer\\domains\\yii\\core\\vendor\\"
+	"basePath": "/var/www/wooppay_platform/console",
+	"vendorPath": "/var/www/wooppay_platform/vendor/"
 }
