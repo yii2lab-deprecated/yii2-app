@@ -17,6 +17,10 @@ class Constant {
 	public static function setYiiEnv($env = YiiEnvEnum::PROD) {
 		defined('YII_ENV') OR define('YII_ENV', YiiEnvEnum::value($env, YiiEnvEnum::PROD));
 	}
+
+	public static function setAdditionalYiiEnv($env = YiiEnvEnum::PRETEST) {
+		defined('YII_ENV_PRETEST') or define('YII_ENV_PRETEST', YII_ENV === 'pretest');
+	}
 	
 	public static function setYiiDebug($debug = false) {
 		defined('YII_DEBUG') OR define('YII_DEBUG', $debug);

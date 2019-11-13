@@ -73,6 +73,7 @@ namespace yii2lab\app\parent {
             Env::init($projectDir);
             $env = Env::get();
             Constant::setYiiEnv($env['mode']['env']);
+            Constant::setAdditionalYiiEnv($env['mode']['env']);
             Constant::setYiiDebug($env['mode']['debug']);
             $yiiClass = Env::get('yii.class');
             Load::yii($yiiClass);
