@@ -110,7 +110,19 @@ namespace yii2lab\app\parent {
             try {
                 ScenarioHelper::runAll($commandCollection);
             } catch(InvalidConfigException $e) {
+					if(YII_DEBUG){
+						print ($e);
+						die();
+					} else {
+						Yii::$app->response->setStatusCode(500);
+					}
             } catch(ServerErrorHttpException $e) {
+				if(YII_DEBUG){
+					print ($e);
+					die();
+				} else {
+					Yii::$app->response->setStatusCode(500);
+				}
             }
         }
 
