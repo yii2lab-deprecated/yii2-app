@@ -73,6 +73,7 @@ namespace yii2lab\app\parent {
             Env::init($projectDir);
             $env = Env::get();
             Constant::setYiiEnv($env['mode']['env']);
+            Constant::setAdditionalYiiEnv($env['mode']['env']);
             Constant::setYiiDebug($env['mode']['debug']);
             $yiiClass = Env::get('yii.class');
             Load::yii($yiiClass);
@@ -103,15 +104,28 @@ namespace yii2lab\app\parent {
             return $config;
         }
 
-        private static function runCommands($commands)
-        {
-            $commandCollection = ScenarioHelper::forgeCollection($commands);
-            try {
-                ScenarioHelper::runAll($commandCollection);
-            } catch(InvalidConfigException $e) {
-            } catch(ServerErrorHttpException $e) {
-            }
-        }
+		private static function runCommands($commands)
+		{
+			$commandCollection = ScenarioHelper::forgeCollection($commands);
+			try {
+				ScenarioHelper::runAll($commandCollection);
+			} catch(InvalidConfigException $e) {
+				if(YII_DEBUG){
+					print ($e);
+					die();
+				}
+			} catch(ServerErrorHttpException $e) {
+				if(YII_DEBUG){
+					print ($e);
+					die();
+				}
+			} catch (\Exception $e){
+				if(YII_DEBUG){
+					print ($e);
+					die();
+				}
+			}
+		}
 
         private static function runApplication($config)
         {

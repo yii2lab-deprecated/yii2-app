@@ -9,5 +9,6 @@ class YiiEnvEnum extends BaseEnum {
     const PROD = 'prod';
     const DEV = 'dev';
     const TEST = 'test';
+    const PRETEST = 'pretest';
 
 }
