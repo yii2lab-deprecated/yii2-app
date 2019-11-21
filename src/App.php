@@ -119,7 +119,12 @@ namespace yii2lab\app\parent {
 					print ($e);
 					die();
 				}
-            }
+            } catch (\Exception $e){
+				if(YII_DEBUG){
+					print ($e);
+					die();
+				}
+			}
         }
 
         private static function runApplication($config)
