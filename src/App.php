@@ -107,7 +107,18 @@ namespace yii2lab\app\parent {
         private static function runCommands($commands)
         {
             $commandCollection = ScenarioHelper::forgeCollection($commands);
-            ScenarioHelper::runAll($commandCollection);
+            try {
+                ScenarioHelper::runAll($commandCollection);
+            } catch(InvalidConfigException $e) {
+					print ($e);
+					die();
+            } catch(ServerErrorHttpException $e) {
+					print ($e);
+					die();
+            } catch (\Exception $e){
+					print ($e);
+					die();
+			}
         }
 
         private static function runApplication($config)
